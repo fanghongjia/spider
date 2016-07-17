@@ -1,0 +1,6 @@
+pip
+scrapy
+bs4
+pyx
+目前不能画图，不过用不到
+pymongo
