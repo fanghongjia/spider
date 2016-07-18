@@ -16,13 +16,13 @@ sys.setdefaultencoding('utf-8')
 ----------------------相关全局变量---------------------
 '''
 # 需要爬取的板块连接（注意该链接下的帖子是按照发帖时间进行排序的，且去掉最后的数字）
-spiderUrl = "http://bbs.125.la/forum.php?mod=forumdisplay&fid=125&orderby=dateline&filter=author&orderby=dateline&page="
+spiderUrl = "http://bbs.125.la/forum.php?mod=forumdisplay&fid=167&orderby=dateline&filter=author&orderby=dateline&page="
 # 入库存储的板块名称
-board = "精易产品中心"
+board = "『悔过中心』"
 # 该板块内需要爬取的起始页号
-page_start = 44
+page_start = 1
 # 该板块内需要爬取的终止页号
-page_end = 50
+page_end = 21
 # 代理服务器
 proxy_server = 'http://120.198.231.85:80'
 # 数据库信息
