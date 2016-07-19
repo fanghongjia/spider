@@ -17,13 +17,13 @@ sys.setdefaultencoding('utf-8')
 ----------------------相关全局变量---------------------
 '''
 # 需要爬取的板块连接（注意该链接下的帖子是按照发帖时间进行排序的，且去掉最后的数字）
-spiderUrl = "http://bbs.2cto.com/thread.php?fid=69&page="
+spiderUrl = "http://bbs.2cto.com/thread.php?fid=66&page="
 # 入库存储的板块名称
-board = "杀毒软件专区"
+board = "软件编程开发"
 # 该板块内需要爬取的起始页号
-page_start = 28
+page_start = 81
 # 该板块内需要爬取的终止页号
-page_end = 88
+page_end = 282
 # 代理服务器
 proxy_server = 'http://120.198.231.85:80'
 # 数据库信息
