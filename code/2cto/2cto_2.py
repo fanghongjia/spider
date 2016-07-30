@@ -21,7 +21,7 @@ spiderUrl = "http://bbs.2cto.com/thread.php?fid=20&page="
 # 入库存储的板块名称
 board = "系统技术"
 # 该板块内需要爬取的起始页号
-page_start = 1
+page_start = 165
 # 该板块内需要爬取的终止页号
 page_end = 477
 # 代理服务器

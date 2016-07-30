@@ -1,0 +1,43 @@
+数据：加括号表示可能没有
+url
+用户名->UserName
+uid->uid
+空间访问量
+邮箱状态->EmailStatus
+视频认证->VideoAuthenticationStatus
+（自定义头衔）
+个人签名
+统计信息
+ |-好友数->NumFriends
+ |-回帖数->NumReply
+ |-主题数->NumPost
+性别->Sex
+生日->Birthday
+（学历）
+（QQ）
+（阿里旺旺）
+（个人主页）
+（勋章）
+（管理以下板块）
+（管理组）->LevelAdministrator
+用户组->LevelUserGroup
+在线时间->TimeOnLine
+注册时间->RegistrationData
+最后访问->DateLastAccessed
+（注册IP）
+（上次访问IP）
+上次活动时间->DateLastActivity
+上次发表时间->DateLastPosted
+所在时区
+已用空间->UsedSpace
+（买家好评度）
+（卖家好评度）
+积分->MemberPoint
+银行
+信用
+I币
+M币
+推广
+娱乐
+捐赠
+贡献->Contribution

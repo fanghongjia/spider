@@ -31,11 +31,13 @@ def doReply(url, domain, Cookie):
     if form_div == None:
         return
     form = form_div.find(name='form') # 找到表单
+    if form == None:
+        return
     hiddens = form_div.findAll(attrs={'type':'hidden'}) # 找到表单内的隐藏域
     form_data = {} # 声明一个空字典，用以存放提交的表单
     for hidden in hiddens: # 对于每一个隐藏的<input>标签
         form_data[hidden.get('name')] = hidden.get('value')  # 把name和value存到表单里
-    # 通过数据包分析得表单里除了隐藏域还有message和posttime两项
+    # 通过数据包分析得表单里除了隐藏域还有message
     nowTime = str(time.time()) # 获取当前时间戳
     replys = [
         u'6666666666666666666',
@@ -46,7 +48,6 @@ def doReply(url, domain, Cookie):
     ]
     reply = replys[random.randint(0,4)]
     form_data['message'] = reply
-    form_data['posttime'] = nowTime
     print form_data
     form_action = "http://" + domain + "/" + form.get('action') + "&inajax=1" # 找到表单提交的地址，即处理页地址
     form_headers = {

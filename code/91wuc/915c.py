@@ -9,7 +9,6 @@ import codecs
 import sys
 import math
 import time
-from doReply import doReply
 
 reload(sys)
 print sys.getdefaultencoding()
@@ -18,11 +17,11 @@ sys.setdefaultencoding('utf-8')
 ----------------------相关全局变量---------------------
 '''
 # 需要爬取的板块连接（注意该链接下的帖子是按照发帖时间进行排序的，且去掉最后的数字）
-spiderUrl = "http://www.52fzba.com/forum.php?mod=forumdisplay&fid=330&orderby=dateline&filter=author&orderby=dateline&page="
+spiderUrl = "http://www.9iwuc.com/forum.php?mod=forumdisplay&fid=2&orderby=dateline&filter=author&orderby=dateline&page="
 # 入库存储的板块名称
-board = "泰拉瑞亚"
+board = "新人社区"
 # 该板块内需要爬取的起始页号
-page_start = 2
+page_start = 1
 # 该板块内需要爬取的终止页号
 page_end = 3
 # 代理服务器
@@ -31,7 +30,7 @@ proxy_server = 'http://121.9.221.188'
 mongodbHost = "172.29.152.230"
 mongodbPort = 27017
 db_name = "spider"
-coll_name = "52fzba"
+coll_name = "9iwuc"
 
 '''
 ---------------------------------------------------------
@@ -46,7 +45,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "BDTUJIAID=e584b371feec282e9ae29f8033f6c22f; ftcpvcouplet_fidx=1; PHPSESSID=kgfdu9khtld4pctmar34m8l4p3; tjpctrl=1469098444637; qwJR_2132_saltkey=V4evRnkp; qwJR_2132_lastvisit=1469093172; qwJR_2132_sendmail=1; qwJR_2132_ulastactivity=058cPZAp1orfLycUz8uD8%2FTXeLp0LavPUgCeaEQCKwIZd3JHzpRg; qwJR_2132_auth=f564gO0o7PxpBXjdtDYxE4TQGhQ5OZIjK2MBrTzHeuRwU9F5HtvdjL1zZRQIGppo4OyLnEoGUljak%2FAVESBh7KY70TI; qwJR_2132_lip=221.2.164.39%2C1469096872; qwJR_2132_security_cookiereport=f1b2qBtnxnLPzC5ykuieQyKlql54AWhGRnEamh1e0ZkAf04yYK3E; qwJR_2132_home_diymode=1; qwJR_2132_nofavfid=1; qwJR_2132_onlineusernum=2287; qwJR_2132_st_t=547490%7C1469096988%7Ce571305a23edf014aeca0fa1df7be0df; qwJR_2132_atarget=1; qwJR_2132_forum_lastvisit=D_75_1469096988; qwJR_2132_smile=4D1; qwJR_2132_st_p=547490%7C1469097015%7Ccafa802330b5b5e075c106803fc847ac; qwJR_2132_visitedfid=18D75; qwJR_2132_viewid=tid_14017; qwJR_2132_sid=Ht2aT6; _fmdata=EAE317DCC2BB11F97F2740F9EEEC52EB22954B4B23E99DBCBDE189B267BEB68485029C061FDE19A9745017D37903F8C1C76226F879C573D1; Hm_lvt_6b92a602712df3f78bca96f13da7346c=1468839783,1469008690,1469096516; Hm_lpvt_6b92a602712df3f78bca96f13da7346c=1469097016; pgv_pvi=7957838330; pgv_info=ssi=s5831412770; qwJR_2132_lastact=1469097019%09forum.php%09ajax; qwJR_2132_connect_is_bind=0"
+Cookie = "kUgw_2132_saltkey=Y2B6f7f7; kUgw_2132_lastvisit=1469095487; _uab_collina=146909886790173929168546; kUgw_2132_ulastactivity=d865AnZoyMAXdmL4WmMoZSMAoN6YjNREoF20aTBNt6xc77BqGyGC; kUgw_2132_auth=9bffmb6zR1eCHbfC5FIUK66rbnYsyOxId1U5YM0gdbdiNXhVF9bZLJbN0uOK9eWpUytE1XEZE0MLmkvfHLQopqBg; kUgw_2132_nofavfid=1; kUgw_2132_home_readfeed=1469099176; tjpctrl=1469100756567; kUgw_2132_pc_size_c=2fdbaec; kUgw_2132_connect_not_sync_t=1; kUgw_2132_visitedfid=45D40D39; kUgw_2132_st_t=2671%7C1469099728%7Cb26ecbfe184b6d12db0c83bbb3d04c34; kUgw_2132_forum_lastvisit=D_39_1469099537D_40_1469099620D_45_1469099728; kUgw_2132_sendmail=1; kUgw_2132_checkpm=1; kUgw_2132_lastact=1469099806%09forum.php%09viewthread; kUgw_2132_connect_is_bind=0; kUgw_2132_st_p=2671%7C1469099806%7Cb8fce5f1e2a6c7544751bb6c988fb9e9; kUgw_2132_viewid=tid_18; kUgw_2132_sid=xnIDnn; kUgw_2132_smile=1D1; kUgw_2132_noticeTitle=1; _umdata=BA335E4DD2FD504F96A2511DD5D63351664B4C74DC9F52D0356162481D878590D38322107110972C700668F9A382A3D6FD4E024474DA7742C89A7C1207D0654A877A329830844C53E17171FE4CB309C854333700B7A1F54729960AB00ACC508C"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
@@ -64,20 +63,16 @@ for k in range(page_start, page_end):
     for title in tagA:
         # 从标题中提取帖子的链接，访问该链接从中解析出帖子更多信息
         href = urllib.unquote(title['href'])
+        href = "http://www.9iwuc.com/" + href
         try: 
             response2 = urllib2.urlopen(href)
             soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
         except:
             print "bad url!"
             continue
-        hidden = soup2.find(attrs={'class':'locked'})
-        if(hidden != None):
-            a_exist = hidden.find(name='a')
-            if a_exist != None:
-                doReply(href,"www.52fzba.com",Cookie)
         p_page_content = soup2.find(attrs={'class':'pg'})
         if(p_page_content != None):
-            p_page_url_init = p_page_content.contents[1].get('href')[0:-8]
+            p_page_url_init = "http://www.9iwuc.com/" + p_page_content.contents[1].get('href')[0:-1]
             p_page_end = p_page_content.find(name='span').string
             compiled_page = re.compile(r'[0-9]+')
             p_page_end = int(compiled_page.search(str(p_page_end)).group())
@@ -88,11 +83,8 @@ for k in range(page_start, page_end):
         newItem = {} # 初始化一个新帖子字典
         flag = True # 识别是不是楼主的flag
         for l in range(1, p_page_end+1):
-            for m in range(1,10):
-                time.sleep(1)
-                print "休息一会儿",m
             if(p_page_content != None):
-                p_page_url = p_page_url_init + str(l) + '-1.html'
+                p_page_url = p_page_url_init + str(l)
             else:
                 p_page_url = href
             try:

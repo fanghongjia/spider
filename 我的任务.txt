@@ -5,9 +5,11 @@
 ÅÀÈ¡Ä¿±ê£º
 Ò»¡¢http://bbs.125.la/
 ÕËºÅÃÜÂë £ºkongtianyi/k1234567890
-ÒÑÅÀÈ¡£ºÍÆ¹ãºÏ×÷ÖÐÐÄ¡¢ÇóÖ°ÕÐÆ¸ÖÐÐÄ¡¢Ò×ÓÑ¾ãÀÖ²¿¡¢Ó°ÒôÍÆ¼ö¡¢Ò×ÓïÑÔÎÊ´ðÇø¡¢¾«Ò×²úÆ·ÖÐÐÄ¡¢Ô­´´Èí¼þ·¢²¼¡¢Ò×ÓïÑÔ½Ì³Ì¡¢Ò×ÓïÑÔÄ£¿é¡¢APIÑ§Ï°×¨Çø¡¢×Ô»æÑ§Ï°×¨Çø¡¢Êý¾Ý¿â|Ñ§Ï°Çø¡¢¹¤¾ß|Ö§³Ö¿â|ËØ²Ä|ÏÂÔØ×¨Çø¡¢AppÊý¾Ý·ÖÎö¡¢VCÑ§Ï°×ÊÁÏÇø¡¢C#×ÊÔ´¹²Ïí¡¢»ã±à×ÊÁÏÑ§Ï°Çø¡¢VBÑ§Ï°×ÊÁÏÇø¡¢Javascript|PHP¡¢¸¨Öú¿ªÔ´½»Á÷¡¢¸¨Öú½Ì³ÌÑ§Ï°¡¢¸¨ÖúÎÊ´ð×¨Çø¡¢¸¨Öú¾ãÀÖ²¿¡¢µçÄÔÖªÊ¶¿â¡¢VIPÄ£¿éÀý³Ì½Ì³ÌÇø¡¢VIPÇóÖú×¨Çø¡¢VIPÄ£¿é½»Á÷ÎÊ´ðÇø¡¢½¨Òé|ÒÉÎÊ|Í¶Ëß|¾Ù±¨¡¢Î¥¹æÍ¨±¨¡¢»ý·ÖÉÌ³Ç¡¢¾«Ò×»î¶¯ÖÐÐÄ¡¢»Ú¹ýÖÐÐÄ
-
-ÕýÔÚÅÀ£ºÒ×ÓïÑÔÔ´Âë¡¢¹«¸æÊÂÎñºÏ×÷Ö¸ÄÏ
+ÒÑÅÀÈ¡£ºÍÆ¹ãºÏ×÷ÖÐÐÄ¡¢ÇóÖ°ÕÐÆ¸ÖÐÐÄ¡¢Ò×ÓÑ¾ãÀÖ²¿¡¢Ó°ÒôÍÆ¼ö¡¢Ò×ÓïÑÔÎÊ´ðÇø¡¢¾«Ò×²úÆ·ÖÐÐÄ¡¢Ô­´´Èí¼þ·¢²¼¡¢Ò×ÓïÑÔÔ´Âë¡¢Ò×ÓïÑÔ½Ì³Ì¡¢Ò×ÓïÑÔÄ£¿é¡¢
+APIÑ§Ï°×¨Çø¡¢×Ô»æÑ§Ï°×¨Çø¡¢Êý¾Ý¿â|Ñ§Ï°Çø¡¢¹¤¾ß|Ö§³Ö¿â|ËØ²Ä|ÏÂÔØ×¨Çø¡¢AppÊý¾Ý·ÖÎö¡¢VCÑ§Ï°×ÊÁÏÇø¡¢C#×ÊÔ´¹²Ïí¡¢»ã±à×ÊÁÏÑ§Ï°Çø¡¢
+VBÑ§Ï°×ÊÁÏÇø¡¢Javascript|PHP¡¢¸¨Öú¿ªÔ´½»Á÷¡¢¸¨Öú½Ì³ÌÑ§Ï°¡¢¸¨ÖúÎÊ´ð×¨Çø¡¢¸¨Öú¾ãÀÖ²¿¡¢µçÄÔÖªÊ¶¿â¡¢VIPÄ£¿éÀý³Ì½Ì³ÌÇø¡¢VIPÇóÖú×¨Çø¡¢
+VIPÄ£¿é½»Á÷ÎÊ´ðÇø¡¢½¨Òé|ÒÉÎÊ|Í¶Ëß|¾Ù±¨¡¢Î¥¹æÍ¨±¨¡¢»ý·ÖÉÌ³Ç¡¢¾«Ò×»î¶¯ÖÐÐÄ¡¢»Ú¹ýÖÐÐÄ¡¢¹«¸æÊÂÎñºÏ×÷Ö¸ÄÏ
+ÕýÔÚÅÀ£º
 Ê§°Ü£ºÈí¼þÔ´Âë½»Ò×¡¢Èí¼þ¶¨ÖÆ¡¢°æÖ÷ÖÐÐÄ¡¢Ðû´«Ð¡×é×¨°æ¡¢Ìû×ÓÕÐÆ¸ÊÒºÍ¹¤×Ê·¢·Å
 
 ¶þ¡¢http://www.tianya88.com/(»Ø¸´ÐèÑéÖ¤Âë)
@@ -25,9 +27,9 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 
 Èý¡¢http://bbs.2cto.com/
 ÕËºÅÃÜÂë£ºkongtianyi2/
-ÒÑÅÀÈ¡£ºÐÂÈË½»Á÷Çø¡¢ÐüÉÍÎÊ´ð¡¢Òµ½ç×ÊÑ¶¡¢ÆÀÂÛ¡¢¶ÁÊéÆµµÀÆÀÂÛ¡¢É±¶¾Èí¼þ×¨Çø¡¢Ò×ÓïÑÔ½»Á÷¡¢Web¿ª·¢¡¢Êý¾Ý¿â¡¢Î¢ÐÅ¹«ÖÚÆ½Ì¨¿ª·¢¡¢Î¢ÐÅÓªÏú¡¢ÍøÂç¼¼Êõ¡¢ÍøÕ¾Ô´Âë¡¢»î¶¯&¶Ò½±Çø¡¢ÒÑ½â¾öÎÊÌâ£¨±¸²éÇø£©¡¢
-Ê§°Ü£º
-ÕýÔÚÅÀ£ºµçÄÔ°²È«£¬ÍøÕ¾°²È«£¬¼ÓÃÜ½âÃÜ¼¼Êõ,Èí¼þ±à³Ì¿ª·¢£¬ÏµÍ³¼¼Êõ£¬QQ²¿Âä
+ÒÑÅÀÈ¡£ºÐÂÈË½»Á÷Çø¡¢ÐüÉÍÎÊ´ð¡¢Òµ½ç×ÊÑ¶¡¢ÆÀÂÛ¡¢¶ÁÊéÆµµÀÆÀÂÛ¡¢É±¶¾Èí¼þ×¨Çø¡¢µçÄÔ°²È«¡¢ÍøÕ¾°²È«¡¢ÍøÕ¾½¨Éè¡¢¼ÓÃÜ½âÃÜ¼¼Êõ¡¢Èí¼þ±à³Ì¿ª·¢¡¢Ò×ÓïÑÔ½»Á÷¡¢Web¿ª·¢¡¢Êý¾Ý¿â¡¢Î¢ÐÅ¹«ÖÚÆ½Ì¨¿ª·¢¡¢Î¢ÐÅÓªÏú¡¢ÏµÍ³¼¼Êõ¡¢ÍøÂç¼¼Êõ¡¢QQ²¿Âä¡¢QQ×ÊÑ¶¡¢QQ±íÇéÍ·Ïñ¡¢QQ¿Õ¼ä×¨°æ¡¢Ó²¼þÏà¹Ø¡¢Ñ§Ï°×ÊÁÏÏÂÔØ¡¢ÍøÕ¾Ô´Âë¡¢ÍøÂç×¬Ç®°æ¡¢ÂÛÌ³¹ÜÀíÇø¡¢»î¶¯&¶Ò½±Çø¡¢ÒÑ½â¾öÎÊÌâ£¨±¸²éÇø£©¡¢
+Ê§°Ü£ºÔ­´´×÷Æ··¢²¼£¨ÐèÈÏÖ¤£©¡¢VIP°å¿é£¨ÐèÈÏÖ¤£©¡¢¹ÜÀíÍÅ¶Ó°æ£¨ÐèÈÏÖ¤£©
+ÕýÔÚÅÀ£ººìºÚ²èÉç£¬
 
 ËÄ¡¢http://bbs.77169.com/
 ÕËºÅÃÜÂë(Ã»ÑûÇëÂë)£ºKk1234567890+
@@ -36,9 +38,36 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 
 Îå¡¢http://www.kali.org.cn/
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
-
+»Ø¸´ÐèÑéÖ¤Âë
 
 Áù¡¢http://www.52fzba.com/
+ÕËºÅÃÜÂë£ºnancunshijian/nancunshijian
+ÒÑÅÀÈ¡£ºÊ¹ÃüÕÙ»½¡¢GTA¡¢ÇóÉúÖ®Â·
+ÕýÔÚÅÀ£º
+
+Æß¡¢http://www.9iwuc.com/
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
-ÒÑÅÀÈ¡£ºÊ¹ÃüÕÙ»½¡¢
-ÕýÔÚÅÀ£ºÒÉÎÊÇóÖú¡¢ÉçÇø¹«¸æ¡¢
+ÅÀÍêÁË
+
+°Ë¡¢http://hackxd.com/
+1ÔªÂòµ½ÁËÑûÇëÂë£¬µ«ÊÇ»Ø¸´ÐèÒªÑéÖ¤Âë
+
+¾Å¡¢http://www.mfexe.com/
+´ò²»¿ª
+
+Ê®¡¢https://bingfeng.tw/
+ÓÐä¯ÀÀ¸¶¿î»úÖÆ£¬²»ÖªÊÇ·ñÒª³äÖµ
+
+Ê®Ò»¡¢http://bbs.blackbap.org/
+´ò²»¿ª
+
+Ê®¶þ¡¢http://bbs.im520.com/
+Âòµ½ÁËÑûÇëÂë£¬»¨·Ñ10Ôª¡£
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+ÒÑÅÀÍê£º°¬Ã×¹«¸æ¡¢´¦·£Í¨¸æ¡¢Î¬È¨Í¶Ëß¡¢ÉêÇë×¨À¸¡¢ÐÂÊÖÎÊ´ð¡¢Õ¾Îñ´¦Àí¡¢¹ã¸æ×¨ÓÃ¡¢³¬¼¶½»Ò×1-501¡¢³¬¼¶½»Ò×801-1000¡¢³õ¼¶½»Ò×¡¢É¹ºÅÆÀ¹À¡¢ÍøÂç»î¶¯¡¢ÌåÓý¾º²Â¡¢»áÔ±·ç²É¡¢½»Ò×ÖÐ½é¡¢×ÊÑ¶½»Á÷¡¢°¬Ã×ËêÔÂ¡¢·ÀÆ­½»Á÷
+Ã»È¨ÏÞ:ºËÐÄ½»Á÷¡¢½»Ò×±¸·Ý¡¢ÁÙÊ±Í¶Æ±¡¢ID±¸°¸¡¢
+ÕýÔÚÅÀ£º³¬¼¶½»Ò×501-801¡¢³É½»È·ÈÏ¡¢ºÏ×÷·µÓ¶¡¢°¬Ã×ÔÓÌ¸
+
+
+
+
