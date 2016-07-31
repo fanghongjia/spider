@@ -42,15 +42,28 @@ def downloadinfo(url, domain, Cookie, coll):
         f.write('\n')
         return
     counts = top.findAll(attrs = {'class':'pbm mbm bbda cl'})
-    count1 = counts[0]
-    uid = count1.contents[1].contents[1].text
-    name = count1.contents[1].text
-    print username
+    for count in counts:
+        mbn = count.find(attrs = {'class':'mbn'})
+        mbn_text = mbn.text
+        if mbn_text == u'勋章':
+            print mbn_text
+        elif mbn_text == u'管理以下版块':
+            print mbn_text
+        elif mbn_text == u'活跃概况':
+            print mbn_text
+        else:
+            print mbn_text
+    cl = top.find(attrs = {'class':'cl', 'id':'psts'})
+    pfl_lis = cl.find(attrs = {'class':'pf_l'}).findAll(name = 'li')
+    ems = cl.find(attrs = {'class':'pf_l'}).findAll(name = 'em')
+    i = 0
+    for pfl_li in pfl_lis:
+        key_temp = ems[i].text
+        value_temp = pfl_li.text
+        value_temp.replace(key_temp, '')
+        print key_temp, value_temp
+        i = i + 1
     
-    # if len(counts) == 2:
-        
-    # elif len(counts) == 3: #如果有三个说明是管理员，第2个模块是“管理以下板块”
-       
     # coll.insert(user)
 
 
