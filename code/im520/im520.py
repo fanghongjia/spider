@@ -18,13 +18,13 @@ sys.setdefaultencoding('utf-8')
 ----------------------相关全局变量---------------------
 '''
 # 需要爬取的板块连接（注意该链接下的帖子是按照发帖时间进行排序的，且去掉最后的数字）
-spiderUrl = "http://bbs.im520.com/forum.php?mod=forumdisplay&fid=34&orderby=dateline&filter=author&orderby=dateline&page="
+spiderUrl = "http://bbs.im520.com/forum.php?mod=forumdisplay&fid=157&orderby=dateline&filter=author&orderby=dateline&page="
 # 入库存储的板块名称
-board = "〖QQHelper系列〗 "
+board = "〖游戏大厅〗"
 # 该板块内需要爬取的起始页号
 page_start = 1
 # 该板块内需要爬取的终止页号
-page_end = 7
+page_end = 13
 # 代理服务器
 proxy_server = 'http://121.9.221.188'
 # 数据库信息
@@ -94,6 +94,13 @@ for k in range(page_start, page_end):
             p_page_end = p_page_content.find(name='span').string
             compiled_page = re.compile(r'[0-9]+')
             p_page_end = int(compiled_page.search(str(p_page_end)).group())
+            if p_page_end > 300:
+                print p_page_url
+                print "too much pages!"
+                f = open('badurl.txt','a')
+                f.write(p_page_url + '  ---too much pages!')
+                f.write('\n')
+                continue
             print p_page_end,"!!!!!!"
         else:
             p_page_end = 1
