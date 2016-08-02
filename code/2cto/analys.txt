@@ -10,7 +10,7 @@ URL->URL
 等级->LevelUserGroup
 （身份）->levelAdminstrator
 总积分->MemberPoints
-（认证）
+（认证）->Qualification
 
 UID->UID
 会员头衔->VIPTitle
@@ -22,20 +22,20 @@ UID->UID
 家乡->Hometown
 支付宝账号->Apliy
 个人主页->HomePage
-自我介绍
+自我介绍->SelfIntroduce
 注册时间->RegistrationData
-最后登陆时间->DataLastAccessed
+最后登录时间->DataLastAccessed
 
-精华帖子数
+精华帖子数->EssencePosts
 帖子数->NumReply
-平均日发帖数
-帖子签名
+平均日发帖数->PostsPerDay
+帖子签名->PostsSignature
 
 QQ->QQ
 Msn->MSN
 
-工作经历
-教育经历
+工作经历->WorkExperience
+教育经历->EducationExperience
 
 
 

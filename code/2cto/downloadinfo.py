@@ -59,11 +59,11 @@ def downloadinfo(url, domain, Cookie, coll):
     lis1 = uls[1].findAll(name = 'li')
     for li in lis1:
         key = li.find(name = 'p').text
-        if key == u'关注数':
+        if key == u'关注':
             key = 'AttentionNum'
-        elif key == u'粉丝数':
+        elif key == u'粉丝':
             key = 'Fans'
-        elif key == u'访客数':
+        elif key == u'访客':
             key = 'NumSpaceVisited'
         value = li.find(name = 'span').text
         print key, '->', value
@@ -73,12 +73,18 @@ def downloadinfo(url, domain, Cookie, coll):
         spans = li.findAll(name = 'span')
         key = spans[0].text
         if key == u'认证：':
-            key = u'认证'
+            key = 'Qualification'
             imgs = li.findAll(name = 'img')
             value = ''
             for img in imgs:
                 value = value + img.get('title') + '、'
         else:
+            if key == u'等级：':
+                key = 'LevelUserGroup'
+            elif key == u'身份：':
+                key = 'levelAdminstrator'
+            elif key == u'总积分：':
+                key = 'MemberPoints'
             value = spans[1].text
         print key, '->', value
         user[key] = value
@@ -89,10 +95,46 @@ def downloadinfo(url, domain, Cookie, coll):
     i = 0
     for th in ths:
         th = th.text
+        if th == u'会员头衔':
+            th = 'VIPTitle'
+        elif th == u'系统头衔':
+            th = 'SysTitle'
+        elif th == u'在线时间':
+            th = 'TimeOnLine'
+        elif th == u'性别':
+            th = 'Sex'
+        elif th == u'生日':
+            th = 'Birthday'
+        elif th == u'现居住地':
+            th = 'CurrentResidence'
+        elif th == u'家乡':
+            th = 'Hometown'
+        elif th == u'支付宝账号':
+            th = 'Apliy'
+        elif th == u'个人主页':
+            th = 'HomePage'
+        elif th == u'自我介绍':
+            th = 'SelfIntroduce'
+        elif th == u'注册时间':
+            th = 'RegistrationData'
+        elif th == u'最后登录':
+            th = 'DataLastAccessed'
+        elif th == u'精华帖子':
+            th = 'EssencePosts'
+        elif th == u'帖子':
+            th = 'NumReply'
+        elif th == u'平均日发帖':
+            th = 'PostsPerDay'
+        elif th == u'帖子签名':
+            th = 'PostsSignature'
+        elif th == u'工作经历':
+            th = 'WorkExperience'
+        elif th == u'教育经历':
+            th = 'EducationExperience'
         td = tds[i].text
         print th, '->', td
         user[th] = td
         i = i + 1
-    # coll.insert(user)
+    coll.insert(user)
 
 
