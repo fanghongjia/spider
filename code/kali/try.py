@@ -1,36 +1,7 @@
 # coding:utf-8
-# 验证码识别，此程序只能识别数据验证码 
-import Image 
-import ImageEnhance 
-import ImageFilter 
-import sys 
-import pytesseract
-# from pytesser import *
-# 二值化 
-threshold = 140
-table = [] 
-for i in range(256): 
- if i < threshold: 
-  table.append(0) 
- else: 
-  table.append(1) 
-
-def getverify1(name):   
- #打开图片 
- im = Image.open(name) 
- #转化到灰度图 
- imgry = im.convert('L') 
- #保存图像 
- imgry.save('g'+name) 
- #二值化，采用阈值分割法，threshold为分割点 
- out = imgry.point(table,'1') 
- out.save('b'+name) 
- #识别 
- text = pytesseract.image_to_string(out) 
- #识别对吗 
- text = text.strip() 
- text = text.upper();  
- #out.save(text+'.jpg') 
- print text 
- return text 
-getverify1('idcode.jpg') #注意这里的图片要和此文件在同一个目录，要不就传绝对路径也行 
+from selenium import webdriver
+driver = webdriver.PhantomJS()#如果不方便配置环境变量。就使用phantomjs的绝对路径也可以
+driver.get('http://www.kali.org.cn/thread-16845-1-1.html')#抓取了百度图片，query：周杰伦
+driver.page_source #这就是返回的页面内容了，与urllib2.urlopen().read()的效果是类似的，但比urllib2强在能抓取到动态渲染后的内容。
+print driver.page_source
+driver.quit()

@@ -18,20 +18,20 @@ sys.setdefaultencoding('utf-8')
 ----------------------相关全局变量---------------------
 '''
 # 需要爬取的板块连接（注意该链接下的帖子是按照发帖时间进行排序的，且去掉最后的数字）
-spiderUrl = "http://bbs.im520.com/forum.php?mod=forumdisplay&fid=73&orderby=dateline&filter=author&orderby=dateline&page="
+spiderUrl = "http://bbs.blackbap.org/forum.php?mod=forumdisplay&fid=33&orderby=dateline&orderby=dateline&filter=author&page="
 # 入库存储的板块名称
-board = "〖体育竞猜〗"
+board = "分享和下载 - Sharing & Downloads"
 # 该板块内需要爬取的起始页号
-page_start = 1
+page_start = 15
 # 该板块内需要爬取的终止页号
-page_end = 14
+page_end = 17
 # 代理服务器
 proxy_server = 'http://121.9.221.188'
 # 数据库信息
 mongodbHost = "172.29.152.230"
 mongodbPort = 27017
 db_name = "spider"
-coll_name = "im520"
+coll_name = "blackbap"
 
 '''
 ---------------------------------------------------------
@@ -46,7 +46,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "VJ8y_2132_saltkey=HGX3y3s1; VJ8y_2132_lastvisit=1469099336; VJ8y_2132_widthauto=-1; VJ8y_2132_nofavfid=1; VJ8y_2132_adclose_995=1; VJ8y_2132_ulastactivity=756dUUjpZxIJYxmQl%2F0XzV0gIKxPmbzPb%2FFdCwWJzCD48Zkhl1mn; VJ8y_2132_auth=80ceQ6ebo17gSpT51ezBD3ArhbM%2ByALO0pojFLGtkx4fzwkh2QcekOVnV%2FYP4fEhDUbZiWue0vn9kCOwuphpZrRsSpo; VJ8y_2132_lastcheckfeed=100124%7C1469193501; VJ8y_2132_viewid=tid_661172; VJ8y_2132_onlineusernum=1054; VJ8y_2132_home_diymode=1; VJ8y_2132_sendmail=1; VJ8y_2132_visitedfid=146D171D41D189D53D174D15; VJ8y_2132_lastact=1469193786%09forum.php%09forumdisplay; VJ8y_2132_forum_lastvisit=D_15_1469103566D_174_1469103632D_53_1469193473D_189_1469193624D_41_1469193649D_171_1469193768D_146_1469193786; VJ8y_2132_sid=SEDDD1; Hm_lvt_e70b0b6205f2208b96f42b05fcde8ef0=1469102937,1469193366; Hm_lpvt_e70b0b6205f2208b96f42b05fcde8ef0=1469193787; VJ8y_2132_smile=1D1"
+Cookie = "B96o_2132_saltkey=ZuegE46S; B96o_2132_lastvisit=1470101431; B96o_2132_seccode=121.86bc7d56af73c2e987; B96o_2132_ulastactivity=5812%2BgKvLpALssJc%2F4oygtXC9FfPzVzEr1K%2BS0Fg6pC5ekfeAIom; B96o_2132_auth=779dXl4hxTNuKW52cry9Fpnb%2BrcQYeUbVHimfwmUG55WmqGMZJiwL7%2F9%2BWNPApHjvMLquGj%2FOLeGA%2Fqwsv9i7aYijA; B96o_2132_lastcheckfeed=11297%7C1470192983; B96o_2132_lip=202.102.144.8%2C1470144275; B96o_2132_st_p=11297%7C1470193015%7C9564b2074cda4d18f2667a94241f9819; B96o_2132_viewid=tid_8134; B96o_2132_nofavfid=1; B96o_2132_onlineusernum=338; B96o_2132_visitedfid=21D10D11D29D18; B96o_2132_st_t=11297%7C1470193134%7C9558bf09ae6e0822557429aa374107b4; B96o_2132_forum_lastvisit=D_18_1470105356D_29_1470105808D_11_1470192986D_10_1470193102D_21_1470193134; B96o_2132_smile=4D1; B96o_2132_sid=G6xvwg; B96o_2132_checkpm=1; B96o_2132_sendmail=1; B96o_2132_lastact=1470193227%09misc.php%09patch"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
@@ -57,30 +57,50 @@ opener.addheaders = [
 # opener = urllib2.build_opener(proxy_handler)
 urllib2.install_opener(opener)
 for k in range(page_start, page_end):
-    response = urllib2.urlopen(spiderUrl + str(k))
+    try:
+        response = urllib2.urlopen(spiderUrl + str(k))
+    except:
+        print "bad url!"
+        f = open('badurl.txt','a')
+        f.write(spiderUrl + str(k))
+        f.write('\n')
+        continue
     soup = BeautifulSoup(response, 'lxml', from_encoding="utf-8")
     tagA = soup.findAll(name='a', attrs={'class': 'xst'})
     # 依次解析每一个帖子标题
     for title in tagA:
         # 从标题中提取帖子的链接，访问该链接从中解析出帖子更多信息
         href = urllib.unquote(title['href'])
-        href = 'http://bbs.im520.com/' + href
+        href = 'http://bbs.blackbap.org/' + href
         try: 
             response2 = urllib2.urlopen(href)
             soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
         except:
             print "bad url!"
+            f = open('badurl.txt','a')
+            f.write(href)
+            f.write('\n')
             continue
         hidden = soup2.find(attrs={'class':'locked'})
         if hidden != None:
             if hidden.find(name='a') != None:
-                doReply(href,'bbs.im520.com',Cookie)
+                doReply(href,'bbs.blackbap.org',Cookie)
         p_page_content = soup2.find(attrs={'class':'pg'})
         if(p_page_content != None):
-            p_page_url_init = p_page_content.contents[1].get('href')[0:-1]
+            try:
+                p_page_url_init = title.get('href') + '&page='
+            except:
+                continue
             p_page_end = p_page_content.find(name='span').string
             compiled_page = re.compile(r'[0-9]+')
             p_page_end = int(compiled_page.search(str(p_page_end)).group())
+            if p_page_end > 400:
+                print p_page_url
+                print "too much pages!"
+                f = open('badurl.txt','a')
+                f.write(p_page_url + '  ---too much pages!')
+                f.write('\n')
+                continue
             print p_page_end,"!!!!!!"
         else:
             p_page_end = 1
@@ -89,7 +109,7 @@ for k in range(page_start, page_end):
         flag = True # 识别是不是楼主的flag
         for l in range(1, p_page_end+1):
             if(p_page_content != None):
-                p_page_url = "http://bbs.im520.com/" + p_page_url_init + str(l) + "-1.html"
+                p_page_url = "http://bbs.blackbap.org/" + p_page_url_init + str(l)
             else:
                 p_page_url = href
             try:
@@ -99,6 +119,9 @@ for k in range(page_start, page_end):
             except:
                 print p_page_url
                 print "bad url!"
+                f = open('badurl.txt','a')
+                f.write(p_page_url)
+                f.write('\n')
                 continue
             posts = soup3.findAll(attrs={'class': 'pi'})
             posts_contents = soup3.findAll(attrs={'class': 't_f'})
@@ -112,7 +135,7 @@ for k in range(page_start, page_end):
                     floor = '';
                     floor = floor + str(posts[2*(i-1)+1].contents[1].contents[1].find(name = 'em'))[4:-5]
                     if(floor == ''):
-                        floor = posts[2*(i-1)+1].contents[1].contents[1].string[2:]
+                        floor = posts[2*(i-1)+1].contents[1].contents[1].string[1:]
                 except:
                     print "ERROR:获取作者、时间、楼层信息出错！"
                     continue
@@ -130,6 +153,10 @@ for k in range(page_start, page_end):
                     floor = '3'
                 elif floor == '地板':
                     floor = '4'
+                elif floor == '地下室':
+                    floor = '5'
+                elif floor == '下水道':
+                    floor = '6'
                 if(i == 1 and flag == True):
                     first_floor = {
                         'author':author,

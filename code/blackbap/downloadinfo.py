@@ -67,6 +67,20 @@ def downloadinfo(url, domain, Cookie, coll):
                 AdminModule = AdminModule + module.string + '、'
             print u'AdminModule','->',AdminModule
             user['AdminModule'] = AdminModule
+        elif mbn_text == u'名人堂状态':
+            ps = count.findAll(name = 'p')
+            for p in ps:
+                value = p.find(name = 'font').text
+                key = p.text
+                if key == u'该用户是名人堂成员':
+                    continue
+                key = key.replace(value, '')
+                if key == u'名人堂组别: ':
+                    key = 'LevelHallOfFame'
+                elif key == u'用户介绍: ':
+                    key = 'UserIntroduce'
+                print key, '->', value
+                user[key] = value
         elif mbn_text == u'活跃概况':
             uls = count.findAll(name = 'ul')
             lis1 = uls[0].findAll(name = 'li')
@@ -147,6 +161,12 @@ def downloadinfo(url, domain, Cookie, coll):
                             key = key.strip()
                             if key == u'好友数':
                                 key = 'NumFriends'
+                            elif key == u'记录数':
+                                key = 'NumRecord'
+                            elif key == u'日志数':
+                                key = 'NumJournal'
+                            elif key == u'相册数':
+                                key = 'NumAlbum'
                             elif key == u'回帖数':
                                 key = 'NumReply'
                             elif key == u'主题数':
@@ -170,6 +190,8 @@ def downloadinfo(url, domain, Cookie, coll):
                             key = 'EmailStatus'
                         elif key == u'视频认证':
                             key = 'VideoAuthenticationStatus'
+                        elif key == u'最新记录':
+                            key = 'LastRecord'
                         elif key == u'自定义头衔':
                             key = 'Title'
                         elif key == u'个人签名':
@@ -192,20 +214,23 @@ def downloadinfo(url, domain, Cookie, coll):
                             key = 'HomePage'
                         print key, '->', value
                     user[key] = value
-    c = top.find(attrs = {'class':'pbm mbm bbda c'})
-    ps = c.findAll(name = 'p')
-    if ps[0].text != u'该会员从未签到':
-        user['AllSignInTime'] = ps[0].find(name = 'b').text
-        print 'AllSignInTime->', user['AllSignInTime']
-        user['ThisMonthSignInTime'] = ps[1].find(name = 'b').text
-        print 'ThisMonthSignInTime->', user['ThisMonthSignInTime']
-        user['LastSignInTime'] = ps[2].find(name = 'font').text
-        print 'LastSignInTime->', user['LastSignInTime']
-        user['AllReward'] = ps[3].text
-        print 'AllReward->', user['AllReward']
-        if ps[4].find(name = 'b') != None:
-            user['SignInLevel'] = ps[4].find(name = 'b').text
-            print 'SignInLevel->', user['SignInLevel'] 
+    c = top.find(attrs = {'class':'bm bbda cl'})
+    if c != None:
+        ps = c.findAll(name = 'p')
+        if ps[0].text != u'该会员从未签到':
+            user['AllSignInTime'] = ps[0].find(name = 'b').text
+            print 'AllSignInTime->', user['AllSignInTime']
+            user['SerialSignInTime'] = ps[1].find(name = 'b').text
+            print 'SerialSignInTime->', user['SerialSignInTime']
+            user['ThisMonthSignInTime'] = ps[2].find(name = 'b').text
+            print 'ThisMonthSignInTime->', user['ThisMonthSignInTime']
+            user['LastSignInTime'] = ps[3].find(name = 'font').text
+            print 'LastSignInTime->', user['LastSignInTime']
+            user['AllReward'] = ps[4].text
+            print 'AllReward->', user['AllReward']
+            if ps[5].find(name = 'b') != None:
+                user['SignInLevel'] = ps[5].find(name = 'b').text
+                print 'SignInLevel->', user['SignInLevel'] 
     cl = top.find(attrs = {'class':'cl', 'id':'psts'})
     pfl_lis = cl.find(attrs = {'class':'pf_l'}).findAll(name = 'li')
     ems = cl.find(attrs = {'class':'pf_l'}).findAll(name = 'em')
@@ -220,12 +245,12 @@ def downloadinfo(url, domain, Cookie, coll):
             key = 'MemberPoint'
         elif key == u'威望':
             key = 'Prestige'
-        elif key == u'天涯币':
-            key = 'tianya-Money'
-        elif key == u'贡献值':
+        elif key == u'金钱':
+            key = 'Money'
+        elif key == u'贡献':
             key = 'Contribution'
-        elif key == u'银元':
-            key = 'sliver-Money'
+        elif key == u'飞币':
+            key = 'fly-Money'
         elif key == u'下载点':
             key = 'DownloadPoint'
         elif key == u'荣誉':
@@ -234,6 +259,8 @@ def downloadinfo(url, domain, Cookie, coll):
             key = 'deal-Money'
         elif key == u'诚信度':
             key = 'HonestyLevel'
+        elif key == u'帖评':
+            key = 'PostsComment'
         print key, '->', value
         user[key] = value
         i = i + 1

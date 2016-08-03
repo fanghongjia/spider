@@ -114,8 +114,6 @@ for k in range(page_start, page_end):
                 lines = re.sub('<span style=["]display:none["]>[^>]+>', '', lines)
                 lines = re.sub('<font class=["]jammer["]>[^>]+>', '', lines)
                 lines = re.sub('<(.*?)>', '', lines)
-                # re.sub('img','',lines)
-                # lines = lines[90:]
                 lines = lines.strip()
                 # args[i].append(lines.decode('utf-8').encode('utf-8'))
                 print lines

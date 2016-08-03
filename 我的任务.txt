@@ -1,5 +1,6 @@
 ´òÂëÆ½Ì¨£ºwww.jsdati.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+³åÁË£±£°¿é
 
 ÎÊÌâ£º
 1.ÈÏÖ¤°å¿éÅÀÂð£¿
@@ -12,8 +13,8 @@
 APIÑ§Ï°×¨Çø¡¢×Ô»æÑ§Ï°×¨Çø¡¢Êý¾Ý¿â|Ñ§Ï°Çø¡¢¹¤¾ß|Ö§³Ö¿â|ËØ²Ä|ÏÂÔØ×¨Çø¡¢AppÊý¾Ý·ÖÎö¡¢VCÑ§Ï°×ÊÁÏÇø¡¢C#×ÊÔ´¹²Ïí¡¢»ã±à×ÊÁÏÑ§Ï°Çø¡¢
 VBÑ§Ï°×ÊÁÏÇø¡¢Javascript|PHP¡¢¸¨Öú¿ªÔ´½»Á÷¡¢¸¨Öú½Ì³ÌÑ§Ï°¡¢¸¨ÖúÎÊ´ð×¨Çø¡¢¸¨Öú¾ãÀÖ²¿¡¢µçÄÔÖªÊ¶¿â¡¢VIPÄ£¿éÀý³Ì½Ì³ÌÇø¡¢VIPÇóÖú×¨Çø¡¢
 VIPÄ£¿é½»Á÷ÎÊ´ðÇø¡¢½¨Òé|ÒÉÎÊ|Í¶Ëß|¾Ù±¨¡¢Î¥¹æÍ¨±¨¡¢»ý·ÖÉÌ³Ç¡¢¾«Ò×»î¶¯ÖÐÐÄ¡¢»Ú¹ýÖÐÐÄ¡¢¹«¸æÊÂÎñºÏ×÷Ö¸ÄÏ
-ÕýÔÚÅÀ£º
 Ê§°Ü£ºÈí¼þÔ´Âë½»Ò×¡¢Èí¼þ¶¨ÖÆ¡¢°æÖ÷ÖÐÐÄ¡¢Ðû´«Ð¡×é×¨°æ¡¢Ìû×ÓÕÐÆ¸ÊÒºÍ¹¤×Ê·¢·Å
+ÓÃ»§ÐÅÏ¢ÕýÔÚkongwei-1ÉÏÅÀ
 
 ¶þ¡¢http://www.tianya88.com/(»Ø¸´ÐèÑéÖ¤Âë)
 ÕËºÅÃÜÂë £ºkongtianyi/k1234567890
@@ -27,7 +28,7 @@ VB±à³ÌÑ§Ï°Çø¡¢.Net±à³ÌÑ§Ï°Çø¡¢Java±à³ÌÑ§Ï°Çø¡¢PowerBuilder±à³ÌÑ§Ï°Çø¡¢¸¨Öú¹¤¾ß×Û
 RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎñ´¦Àí¡¢Òâ¼û|ÒÉÎÊ|¾Ù±¨|Í¶Ëß¡¢
 Ðû´«ÈÏÖ¤£¨µ÷ÕûÖÐ£©¡¢ÂÛÌ³¹«¸æ¡¢
 Ê§°Ü£ºÕÐÆ¸°æÖ÷ºÍ¹¤×Ê·¢·ÅÊÒ¡¢°æÖ÷½»Á÷
-ÓÃ»§×ÊÁÏÕýÔÚkongwei-2ÉÏÕýÔÚÅÀ
+ÓÃ»§×ÊÁÏÒÑÅÀÍê
 
 Èý¡¢http://bbs.2cto.com/
 ÕËºÅÃÜÂë£ºkongtianyi2/
@@ -52,6 +53,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 Æß¡¢http://www.9iwuc.com/
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ÅÀÍêÁË
+ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
 
 °Ë¡¢http://hackxd.com/
 1ÔªÂòµ½ÁËÑûÇëÂë£¬µ«ÊÇ»Ø¸´ÐèÒªÑéÖ¤Âë
@@ -64,7 +66,12 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 ÓÐä¯ÀÀ¸¶¿î»úÖÆ£¬²»ÖªÊÇ·ñÒª³äÖµ
 
 Ê®Ò»¡¢http://bbs.blackbap.org/
-ÄÜ´ò¿ªÁË£¬ÕýÔÚ¹ºÂòÑûÇëÂë£¬ÑûÇëÂëÎåÔª
+ÄÜ´ò¿ªÁË£¬ÑûÇëÂëÎåÔª
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890.
+ÒÑÅÀÍê£ºÍøÂç×ÛºÏ°²È« - Security Online¡¢½Å±¾ÓëÊý¾Ý¿â°²È« - Script & SQL Security ¡¢ºÚ¿Í×÷Õ½Óª¹¥·À²ßÂÔ ¡¢Ô­´´ÎÄÕÂ·¢²¼ - Original Article¡¢·­ÒëÎÄµµ·¢²¼ - Translation Article¡¢¼ÓÃÜ½âÃÜ¹¤³ÌÑ§ Encryption & Decryption¡¢Â©¶´·¢²¼ - Exploit Released ¡¢°²È«¼¼ÊõÌÖÂÛ - Security Discussion¡¢Æ½Ì¨ - ÊÓ´°Î¢Èí Windows¡¢Æ½Ì¨ - ¿ªÔ´µÛ¹ú Unix & Linux ¡¢ÁÄÌì´µË® ¹àË®ÎÞ×ï ¡¢ÀÏÉú±Ê¼Ç×ªÔØ - Excellent Articles¡¢·ÖÏíºÍÏÂÔØ - Sharing & Downloads 
+Ã»È¨ÏÞ£º
+ÕýÔÚÅÀ£ºÂëÅ©×¨Êô - Coder Areas¡¢ ·ÖÏíºÍÏÂÔØ - Sharing & Downloads 
+ÓÃ»§ÐÅÏ¢ÕýÔÚkongwei-2ÉÏÅÀ
 
 Ê®¶þ¡¢http://bbs.im520.com/
 Âòµ½ÁËÑûÇëÂë£¬»¨·Ñ10Ôª¡£
