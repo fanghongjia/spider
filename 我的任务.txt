@@ -44,6 +44,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 Îå¡¢http://www.kali.org.cn/
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 »Ø¸´ÐèÑéÖ¤Âë
+ÓÃ»§ÐÅÏ¢ÕýÔÚkongwei-2ÉÏÅÀ
 
 Áù¡¢http://www.52fzba.com/
 ÕËºÅÃÜÂë£ºnancunshijian/nancunshijian
@@ -68,19 +69,29 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 Ê®Ò»¡¢http://bbs.blackbap.org/
 ÄÜ´ò¿ªÁË£¬ÑûÇëÂëÎåÔª
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890.
-ÒÑÅÀÍê£ºÍøÂç×ÛºÏ°²È« - Security Online¡¢½Å±¾ÓëÊý¾Ý¿â°²È« - Script & SQL Security ¡¢ºÚ¿Í×÷Õ½Óª¹¥·À²ßÂÔ ¡¢Ô­´´ÎÄÕÂ·¢²¼ - Original Article¡¢·­ÒëÎÄµµ·¢²¼ - Translation Article¡¢¼ÓÃÜ½âÃÜ¹¤³ÌÑ§ Encryption & Decryption¡¢Â©¶´·¢²¼ - Exploit Released ¡¢°²È«¼¼ÊõÌÖÂÛ - Security Discussion¡¢Æ½Ì¨ - ÊÓ´°Î¢Èí Windows¡¢Æ½Ì¨ - ¿ªÔ´µÛ¹ú Unix & Linux ¡¢ÁÄÌì´µË® ¹àË®ÎÞ×ï ¡¢ÀÏÉú±Ê¼Ç×ªÔØ - Excellent Articles¡¢·ÖÏíºÍÏÂÔØ - Sharing & Downloads 
-Ã»È¨ÏÞ£º
-ÕýÔÚÅÀ£ºÂëÅ©×¨Êô - Coder Areas¡¢ ·ÖÏíºÍÏÂÔØ - Sharing & Downloads 
-ÓÃ»§ÐÅÏ¢ÕýÔÚkongwei-2ÉÏÅÀ
+ÒÑÅÀÍê£ºÍøÂç×ÛºÏ°²È« - Security Online¡¢½Å±¾ÓëÊý¾Ý¿â°²È« - Script & SQL Security ¡¢ºÚ¿Í×÷Õ½Óª¹¥·À²ßÂÔ ¡¢Ô­´´ÎÄÕÂ·¢²¼ - Original Article¡¢·­ÒëÎÄµµ·¢²¼ - Translation Article¡¢Â©¶´·¢²¼ - Exploit Released ¡¢¼ÓÃÜ½âÃÜ¹¤³ÌÑ§ Encryption & Decryption¡¢ÂëÅ©×¨Êô - Coder Areas¡¢°²È«¼¼ÊõÌÖÂÛ - Security Discussion¡¢Æ½Ì¨ - ÊÓ´°Î¢Èí Windows¡¢Æ½Ì¨ - ¿ªÔ´µÛ¹ú Unix & Linux ¡¢ÁÄÌì´µË® ¹àË®ÎÞ×ï ¡¢ÀÏÉú±Ê¼Ç×ªÔØ - Excellent Articles¡¢·ÖÏíºÍÏÂÔØ - Sharing & Downloads ¡¢Éç»á¹¤³ÌÑ§ - Social Engineering Analysis ¡¢ÉçÇøÐ¡ºÚ°æ¡¢ÂÛÌ³ÊÂÎñËù¡¢
+Ã»È¨ÏÞ£ºÌØÊâÓÃ»§×é
+ÒÑÅÀÍê
+ÓÃ»§ÐÅÏ¢ÒÑ¾­ÅÀÍê
 
 Ê®¶þ¡¢http://bbs.im520.com/
 Âòµ½ÁËÑûÇëÂë£¬»¨·Ñ10Ôª¡£
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ÒÑÅÀÍê£º°¬Ã×¹«¸æ¡¢¹«¸æ±¸·Ý¡¢ÀúÊ·¹«¸æ¡¢´¦·£Í¨¸æ¡¢Î¬È¨Í¶Ëß¡¢ÉêÇë×¨À¸¡¢ÐÂÊÖÎÊ´ð¡¢Õ¾Îñ´¦Àí¡¢¹ã¸æ×¨ÓÃ¡¢³¬¼¶½»Ò×1-501¡¢³¬¼¶½»Ò×801-1000¡¢³õ¼¶½»Ò×¡¢É¹ºÅÆÀ¹À¡¢³É½»È·ÈÏ¡¢ºÏ×÷·µÓ¶¡¢½»Ò×ÖÐ½é¡¢ÊµÎïÉÌÆ·¡¢Ì³±Ò½»Á÷¡¢×ÊÑ¶½»Á÷¡¢×ÊÑ¶½»Á÷-QQhelperÏµÁÐ¡¢ÊÖ»ú×ÊÔ´¡¢cnangel×¨Çø¡¢¾«²Ê×ªÌû¡¢ÉÌÒµÈí¼þ¡¢ÍøÂç»î¶¯¡¢»áÔ±Ô­´´¡¢½¨Õ¾×ÊÔ´¡¢°¬Ã×ÔÓÌ¸¡¢Çé¸ÐÐ¡Öþ¡¢ÌåÓý¾º²Â¡¢Ì¸¹ÉÂÛ½ð¡¢»áÔ±·ç²É¡¢°¬Ã×ËêÔÂ¡¢·ÀÆ­½»Á÷¡¢ÓÎÏ·´óÌü
 Ã»È¨ÏÞ:ºËÐÄ½»Á÷¡¢Õ¾Îñ´¦Àí-½»Ò×±¸·Ý¡¢Õ¾Îñ´¦Àí-ÁÙÊ±Í¶Æ±¡¢Õ¾Îñ´¦Àí-ID±¸°¸¡¢×ÉÑ¯½»Á÷-Ô­´´Ð¡×é¡¢Ì³±Ò½»Á÷-M±ÒÌáÏÖ¡¢
-ÕýÔÚÅÀ£º³¬¼¶½»Ò×501-801¡¢
+ÒÑÅÀÍê
 ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
 
+Ê®Èý¡¢www.6yyw.com
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+urllib2.urlopen() ÇëÇó²»µ½ÍøÒ³£¬Ô­ÒòÎ´Öª
+
+Ê®ËÄ¡¢www.xuewangshang.com
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+¾ø´ó¶àÊýÌû×ÓÐèÒª»Ø¸´£¬È»¶øÄê·Ñ£Ö£É£Ð²ÅÄÜ»Ø¸´£¬Äê·Ñ£±£¹£¸
+
+Ê®Îå¡¢bbs.ihitui.com
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 
 
 

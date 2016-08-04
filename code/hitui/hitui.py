@@ -10,6 +10,7 @@ import sys
 import math
 import time
 from doReply import doReply
+from exPage import exPage
 
 reload(sys)
 print sys.getdefaultencoding()
@@ -17,21 +18,23 @@ sys.setdefaultencoding('utf-8')
 '''
 ----------------------相关全局变量---------------------
 '''
+# 爬取的网站域名
+domain = "bbs.hitui.com"
 # 需要爬取的板块连接（注意该链接下的帖子是按照发帖时间进行排序的，且去掉最后的数字）
-spiderUrl = "http://bbs.blackbap.org/forum.php?mod=forumdisplay&fid=33&orderby=dateline&orderby=dateline&filter=author&page="
+spiderUrl = "http://bbs.hitui.com/forum.php?mod=forumdisplay&fid=178&orderby=dateline&orderby=dateline&filter=author&page="
 # 入库存储的板块名称
-board = "分享和下载 - Sharing & Downloads"
+board = "嗨友俱乐部线下活动"
 # 该板块内需要爬取的起始页号
-page_start = 15
+page_start = 1
 # 该板块内需要爬取的终止页号
-page_end = 17
+page_end = 4
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息
 mongodbHost = "172.29.152.230"
 mongodbPort = 27017
 db_name = "spider"
-coll_name = "blackbap"
+coll_name = "hitui"
 
 '''
 ---------------------------------------------------------
@@ -72,7 +75,7 @@ for k in range(page_start, page_end):
     for title in tagA:
         # 从标题中提取帖子的链接，访问该链接从中解析出帖子更多信息
         href = urllib.unquote(title['href'])
-        href = 'http://bbs.blackbap.org/' + href
+        href = 'http://'+ domain + '/' + href
         try: 
             response2 = urllib2.urlopen(href)
             soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
@@ -86,37 +89,32 @@ for k in range(page_start, page_end):
         hidden = soup2.find(attrs={'class':'locked'})
         if hidden != None:
             if hidden.find(name='a') != None:
-                doReply(href,'bbs.blackbap.org',Cookie)
-        p_page_content = soup2.find(attrs={'class':'pg'})
+                doReply(href, domain, Cookie)
+        p_page_content = soup2.find(attrs={'class':'pgt'}).find(attrs={'class':'pg'})
         if(p_page_content != None):
             try:
                 p_page_url_init = title.get('href') + '&page='
             except:
-　　　　　　　　　　　　　　　　print "bad url!"
-            　　　　f = open('badurl.txt','a')
-           　　　　 f.write(href + '    ----p_page_init出错')
-           　　　　 f.write('\n')
+                print "bad url!"
+                f = open('badurl.txt','a')
+                f.write(href + '    ----p_page_init出错')
+                f.write('\n')
                 f.close()
                 continue
             p_page_end = p_page_content.find(name='span').string
             compiled_page = re.compile(r'[0-9]+')
             p_page_end = int(compiled_page.search(str(p_page_end)).group())
+            print 'this post has ', p_page_end, 'pages.'
             if p_page_end > 400:
-                print p_page_url
-                print "too much pages!"
-                f = open('badurl.txt','a')
-                f.write(p_page_url + '  ---too much pages!')
-                f.write('\n')
-                f.close()
+                exPage(soup2, opener, coll, domain, board, href, p_page_end, p_page_url_init)
                 continue
-            print p_page_end,"!!!!!!"
         else:
             p_page_end = 1
         newItem = {} # 初始化一个新帖子字典
         flag = True # 识别是不是楼主的flag
         for l in range(1, p_page_end+1):
             if(p_page_content != None):
-                p_page_url = "http://bbs.blackbap.org/" + p_page_url_init + str(l)
+                p_page_url = "http://" + domain + "/" + p_page_url_init + str(l)
             else:
                 p_page_url = href
             try:
@@ -190,7 +188,7 @@ for k in range(page_start, page_end):
                     newItem[floor] = other_floor
                 i += 1
         try:
-　　　　　　　　　　　 if not newItem:
+            if not newItem:
                 print "bad url!"
                 f = open('badurl.txt','a')
                 f.write(href + '    ----字典为空')
