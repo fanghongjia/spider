@@ -43,8 +43,8 @@ def doReply(url, domain, Cookie):
         u'6666666666666666666',
         u'I want to look what locked by louzhu.',
         u'There looking like exist something intersting.',
-        u'揭开楼主的秘密',
-        u'楼主就不能大方一点吗？'
+        u'learn something from this post.',
+        u'Let me see what lz locked!'
     ]
     reply = replys[random.randint(0,4)]
     form_data['message'] = reply

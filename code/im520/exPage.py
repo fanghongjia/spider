@@ -15,94 +15,51 @@ reload(sys)
 print sys.getdefaultencoding()
 sys.setdefaultencoding('utf-8')
 
-main_url = 'http://bbs.im520.com/forum.php?mod=viewthread&tid=547965&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26orderby%3Ddateline' #帖子首页链接
-
-# 数据库信息
-mongodbHost = "172.29.152.230"
-mongodbPort = 27017
-db_name = "spider"
-coll_name = "im520"
-
-# 用于匹配日期的正则表达式
-compiled_time = re.compile(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+')
-
-# 数据库的连接信息
-connection = pymongo.MongoClient(host=mongodbHost, port=mongodbPort)
-connection.admin.authenticate("nslab","nslab")
-db = connection[db_name]
-coll = db[coll_name]
-
-# 设置http报文的header信息
-opener = urllib2.build_opener()
-Cookie = "VJ8y_2132_widthauto=-1; VJ8y_2132_saltkey=Qug4QW7W; VJ8y_2132_lastvisit=1470011710; VJ8y_2132_nofavfid=1; VJ8y_2132_adclose_995=1; VJ8y_2132_ulastactivity=6384OYHBC1yK2Kh2vSW1KazLm%2BOSNzDaVcYTzwc1nYmwOOnzPF92; VJ8y_2132_auth=2a111RUTw197G1HVYpGvGToZgCZJSa6pA6F6c78Jd0HIvfYq8pBXeHu%2FsOLaWyRySbX28%2BzuUK7d5iCvGlH3stxrFNg; VJ8y_2132_lastcheckfeed=100124%7C1470101062; VJ8y_2132_visitedfid=157D13D15; VJ8y_2132_forum_lastvisit=D_15_1470039646D_157_1470101089; VJ8y_2132_smile=1D1; VJ8y_2132_viewid=tid_547965; VJ8y_2132_sid=DHd7aM; VJ8y_2132_sendmail=1; VJ8y_2132_lastact=1470101359%09home.php%09spacecp; Hm_lvt_e70b0b6205f2208b96f42b05fcde8ef0=1469864171,1469949252,1470013882,1470101048; Hm_lpvt_e70b0b6205f2208b96f42b05fcde8ef0=1470101360"
-opener.addheaders = [
-    ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
-    ('Cookie',Cookie),
-    ('Connection','keep-alive')
-]
-urllib2.install_opener(opener)
-board = '〖游戏大厅〗'
-try:
-    response2 = urllib2.urlopen(main_url)
-    soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
-except:
-    print "bad url!"
-    f = open('badurl.txt','a')
-    f.write(href)
-    f.write('\n')
-title = soup2.find(attrs={'id':'thread_subject'}).string
-print title
-hidden = soup2.find(attrs={'class':'locked'})
-if hidden != None:
-    if hidden.find(name='a') != None:
-        doReply(href,'bbs.im520.com',Cookie)
-p_page_content = soup2.find(attrs={'class':'pg'})
-if(p_page_content != None):
-    try:
-        p_page_url_init = p_page_content.contents[1].get('href')[0:-1]
-    except:
-        print "bad!"
-p_page_end = p_page_content.find(name='span').string
-compiled_page = re.compile(r'[0-9]+')
-p_page_end = int(compiled_page.search(str(p_page_end)).group())
-dev = int(math.ceil(p_page_end / 100))
-_title = ''
-i = 1
-for d in range(0, dev):
+def exPage(soup, opener, coll, domain, board, href, p_page_end, p_page_url_init):
+    urllib2.install_opener(opener)
+    # 用于匹配日期的正则表达式
+    compiled_time = re.compile(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+')
+    title = soup.find(attrs={'id':'thread_subject'}).string
+    print title
+    i = 1
     newItem = {} # 初始化一个新帖子字典
     flag = True # 识别是不是楼主的flag
-    for l in range(d*100, (d+1)*100):
+    for l in range(1, p_page_end):
         if l == 0:
             continue
-        if(p_page_content != None):
-            p_page_url = "http://bbs.im520.com/" + p_page_url_init + str(l)
-        else:
-            continue
+        p_page_url = "http://" + domain +"/" + p_page_url_init + str(l)
         try:
             response3 = urllib2.urlopen(p_page_url)
             soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
-            print p_page_url
         except:
             print p_page_url
             print "bad url!"
             f = open('badurl.txt','a')
             f.write(p_page_url)
             f.write('\n')
+            f.close()
             continue
         posts = soup3.findAll(attrs={'class': 'pi'})
         posts_contents = soup3.findAll(attrs={'class': 't_f'})
         # 以下循环将正文部分处理成一整个字符串形式
         j = 1
+        rec = 1 # 推荐楼层的标号，防止覆盖
         for post_contents in posts_contents:
             try:
                 author = posts[2*(j-1)].contents[1].contents[0].string
                 _time = compiled_time.search(str(posts[2*(j-1)+1])).group()
                 floor = '';
-                floor = floor + str(posts[2*(j-1)+1].contents[1].contents[1].find(name = 'em'))[4:-5]
-                if(floor == ''):
-                    floor = posts[2*(j-1)+1].contents[1].contents[1].string[2:]
+                floor_flag = posts[2*(i-1)+1].contents[1].find(name = 'em')
+                if floor_flag == None:
+                    floor = posts[2*(i-1)+1].find(name = 'a').text
+                else:
+                    floor = floor + floor_flag.text
             except:
-                print "ERROR:获取作者、时间、楼层信息出错！"
+                print "ERROR:获取作者、时间、楼层出错！"
+                f = open('badurl.txt', 'a')
+                f.write(p_page_url + '    ----作者、时间、楼层bad')
+                f.write('\n')
+                f.close()
                 continue
             lines = post_contents.encode('utf-8')
             lines = re.sub('[?]', '', lines)
@@ -112,19 +69,27 @@ for d in range(0, dev):
             lines = lines.strip()
             print lines
             # 整理数据
-            if floor == '沙发':
-                 floor = '2'
-            elif floor == '板凳':
+            if floor == u'\r\n楼主软沙发':
+                    floor = '2'
+            elif floor == u'\r\n楼主硬板床':
                 floor = '3'
-            elif floor == '地板':
+            elif floor == u'\r\n软地毯':
                 floor = '4'
+            elif floor == u'\r\n硬地板':
+                floor = '5'
+            elif floor == u'\r\n推荐\r\n':
+                floor = u'推荐' + str(rec)
+                rec = rec + 1
+            elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
+                compiled_floor = re.compile(r'[0-9]+')
+                floor = compiled_floor.search(floor).group()
             if(i == 1 and flag == True):
                 first_floor = {
                     'author':author,
                     'title':title.string,
                     'floor':1,
                     'content':lines,
-                    'href':main_url,
+                    'href':href,
                     'board':board,
                     'time':_time
                 }
@@ -140,17 +105,16 @@ for d in range(0, dev):
                     'author':author
                 }
                 newItem[floor] = other_floor
-                if d != 0:
-                    i_str = str(i)
-                    try:
-                        coll.update({"1.title": _title}, {"$set": {i_str: other_floor}})
-                        print "db correct"
-                    except:
-                        print "db wrong"
+            if i == 1:
+                try:
+                    coll.insert(newItem)
+                except:
+                    print 'db insert wrong'
+            else:
+                i_str = str(i)
+                try:
+                    coll.update({"1.href": href}, {"$set": {i_str: other_floor}})
+                except:
+                    print "db update wrong"
             j += 1
-            i += 1
-    try:
-        if d == 0:
-            coll.insert(newItem) 
-    except:
-        print "ERROR:数据库存储错误！"
+        i += 1

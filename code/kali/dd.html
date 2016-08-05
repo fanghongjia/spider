@@ -1,0 +1,1521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<style id="znBdcsStyle" type="text/css">#bdcs-rec{display:none;}</style><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>【驱动篇】BT4 Linux下USB网卡安装驱动 发现wlan0 -  Kali中文网 </title>
+<link href="http://www.kali.org.cn/thread-16845-1-1.html" rel="canonical"/>
+<meta content="【驱动篇】BT4 Linux下USB网卡安装驱动 发现wlan0" name="keywords"/>
+<meta content="安装驱动的步骤 命令 方法，我现在没有时间截图和详细说明，以后完善。祝你们发现wlan0http://www.kali.org.cn/?276604  在我的个人空间里还有别的教程，也行可以帮到 ... " name="description"/>
+<meta content="2009-2014 Backtrack.org.cn Inc." name="copyright"/>
+<meta content="True" name="MSSmartTagsPreventParsing"/>
+<meta content="Yes" http-equiv="MSThemeCompatible"/>
+<base href="http://www.kali.org.cn/"/><link href="data/cache/style_3_common.css?KfM" rel="stylesheet" type="text/css"/><link href="data/cache/style_3_forum_viewthread.css?KfM" rel="stylesheet" type="text/css"/><script src="//push.zhanzhang.baidu.com/push.js"></script><script src="//hm.baidu.com/hm.js?2ba792dbf616f4e6810c53e2e602df55"></script><script async="" src="http://znsv.baidu.com/customer_search/api/js?sid=15624046498708756600&amp;plate_url=http%3A%2F%2Fwww.kali.org.cn%2Fthread-16845-1-1.html&amp;t=408439&amp;callback=znForDz" type="text/javascript"></script><script src="//hm.baidu.com/hm.js?cb48ed518253dd6c5988e6eaa2af309e"></script><script type="text/javascript">var STYLEID = '3', STATICURL = 'static/', IMGDIR = 'static/image/upyeah_images', VERHASH = 'KfM', charset = 'gbk', discuz_uid = '0', cookiepre = '9f9q_746b_', cookiedomain = 'www.kali.org.cn', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'login|newthread', creditnotice = '1|威望|点,2|骨头|根', defaultstyle = '', REPORTURL = 'aHR0cDovL3d3dy5rYWxpLm9yZy5jbi90aHJlYWQtMTY4NDUtMS0xLmh0bWw=', SITEURL = 'http://www.kali.org.cn/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
+<script src="data/cache/common.js?KfM" type="text/javascript"></script>
+<meta content="Kali 中文网" name="application-name"/>
+<meta content="IE=7" http-equiv="X-UA-Compatible"/>
+<meta content="Kali 中文网" name="msapplication-tooltip"/>
+<meta content="name=BT首页;action-uri=http://www.kali.org.cn/portal.php;icon-uri=http://www.kali.org.cn/static/image/upyeah_images/portal.ico" name="msapplication-task"/>
+<meta content="name=首页;action-uri=http://www.kali.org.cn/forum.php;icon-uri=http://www.kali.org.cn/static/image/upyeah_images/bbs.ico" name="msapplication-task"/>
+<meta content="name=小组;action-uri=http://www.kali.org.cn/group.php;icon-uri=http://www.kali.org.cn/static/image/upyeah_images/group.ico" name="msapplication-task"/><meta content="name=个人中心;action-uri=http://www.kali.org.cn/home.php;icon-uri=http://www.kali.org.cn/static/image/upyeah_images/home.ico" name="msapplication-task"/>
+<script src="data/cache/forum.js?KfM" type="text/javascript"></script>
+<script src="http://rel.discuz.soso.com/hu?version=14&amp;site_id=26675818&amp;thread_id=16845&amp;user_id=0&amp;num=10&amp;ti=%A1%BE%C7%FD%B6%AF%C6%AA%A1%BFBT4+Linux%CF%C2USB%CD%F8%BF%A8%B0%B2%D7%B0%C7%FD%B6%AF+%B7%A2%CF%D6wlan0&amp;hint_num=10&amp;cs=gbk&amp;pre_thread_id=0&amp;rel_views=23641&amp;rel_replies=927" type="text/javascript"></script><script src="http://bdimg.share.baidu.com/static/js/like.js?cdnversion=408439"></script><link href="http://bdimg.share.baidu.com/static/css/like.css?cdnversion=20121228" rel="stylesheet" type="text/css"/></head>
+<body class="pg_viewthread" id="nv_forum" onkeydown="if(event.keyCode==27) return false;"><div><iframe frameborder="0" id="bdshareboxIfr" style="position:absolute;display:none;z-index:10000;"></iframe><div class="bdsharebox" id="bdlike_sharebox" style="display:none;"><div class="bdsharebox-inner"><h4>分享到</h4><ul><li><a class="bds_mshare" href="###">一键分享</a></li><li><a class="bds_baidu" href="###">百度搜藏</a></li><li><a class="bds_bdxc" href="###">百度相册</a></li><li><a class="bds_kaixin001" href="###">开心网</a></li><li><a class="bds_tqf" href="###">腾讯朋友</a></li><li><a class="bds_tieba" href="###">百度贴吧</a></li><li><a class="bds_douban" href="###">豆瓣网</a></li><li><a class="bds_tsohu" href="###">搜狐微博</a></li><li><a class="bds_bdhome" href="###">百度新首页</a></li><li><a class="bds_sqq" href="###">QQ好友</a></li><li><a class="bds_thx" href="###">和讯微博</a></li><li><a class="bds_qq" href="###">QQ收藏</a></li><li><a class="bds_taobao" href="###">我的淘宝</a></li><li><a class="bds_hi" href="###">百度空间</a></li><li><a class="bds_msn" href="###">MSN</a></li><li><a class="bds_sohu" href="###">搜狐白社会</a></li><li><a class="bds_qy" href="###">奇艺奇谈</a></li><li><a class="bds_meilishuo" href="###">美丽说</a></li><li><a class="bds_mogujie" href="###">蘑菇街</a></li><li><a class="bds_diandian" href="###">点点网</a></li><li><a class="bds_huaban" href="###">花瓣</a></li><li><a class="bds_leho" href="###">爱乐活</a></li><li><a class="bds_share189" href="###">手机快传</a></li><li><a class="bds_duitang" href="###">堆糖</a></li><li><a class="bds_hx" href="###">和讯</a></li><li><a class="bds_tfh" href="###">凤凰微博</a></li><li><a class="bds_fx" href="###">飞信</a></li><li><a class="bds_youdao" href="###">有道云笔记</a></li><li><a class="bds_sdo" href="###">麦库记事</a></li><li><a class="bds_qingbiji" href="###">轻笔记</a></li><li><a class="bds_ifeng" href="###">凤凰快博</a></li><li><a class="bds_people" href="###">人民微博</a></li><li><a class="bds_xinhua" href="###">新华微博</a></li><li><a class="bds_ff" href="###">饭否</a></li><li><a class="bds_mail" href="###">邮件分享</a></li><li><a class="bds_kanshou" href="###">搜狐随身看</a></li><li><a class="bds_yaolan" href="###">摇篮空间</a></li><li><a class="bds_wealink" href="###">若邻网</a></li><li><a class="bds_tuita" href="###">推他</a></li><li><a class="bds_xg" href="###">鲜果</a></li><li><a class="bds_ty" href="###">天涯社区</a></li><li><a class="bds_fbook" href="###">Facebook</a></li><li><a class="bds_twi" href="###">Twitter</a></li><li><a class="bds_ms" href="###">Myspace</a></li><li><a class="bds_deli" href="###">delicious</a></li><li><a class="bds_s51" href="###">51游戏社区</a></li><li><a class="bds_s139" href="###">139说客</a></li><li><a class="bds_linkedin" href="###">linkedin</a></li><li><a class="bds_copy" href="###">复制网址</a></li><li><a class="bds_print" href="###">打印</a></li></ul><p><a href="http://share.baidu.com/" target="_blank">百度分享</a></p></div></div></div>
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div class="cl" id="toptb">
+<div class="wp">
+<div class="z">
+</div>
+<div class="y">
+<a class="csu_wxnav" href="javascript:;" onclick="showWindow('csu_qrcode','./plugin.php?id=csu_wx:wxs')"><img height="23" id="navicon3" name="navicon3" src="./source/plugin/csu_wx/img/wx_jqr.gif" title="关注本站微信" width="84"/> </a><a href="javascript:;" onclick="setHomepage('http://www.kali.org.cn/');">设为首页</a><a href="http://www.kali.org.cn/" onclick="addFavorite(this.href, 'Kali 中文网');return false;">加入收藏夹</a>
+</div>
+</div>
+</div>
+<div id="hd">
+<div class="wp">
+<div class="hdc cl"><h2><a href="./" title="Kali 中文网"><img alt="Kali 中文网" border="0" src="static/image/upyeah_images/logo.png"/></a></h2>
+<script src="data/cache/logging.js?KfM" type="text/javascript"></script>
+<form action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;infloat=yes&amp;lssubmit=yes" autocomplete="off" id="lsform" method="post" onsubmit="return lsSubmit()">
+<div class="fastlg cl">
+<span id="return_ls" style="display:none"></span>
+<div class="y pns">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><label for="ls_username">帐号 </label></td>
+<td><input class="px vm xg1" id="ls_username" name="username" onblur="if(this.value == ''){this.value = 'UID/用户名/Email';this.className = 'px vm xg1';}" onfocus="if(this.value == 'UID/用户名/Email'){this.value = '';this.className = 'px vm';}" tabindex="901" type="text" value="UID/用户名/Email"/></td>
+<td class="fastlg_l"><label for="ls_cookietime"><input class="pc" id="ls_cookietime" name="cookietime" tabindex="903" type="checkbox" value="2592000"/>自动登录</label></td>
+<td> <a href="javascript:;" onclick="showWindow('login', 'member.php?mod=logging&amp;action=login&amp;viewlostpw=1')" rel="nofollow">找回密码</a></td>
+</tr>
+<tr>
+<td><label for="ls_password">密码 </label></td>
+<td><input autocomplete="off" class="px vm" id="ls_password" name="password" tabindex="902" type="password"/></td>
+<td class="fastlg_l"><button class="pn vm" style="width: 75px;" tabindex="904" type="submit"><em>登录</em></button></td>
+<td> <a href="member.php?mod=register" rel="nofollow">立即注册</a></td>
+</tr>
+</tbody></table>
+<input name="quickforward" type="hidden" value="yes"/>
+<input name="handlekey" type="hidden" value="ls"/>
+</div>
+<div class="fastlg_fm y" style="margin-right: 10px; padding-right: 10px">
+<p><a href="http://www.kali.org.cn/connect.php?mod=login&amp;op=init&amp;referer=forum.php%3Fmod%3Dviewthread%26tid%3D16845%26extra%3Dpage%253D1%26page%3D1%26&amp;statfrom=login_simple"><img alt="QQ登录" class="vm" src="static/image/upyeah_images/qq_login.gif"/></a></p>
+<p class="hm xg1" style="padding-top: 2px;">只需一步，快速开始</p>
+</div>
+<div class="fastlg_fm y" style="margin-right: 10px; padding-right: 10px">
+<p><a href="wechat-login.html"><img class="vm" src="source/plugin/wechat/image/wechat_login.png"/></a></p>
+<p class="hm xg1" style="padding-top: 2px;">扫一扫，访问微社区</p>
+</div>
+</div>
+</form>
+</div>
+<div id="nv">
+<a href="javascript:;" id="qmenu" onmouseover="showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'a','duration':2});"></a>
+<ul><li class="a" id="mn_forum"><a hidefocus="true" href="http://www.kali.org.cn/forum.php" title="首页">首页<span>首页</span></a></li><li id="mn_Ncc74"><a hidefocus="true" href="http://www.kali.org.cn/forum.php?mod=forumdisplay&amp;fid=68&amp;filter=typeid&amp;typeid=37" style="font-weight: bold;color: orange" target="_blank" title="下载Kali">下载Kali<span>下载Kali</span></a></li><li id="mn_Nce04"><a hidefocus="true" href="http://www.kali.org.cn/forum.php?mod=forumdisplay&amp;fid=69&amp;filter=typeid&amp;typeid=32" style="font-weight: bold;color: orange" target="_blank" title="Kali 教程">Kali 教程<span>Kali 教程</span></a></li><li id="mn_N8227"><a hidefocus="true" href="forum-21-1.html" style="font-weight: bold;" title="Backtrack5">BT5<span>Backtrack5</span></a></li><li id="mn_N09cc"><a hidefocus="true" href="forum-6-1.html" style="font-weight: bold;" title="Backtrack4">BT4<span>Backtrack4</span></a></li><li id="mn_Nc4f3"><a hidefocus="true" href="forum-5-1.html" style="font-weight: bold;" title="Backtrack3">BT3<span>Backtrack3</span></a></li><li id="mn_Nb65a"><a hidefocus="true" href="qmx8_buy_usergroup-vip.html" style="font-weight: bold;color: orange" target="_blank" title="荣誉会员下载无限制">加入VIP<span>荣誉会员下载无限制</span></a></li>
+</ul>
+<a href="javascript:;" id="blueidea_plugin_qqgroup" onclick="showWindow('qqgroup','plugin.php?id=blueidea_qqgroup:qqgroup')" rel="nofollow"><img src="source/plugin/blueidea_qqgroup/img/qqgroup.png" title="官方QQ群"/></a></div>
+<div class="tsxg2"> </div>
+<div class="p_pop h_pop" id="mn_userapp_menu" style="display: none"></div>
+<div class="cl" id="mu">
+</div><div class="a_mu"><a href="http://www.cnns.net/?p=438" rel="nofollow" target="_blank"><img src="http://www.metasploit.cn/data/attachment/common/cf/001233lccxpdadj0pxzre0.jpg"/></a>
+<a href="http://www.metascan.cn/notices/2" rel="" target="_blank"><img src="http://www.kali.org.cn/images/metascan_a1.png"/></a></div><div class="scbar_narrow cl" id="scbar">
+<form action="http://s.kali.org.cn/f/discuz" autocomplete="off" id="scbar_form" method="get" onsubmit="searchFocus($('scbar_txt'))" target="_blank">
+<input id="scbar_mod" name="mod" type="hidden" value="forum"/>
+<input name="formhash" type="hidden" value="f0f4fd8f"/>
+<input name="srchtype" type="hidden" value="title"/>
+<input name="srhfid" type="hidden" value="6"/>
+<input name="srhlocality" type="hidden" value="forum::viewthread"/>
+<input name="sId" type="hidden" value="26675818"/>
+<input name="ts" type="hidden" value="1470379940"/>
+<input name="cuId" type="hidden" value="0"/>
+<input name="cuName" type="hidden" value=""/>
+<input name="gId" type="hidden" value="7"/>
+<input name="agId" type="hidden" value="0"/>
+<input name="egIds" type="hidden" value=""/>
+<input name="fmSign" type="hidden" value=""/>
+<input name="ugSign7" type="hidden" value=""/>
+<input name="sign" type="hidden" value="8f23a0f50a49ddd2db0b3b61aef62ad4"/>
+<input name="charset" type="hidden" value="gbk"/>
+<input name="source" type="hidden" value="discuz"/>
+<input id="srchFId" name="fId" type="hidden" value="0"/>
+<input id="cloudsearchquery" name="q" type="hidden" value=""/>
+<style>
+#scbar { overflow: visible; position: relative; }
+#sg{ background: #FFF; width:456px; border: 1px solid #B2C7DA; }
+.scbar_narrow #sg { width: 316px; }
+#sg li { padding:0 8px; line-height:30px; font-size:14px; }
+#sg li span { color:#999; }
+.sml { background:#FFF; cursor:default; }
+.smo { background:#E5EDF2; cursor:default; }
+            </style>
+<div id="sg" style="display: none; position: absolute; top:37px; left:44px;">
+<div cellpadding="2" cellspacing="0" id="st_box"></div>
+</div>
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="scbar_icon_td"></td>
+<td class="scbar_txt_td"><input autocomplete="off" class=" xg1" id="scbar_txt" name="srchtxt" placeholder="请输入搜索内容" speech="" type="text" value="请输入搜索内容" x-webkit-speech=""/></td>
+<td class="scbar_type_td"><a class="xg1" hidefocus="true" href="javascript:;" id="scbar_type" onclick="showMenu(this.id)">帖子</a></td>
+<td class="scbar_btn_td"><button class="pn pnc" id="scbar_btn" mid="lVUTkRUmgWWWWWWWWWWWWWWWWWWWWWWW" name="searchsubmit" sc="1" type="submit" value="true"><strong class="xi2">搜索</strong></button></td>
+<td class="scbar_hot_td">
+<div id="scbar_hot">
+<strong class="xw1">热搜: </strong>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=backtrack&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="eOhKkrNdtEFHOdOSbiRzldewkMkmPMmT" sc="1" target="_blank">backtrack</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=kali%20linux&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="qOIpMhwjJmNaYgKliLrulugkaEBghAYM" sc="1" target="_blank">kali linux</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=metasploit&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="txDfoHhNsjiEanURXwlwgEqhvksglmmm" sc="1" target="_blank">metasploit</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=nessus&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="nlNIckqHxsoHTwVaAiqBBjsBQmIouPuH" sc="1" target="_blank">nessus</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=nmap&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="KKmurPMWdCxwlKiiwfBxstSLKmnpFDwR" sc="1" target="_blank">nmap</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=sqlmap&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="mXSqUjqHxsoHTwVaAiqBBjsBQmIouPuH" sc="1" target="_blank">sqlmap</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=burpsuite&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="esATVoFMFEFHOdOSbiRzldewkMkmPMmT" sc="1" target="_blank">burpsuite</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=nexpose&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="uIewCZQWgcuhMaxebblxekktsQGORnRu" sc="1" target="_blank">nexpose</a>
+<a class="xi2" href="http://s.kali.org.cn/f/discuz?q=%CE%DE%CF%DF%CD%F8%C2%E7%B0%B2%C8%AB&amp;source=hotsearch&amp;sId=26675818&amp;ts=1470379940&amp;cuId=0&amp;cuName=&amp;gId=7&amp;agId=0&amp;egIds=&amp;fmSign=&amp;ugSign7=&amp;sign=8f23a0f50a49ddd2db0b3b61aef62ad4&amp;charset=gbk" mid="oCqsEpGwcYGBBShMnytxtBmNoLEFQQYv" sc="1" target="_blank">无线网络安全</a>
+</div>
+</td>
+</tr>
+</tbody></table>
+</form>
+</div>
+<ul class="p_pop" id="scbar_type_menu" style="display: none;"><li><a fid="6" href="javascript:;" rel="curforum">本版</a></li><li><a class="curtype" href="javascript:;" rel="forum">帖子</a></li><li><a href="javascript:;" rel="user">用户</a></li></ul>
+<script type="text/javascript">
+initSearchmenu('scbar', 'http://s.kali.org.cn/f/discuz');
+</script>
+</div>
+</div>
+<link href="source/plugin/csu_wx/img/csu_zk.css" rel="stylesheet" type="text/css"/><script>
+		(function(){
+		   var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?4813251b2a3cc80b7114d03902097a8d":"https://jspassport.ssl.qhimg.com/11.0.1.js?4813251b2a3cc80b7114d03902097a8d";
+		   document.write('<script src="' + src + '" id="sozz"><\/script>');
+		})();
+		</script><script id="sozz" src="http://js.passport.qihucdn.com/11.0.1.js?4813251b2a3cc80b7114d03902097a8d"></script><script charset="utf-8" src="http://s2.qhimg.com/static/ab77b6ea7f3fbf79.js"></script><script>var auxiliary = {
+    prefix: 'hm_t_',
+    createDiv: function (id) {
+        var div = document.createElement('div');
+        div.setAttribute('id', this.prefix+id);
+        div.setAttribute('class', 'wp');
+        return div;
+    },
+    divExists: function (id) {
+       return null != document.getElementById(this.prefix+id);
+    }
+    ,viewthread_postbottom:function(hmid) {
+    if(this.divExists(hmid))
+        return;
+    var divlist=document.getElementById('postlist').getElementsByTagName('div');
+    var point=null;
+    for (var i=0;i!=divlist.length;i++) {
+        var id=divlist[i].getAttribute('id');
+        if(id!=null&&id.indexOf('post_rate_div_')==0) {
+            divlist[i].parentNode.appendChild(this.createDiv(hmid));return;
+        }
+    }
+}
+
+};
+document.onreadystatechange = function (){
+    if(document.readyState == 'complete'){
+        auxiliary.viewthread_postbottom(56130);
+    }
+}
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb48ed518253dd6c5988e6eaa2af309e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script>
+<div class="wp" id="wp"><script type="text/javascript">var fid = parseInt('6'), tid = parseInt('16845');</script>
+<script src="data/cache/forum_viewthread.js?KfM" type="text/javascript"></script>
+<script type="text/javascript">zoomstatus = parseInt(1);var imagemaxwidth = '600';var aimgcount = new Array();</script>
+<style id="diy_style" type="text/css"></style>
+<!--[diy=diynavtop]--><div class="area" id="diynavtop"></div><!--[/diy]-->
+<div class="bm cl" id="pt">
+<div class="z">
+<a class="nvhm" href="./" title="首页">Kali 中文网</a><em>»</em><a href="http://www.kali.org.cn/forum.php">首页</a> <em>›</em> <a href="http://www.kali.org.cn/forum.php?gid=3">Backtrack</a> <em>›</em> <a href="http://www.kali.org.cn/forum-6-1.html">backtrack4[bt4]</a> <em>›</em> <a href="http://www.kali.org.cn/thread-16845-1-1.html">【驱动篇】BT4 Linux下USB网卡安装驱动 发现wlan0</a>
+</div>
+</div>
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+<!--[diy=diy1]--><div class="area" id="diy1"></div><!--[/diy]-->
+</div>
+<div class="wp cl" id="ct">
+<div class="pgs mbm cl " id="pgt">
+<div class="pgt"><div class="pg"><strong>1</strong><a href="http://www.kali.org.cn/thread-16845-2-1.html">2</a><a href="http://www.kali.org.cn/thread-16845-3-1.html">3</a><a href="http://www.kali.org.cn/thread-16845-4-1.html">4</a><a href="http://www.kali.org.cn/thread-16845-5-1.html">5</a><a href="http://www.kali.org.cn/thread-16845-6-1.html">6</a><a href="http://www.kali.org.cn/thread-16845-7-1.html">7</a><a href="http://www.kali.org.cn/thread-16845-8-1.html">8</a><a href="http://www.kali.org.cn/thread-16845-9-1.html">9</a><a href="http://www.kali.org.cn/thread-16845-10-1.html">10</a><a class="last" href="http://www.kali.org.cn/thread-16845-93-1.html">... 93</a><label><input class="px" name="custompage" onkeydown="if(event.keyCode==13) {window.location='forum.php?mod=viewthread&amp;tid=16845&amp;extra=page%3D1&amp;page='+this.value;; doane(event);}" size="2" title="输入页码，按回车快速跳转" type="text" value="1"/><span title="共 93 页"> / 93 页</span></label><a class="nxt" href="http://www.kali.org.cn/thread-16845-2-1.html">下一页</a></div></div>
+<span class="y pgb" id="visitedforums" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'34'})"><a href="http://www.kali.org.cn/forum-6-1.html">返回列表</a></span>
+<a href="javascript:;" id="newspecial" onclick="showWindow('newthread', 'forum.php?mod=post&amp;action=newthread&amp;fid=6')" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" title="发新帖"><img alt="发新帖" src="static/image/upyeah_images/pn_post.png"/></a></div>
+<div class="pl bm" id="postlist">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="pls ptn pbn">
+<div class="hm ptn">
+<span class="xg1">查看:</span> <span class="xi1">23641</span><span class="pipe">|</span><span class="xg1">回复:</span> <span class="xi1">922</span>
+</div>
+</td>
+<td class="plc ptm pbn vwthd">
+<h1 class="ts">
+[资源]
+<span id="thread_subject">【驱动篇】BT4 Linux下USB网卡安装驱动 发现wlan0</span>
+</h1>
+<span class="xg1">
+ <img alt="" src="static/image/upyeah_images/recommend_1.gif" title="评价指数 2"/>
+ <img alt="" src="static/image/upyeah_images/hot_3.gif" title="热度: 934"/>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" onclick="return copyThreadUrl(this, 'Kali 中文网')">[复制链接]</a>
+</span>
+</td>
+</tr>
+</tbody></table>
+<table cellpadding="0" cellspacing="0" class="ad">
+<tbody><tr>
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table><div id="post_728845"><table cellpadding="0" cellspacing="0" class="plhin" id="pid728845" summary="pid728845">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar728845">
+<a name="lastpost"></a><div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-276604.html" target="_blank">Good阿波</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo728845" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo728845_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-276604.html" target="_blank">Good阿波</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=276604&amp;do=profile" target="_blank">273</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=276604&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=Good%B0%A2%B2%A8" id="a_showip_li_728845" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=Good%B0%A2%B2%A8" id="a_repent_728845" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-276604.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/data/avatar/000/27/66/04_avatar_middle.jpg"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon728845" src="static/image/common/online_member.gif"/>
+<em id="authorposton728845">发表于 2014-2-6 19:58:00</em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+<span class="pipe show">|</span><a class="show" href="javascript:;" onclick="readmode($('thread_subject').innerHTML, 728845);">阅读模式</a>
+</div>
+</div>
+</div><div class="pct"><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_728845">
+<div class="a_pr" style="margin-left:10px;width:auto"><a href="http://www.metasploit.com.cn/productshow-5-20-1.html" target="_blank"><img alt="RAPID7中国区官方授权" border="0" src="http://www.kali.org.cn/data/attachment/common/cf/114512if5osz8h3s9k9lfs.jpg"/></a></div><script type="text/javascript">replyreload += ',' + 728845;</script>安装驱动的步骤 命令 方法，我现在没有时间截图和详细说明，以后完善。祝你们发现wlan0<br/>
+<br/>
+<a href="http://www.kali.org.cn/?276604" target="_blank">http://www.kali.org.cn/?276604</a>  在我的个人空间里还有别的教程，也行可以帮到您的！<img alt="" border="0" class="s" smilieid="soso_e179" src="http://imgstore01.cdn.sogou.com/app/a/100520032/e179"/><br/>
+<br/>
+<div class="locked">游客，如果您要查看本帖隐藏内容请<a href="http://www.kali.org.cn/forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845" onclick="showWindow('reply', this.href)">回复</a></div><br/>
+<br/>
+<br/>
+<ignore_js_op>
+<p>1</p>
+<img alt="1" src="data/attachment/forum/201402/06/195718y4es6s6o3k3z6fkf.jpg" title="1"/>
+</ignore_js_op>
+<br/>
+<br/>
+<ignore_js_op>
+<p>2</p>
+<img alt="2" src="data/attachment/forum/201402/06/195719ag527nof5mxidf56.jpg" title="2"/>
+</ignore_js_op>
+<br/>
+<br/>
+<br/>
+</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_728845">
+</div>
+<h3 class="psth xs1"><span class="icon_ring vm"></span>评分</h3>
+<dl class="rate" id="ratelog_728845">
+<dd style="margin:0">
+<div id="post_rate_728845"></div>
+<table class="ratl">
+<tbody><tr>
+<th class="xw1" width="120"><a href="http://www.kali.org.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=16845&amp;pid=728845" onclick="showWindow('viewratings', this.href)" title="查看全部评分"> 参与人数 <span class="xi1">1</span></a></th><th class="xw1" width="80">骨头 <i><span class="xi1">+69</span></i></th>
+<th>
+<a class="y xi2 op" href="javascript:;" onclick="toggleRatelogCollapse('ratelog_728845', this);">收起</a>
+<i class="txt_h">理由</i>
+</th>
+</tr>
+</tbody><tbody class="ratl_l"><tr id="rate_728845_1">
+<td>
+<a href="http://www.kali.org.cn/space-uid-1.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_small.gif'" src="http://www.kali.org.cn/ucenter/data/avatar/000/00/00/01_avatar_small.jpg"/></a> <a href="http://www.kali.org.cn/space-uid-1.html" target="_blank">admin</a>
+</td><td class="xi1"> + 69</td>
+<td class="xg1">赞一个!</td>
+</tr>
+</tbody>
+</table>
+<p class="ratc">
+<a class="xi2" href="http://www.kali.org.cn/forum.php?mod=misc&amp;action=viewratings&amp;tid=16845&amp;pid=728845" onclick="showWindow('viewratings', this.href)" title="查看全部评分">查看全部评分</a>
+</p>
+</dd>
+</dl>
+<div style="margin-bottom:10px; overflow:hidden;"><div class="bdlikebutton bdlikebutton-blue bdlikebutton-large bdlikebutton-large-blue" style="margin:auto;"><div class="bdlikebutton-inner"><span class="bdlikebutton-add">+1</span><div class="bdlikebutton-count">2</div><div class="bdlikebutton-text">该内容对我有帮助</div></div></div>
+<script id="bdlike_shell" src="http://bdimg.share.baidu.com/static/js/like_shell.js?t=14"></script>
+<script>
+var bdShare_config = {
+	"type":"large",
+	"color":"blue",
+	"uid":"458913",
+	"share":"yes"
+};
+document.getElementById("bdlike_shell").src="http://bdimg.share.baidu.com/static/js/like_shell.js?t=" + new Date().getHours();
+</script></div><div class="wp" id="hm_t_56130"></div>
+<div id="relate_subject"></div>
+<style>
+.hot_feed_therm { clear:both; width: 90%; height: 51px; margin-bottom: 11px; background: url(http://www.kali.org.cn/source/plugin/onexin_thermometer/template/res/t_line.jpg) repeat-x; background-position: 0 9px; }
+.hot_thermometer { display: inline; float: left; margin-top: 9px; width: 204px; height: 42px; background: url(http://www.kali.org.cn/source/plugin/onexin_thermometer/template/res/t_line.jpg) repeat-x; }
+.hot_thermometer .therm_bg { position: relative; display: inline; float: left; height: 42px; background: url(http://www.kali.org.cn/source/plugin/onexin_thermometer/template/res/t_bg.jpg) no-repeat; background-position:-124px 0 }
+.hot_thermometer .therm_head { display: inline; float: left; width: 38px; height: 42px; background: url(http://www.kali.org.cn/source/plugin/onexin_thermometer/template/res/t_head.png) no-repeat; }
+.hot_thermometer .therm_head a { display: block; margin: 5px 0 0 5px; width: 32px; height: 32px; background: url(http://www.kali.org.cn/source/plugin/onexin_thermometer/template/res/t_btn.png) no-repeat; line-height: 0; overflow: hidden; text-indent: -9999px; }
+.hot_thermometer .therm_head a:hover { background-position: -50px 0; }
+.hot_thermometer .therm_body { display: inline; float: left; padding: 0 20px 0 15px; height: 42px; background: url(http://www.kali.org.cn/source/plugin/onexin_thermometer/template/res/t_body.png) repeat-x right 0; color: #f97674; font-size: 16px; line-height: 41px; font-family: "Arial"; }
+.hot_plus1list { font: 12px/1.125 Arial,Helvetica,sans-serif; display: inline; float: right; margin: 16px 0 0 0; padding-left: 10px; height: 30px; background-color: #fafafa; color: #8c929a; overflow: hidden; }
+.hot_plus1list em { font-style: normal; font-weight: normal; }
+.hot_plus1list span { display: inline-block; float: right; height: 20px; line-height: 30px; }
+.hot_plus1list i { display: inline-block; float: right; margin: 6px 2px 0 2px; width: 18px; height: 18px; background: url(http://www.kali.org.cn/source/plugin/onexin_thermometer/template/res/t_one.png) no-repeat; background-position: 0 0; }
+.hot_plus1list ul { padding: 0; *display:inline; float: right; list-style: none; margin-top: 5px; _margin-top: 4px; }
+.hot_plus1list ul li { display: inline-block; float: left; width: 24px; height: 20px; }
+</style>
+<div class="hot_feed_therm clearfix">
+<div class="hot_thermometer" id="therm">
+<div class="therm_bg clearfix" id="therm_bg">
+<div class="therm_head btn_plus_one"> <a href="http://www.kali.org.cn/forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;reppost=728845&amp;extra=&amp;page=1" onclick="showWindow('reply', this.href)">+1</a> </div>
+<div class="therm_body" id="therm_body">
+<div id="therm_cont"><em id="dont" node-type="heat">24575°C</em></div>
+</div>
+</div>
+</div>
+<div class="hot_plus1list">
+<span><em>927</em>人</span> <span>等</span>
+<ul>
+<li><a href="http://www.kali.org.cn/space-uid-430313.html" target="_blank"><img alt="boclv" height="20px" onerror="this.onerror=null;this.src='http://www.kali.org.cn/static/image/common/tavatar.gif'" src="http://www.kali.org.cn/static/image/common/tavatar.gif" title="boclv" width="20px"/></a></li>
+<li><a href="http://www.kali.org.cn/space-uid-434150.html" target="_blank"><img alt="xjh080" height="20px" onerror="this.onerror=null;this.src='http://www.kali.org.cn/static/image/common/tavatar.gif'" src="http://www.kali.org.cn/static/image/common/tavatar.gif" title="xjh080" width="20px"/></a></li>
+<li><a href="http://www.kali.org.cn/space-uid-433688.html" target="_blank"><img alt="hsc456" height="20px" onerror="this.onerror=null;this.src='http://www.kali.org.cn/static/image/common/tavatar.gif'" src="http://www.kali.org.cn/static/image/common/tavatar.gif" title="hsc456" width="20px"/></a></li>
+<li><a href="http://www.kali.org.cn/space-uid-433585.html" target="_blank"><img alt="feibing4479" height="20px" onerror="this.onerror=null;this.src='http://www.kali.org.cn/static/image/common/tavatar.gif'" src="http://www.kali.org.cn/static/image/common/tavatar.gif" title="feibing4479" width="20px"/></a></li>
+<li><a href="http://www.kali.org.cn/space-uid-433585.html" target="_blank"><img alt="feibing4479" height="20px" onerror="this.onerror=null;this.src='http://www.kali.org.cn/static/image/common/tavatar.gif'" src="http://www.kali.org.cn/static/image/common/tavatar.gif" title="feibing4479" width="20px"/></a></li>
+</ul>
+<span>过：</span> <i></i> <span>他们</span>
+</div>
+</div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition728845"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;reppost=728845&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_728845" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport728845', 'misc.php?mod=report&amp;rtype=post&amp;rid=728845&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_728845_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=bump&amp;idtype=tid&amp;id=16845" id="a_bump" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/bump.small.gif"/>提升卡</a></li>
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=stick&amp;idtype=tid&amp;id=16845" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/stick.small.gif"/>置顶卡</a></li>
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=close&amp;idtype=tid&amp;id=16845" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/close.small.gif"/>沉默卡</a></li>
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=open&amp;idtype=tid&amp;id=16845" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/open.small.gif"/>喧嚣卡</a></li>
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=highlight&amp;idtype=tid&amp;id=16845" id="a_stick" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/highlight.small.gif"/>变色卡</a></li>
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=728845:16845" id="a_namepost_728845" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_728845')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+<script reload="1" type="text/javascript">
+aimgcount[728845] = ['9737','9738'];
+attachimggroup(728845);
+var aimgfid = 0;
+</script>
+</div><div id="post_1305239" style="display:none;"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1305239" summary="pid1305239">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1305239">
+<a name="lastpost"></a><div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-430313.html" target="_blank">boclv</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1305239" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1305239_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-430313.html" target="_blank">boclv</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=430313&amp;do=profile" target="_blank">21</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=430313&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=boclv" id="a_showip_li_1305239" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=boclv" id="a_repent_1305239" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-430313.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1305239" src="static/image/common/online_member.gif"/>
+<em id="authorposton1305239">发表于 <span title="2016-8-3 21:53:51">前天 21:53</span></em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1305239">
+下来看看。。。。</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1305239">
+</div>
+<div id="post_rate_div_1305239"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="a_pb"><a href="http://www.kali.org.cn/thread-17050-1-1.html" target="_blank">BurpSuite Pro</a>
+<a href="http://www.kali.org.cn/thread-14648-1-1.html" target="_blank">minidwep</a>
+<a href="http://cdlinux.net" target="_blank"><strong><em>怎么破解wifi密码</em></strong></a>
+<a href="http://www.kali.org.cn/thread-7734-1-1.html" target="_blank">minidwep gtk最新版</a>
+<a href="http://www.kali.org.cn" target="_blank">kali linux</a>
+<a href="http://cdlinux.net" target="_blank">minidwep-gtk下载</a>
+<a href="http://www.kali.org.cn/forum-61-1.html" target="_blank"><em>metasploit</em></a>
+<a href="http://www.kali.org.cn/thread-10723-1-1.html" target="_blank">minidwep gtk安装</a>
+<a href="http://www.kali.org.cn/forum-6-1.html" target="_blank"><strong>bt4下载</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank"><strong>bt5官网</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank"><strong>backtrack5下载</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank"><strong>bt5 无线破解教程</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank">bt5破解软件下载</a>
+<a href="http://www.kali.org.cn/thread-12609-1-1.html" target="_blank">bt5渗透教程</a><a href="http://www.kali.org.cn/thread-17050-1-1.html" target="_blank">BurpSuite Pro</a>
+<a href="http://www.kali.org.cn/thread-14648-1-1.html" target="_blank">minidwep</a>
+<a href="http://cdlinux.net" target="_blank"><strong><em>怎么破解wifi密码</em></strong></a>
+<a href="http://www.kali.org.cn/thread-7734-1-1.html" target="_blank">minidwep gtk最新版</a>
+<a href="http://www.kali.org.cn" target="_blank">kali linux</a>
+<a href="http://www.kali.org.cn/thread-7734-1-1.html" target="_blank">minidwep-gtk下载</a>
+<a href="http://www.kali.org.cn/forum-61-1.html" target="_blank"><em>metasploit</em></a>
+<a href="http://cdlinux.net" target="_blank">minidwep gtk安装</a>
+<a href="http://www.kali.org.cn/forum-6-1.html" target="_blank"><strong>bt4下载</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank"><strong>bt5官网</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank"><strong>backtrack5下载</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank"><strong>bt5 无线破解教程</strong></a>
+<a href="http://www.kali.org.cn/forum-21-1.html" target="_blank">bt5破解软件下载</a>
+<a href="http://www.kali.org.cn/thread-12609-1-1.html" target="_blank">bt5渗透教程</a></div></td>
+</tr>
+<tr id="_postposition1305239"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1305239&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1305239" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1305239', 'misc.php?mod=report&amp;rtype=post&amp;rid=1305239&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1305239_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1305239:16845" id="a_namepost_1305239" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1305239')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1305216"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1305216" summary="pid1305216">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1305216">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-434150.html" target="_blank">xjh080</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1305216" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1305216_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-434150.html" target="_blank">xjh080</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=434150&amp;do=profile" target="_blank">17</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=434150&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=xjh080" id="a_showip_li_1305216" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=xjh080" id="a_repent_1305216" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-434150.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1305216" src="static/image/common/online_member.gif"/>
+<em id="authorposton1305216">发表于 <span title="2016-8-3 21:16:14">前天 21:16</span></em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1305216">
+顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1305216">
+</div>
+<div id="post_rate_div_1305216"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="a_pb"><a href="http://www.backtrack.org.cn/home.php?mod=spacecp&amp;ac=credit&amp;op=rule" style="font-size: 16px" target="_blank">【注意】论坛附件默认下载都会扣骨头一根，点击查看论坛积分详细规则！</a></div></td>
+</tr>
+<tr id="_postposition1305216"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1305216&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=16845&amp;pid=1305216&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1305216').innerHTML ? $('review_support_1305216').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1305216"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=16845&amp;pid=1305216&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1305216').innerHTML ? $('review_against_1305216').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1305216"></span></a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1305216" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1305216', 'misc.php?mod=report&amp;rtype=post&amp;rid=1305216&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1305216_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1305216:16845" id="a_namepost_1305216" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1305216')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1303035"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1303035" summary="pid1303035">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1303035">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-433688.html" target="_blank">hsc456</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1303035" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1303035_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-433688.html" target="_blank">hsc456</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=433688&amp;do=profile" target="_blank">4</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=433688&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=hsc456" id="a_showip_li_1303035" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=hsc456" id="a_repent_1303035" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-433688.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1303035" src="static/image/common/online_member.gif"/>
+<em id="authorposton1303035">发表于 <span title="2016-7-30 11:53:00">6 天前</span></em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1303035">
+看看, 怎么搞法</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1303035">
+</div>
+<div id="post_rate_div_1303035"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+<div class="a_pb"><a href="http://www.kali.org.cn/home.php?mod=spacecp&amp;ac=credit&amp;op=rule" target="_blank"><font color="#0000FF" size="+1">我要下载附件，可是骨头不够了怎么办？请看这里！！！</font></a></div></td>
+</tr>
+<tr id="_postposition1303035"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1303035&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=16845&amp;pid=1303035&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1303035').innerHTML ? $('review_support_1303035').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1303035"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=16845&amp;pid=1303035&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1303035').innerHTML ? $('review_against_1303035').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1303035"></span></a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1303035" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1303035', 'misc.php?mod=report&amp;rtype=post&amp;rid=1303035&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1303035_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1303035:16845" id="a_namepost_1303035" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1303035')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1302634"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1302634" summary="pid1302634">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1302634">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-433585.html" target="_blank">feibing4479</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1302634" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1302634_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-433585.html" target="_blank">feibing4479</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=433585&amp;do=profile" target="_blank">6</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=433585&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=feibing4479" id="a_showip_li_1302634" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=feibing4479" id="a_repent_1302634" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-433585.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1302634" src="static/image/common/online_member.gif"/>
+<em id="authorposton1302634">发表于 <span title="2016-7-29 15:39:04">7 天前</span></em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1302634">
+下载下来学习一下，呵呵</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1302634">
+</div>
+<div id="post_rate_div_1302634"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition1302634"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1302634&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=16845&amp;pid=1302634&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1302634').innerHTML ? $('review_support_1302634').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1302634"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=16845&amp;pid=1302634&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1302634').innerHTML ? $('review_against_1302634').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1302634"></span></a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1302634" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1302634', 'misc.php?mod=report&amp;rtype=post&amp;rid=1302634&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1302634_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1302634:16845" id="a_namepost_1302634" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1302634')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1302633"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1302633" summary="pid1302633">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1302633">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-433585.html" target="_blank">feibing4479</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1302633" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1302633_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-433585.html" target="_blank">feibing4479</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=433585&amp;do=profile" target="_blank">6</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=433585&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=feibing4479" id="a_showip_li_1302633" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=feibing4479" id="a_repent_1302633" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-433585.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1302633" src="static/image/common/online_member.gif"/>
+<em id="authorposton1302633">发表于 <span title="2016-7-29 15:38:30">7 天前</span></em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1302633">
+xia  zai   xia   lai   xue  xi   yi   xia   </td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1302633">
+</div>
+<div id="post_rate_div_1302633"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition1302633"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1302633&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=16845&amp;pid=1302633&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1302633').innerHTML ? $('review_support_1302633').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1302633"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=16845&amp;pid=1302633&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1302633').innerHTML ? $('review_against_1302633').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1302633"></span></a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1302633" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1302633', 'misc.php?mod=report&amp;rtype=post&amp;rid=1302633&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1302633_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1302633:16845" id="a_namepost_1302633" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1302633')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1301092"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1301092" summary="pid1301092">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1301092">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-432843.html" target="_blank">haikanhaikan</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1301092" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1301092_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-432843.html" target="_blank">haikanhaikan</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=432843&amp;do=profile" target="_blank">18</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=432843&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=haikanhaikan" id="a_showip_li_1301092" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=haikanhaikan" id="a_repent_1301092" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-432843.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1301092" src="static/image/common/online_member.gif"/>
+<em id="authorposton1301092">发表于 2016-7-26 10:38:37</em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1301092">
+我也是这个问题</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1301092">
+</div>
+<div id="post_rate_div_1301092"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition1301092"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1301092&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=16845&amp;pid=1301092&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1301092').innerHTML ? $('review_support_1301092').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1301092"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=16845&amp;pid=1301092&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1301092').innerHTML ? $('review_against_1301092').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1301092"></span></a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1301092" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1301092', 'misc.php?mod=report&amp;rtype=post&amp;rid=1301092&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1301092_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1301092:16845" id="a_namepost_1301092" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1301092')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1298149"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1298149" summary="pid1298149">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1298149">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-431695.html" target="_blank">ddrcpddr</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1298149" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1298149_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-431695.html" target="_blank">ddrcpddr</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=431695&amp;do=profile" target="_blank">20</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=431695&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=ddrcpddr" id="a_showip_li_1298149" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=ddrcpddr" id="a_repent_1298149" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-431695.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1298149" src="static/image/common/online_member.gif"/>
+<em id="authorposton1298149">发表于 2016-7-20 12:41:13</em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1298149">
+无线网卡纠结死我了<br/>
+</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1298149">
+</div>
+<div id="post_rate_div_1298149"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition1298149"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1298149&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=16845&amp;pid=1298149&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1298149').innerHTML ? $('review_support_1298149').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1298149"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=16845&amp;pid=1298149&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1298149').innerHTML ? $('review_against_1298149').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1298149"></span></a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1298149" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1298149', 'misc.php?mod=report&amp;rtype=post&amp;rid=1298149&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1298149_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1298149:16845" id="a_namepost_1298149" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1298149')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1296643" style="display:none;"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1296643" summary="pid1296643">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1296643">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-431983.html" target="_blank">wx_z3IW0z3h</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1296643" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1296643_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-431983.html" target="_blank">wx_z3IW0z3h</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=431983&amp;do=profile" target="_blank">13</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=431983&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=wx_z3IW0z3h" id="a_showip_li_1296643" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=wx_z3IW0z3h" id="a_repent_1296643" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-431983.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1296643" src="static/image/common/online_member.gif"/>
+<em id="authorposton1296643">发表于 2016-7-17 21:31:11</em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1296643">
+dingding <br/>
+</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1296643">
+</div>
+<div id="post_rate_div_1296643"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition1296643"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1296643&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1296643" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1296643', 'misc.php?mod=report&amp;rtype=post&amp;rid=1296643&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1296643_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1296643:16845" id="a_namepost_1296643" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1296643')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div id="post_1296426"><table cellpadding="0" cellspacing="0" class="plhin" id="pid1296426" summary="pid1296426">
+<tbody><tr>
+<td class="pls" rowspan="2">
+<div class="pls favatar" id="favatar1296426">
+<div class="pi">
+<div class="authi"><a class="xw1" href="http://www.kali.org.cn/space-uid-431937.html" target="_blank">inspiroy</a>
+</div>
+</div>
+<div class="p_pop blk bui card_gender_" id="userinfo1296426" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1296426_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a class="xi2" href="http://www.kali.org.cn/space-uid-431937.html" target="_blank">inspiroy</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>积分</dt><dd><a class="xi2" href="http://www.kali.org.cn/home.php?mod=space&amp;uid=431937&amp;do=profile" target="_blank">3</a></dd>
+</dl><div class="imicn">
+<a href="http://www.kali.org.cn/home.php?mod=space&amp;uid=431937&amp;do=profile" target="_blank" title="查看详细资料"><img alt="查看详细资料" src="static/image/upyeah_images/userinfo.gif"/></a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=inspiroy" id="a_showip_li_1296426" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/showip.small.gif"/> IP卡</a>
+<a class="xi2" href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=inspiroy" id="a_repent_1296426" onclick="showWindow(this.id, this.href)"><img alt="" src="static//image/magic/checkonline.small.gif"/> 狗仔卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a class="avtm" href="http://www.kali.org.cn/space-uid-431937.html" target="_blank"><img onerror="this.onerror=null;this.src='http://www.kali.org.cn/ucenter/images/noavatar_middle.gif'" src="http://www.kali.org.cn/ucenter/images/noavatar_middle.gif"/></a></div>
+</div>
+</div>
+</td>
+<td class="plc">
+<div class="pi">
+<div class="pti">
+<div class="pdbt">
+</div>
+<div class="authi">
+<img class="authicn vm" id="authicon1296426" src="static/image/common/online_member.gif"/>
+<em id="authorposton1296426">发表于 2016-7-17 13:56:28</em>
+<span class="pipe">|</span>
+<a href="http://www.kali.org.cn/thread-16845-1-1.html" rel="nofollow">显示全部楼层</a>
+</div>
+</div>
+</div><div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellpadding="0" cellspacing="0"><tbody><tr><td class="t_f" id="postmessage_1296426">
+要学习看看，感谢楼主</td></tr></tbody></table>
+</div>
+<div class="cm" id="comment_1296426">
+</div>
+<div id="post_rate_div_1296426"></div>
+</div>
+</div>
+</td></tr>
+<tr><td class="plc plm">
+</td>
+</tr>
+<tr id="_postposition1296426"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;">
+<div class="po hin">
+<div class="pob cl">
+<em>
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;repquote=1296426&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+<a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=16845&amp;pid=1296426&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_1296426').innerHTML ? $('review_support_1296426').innerHTML : 0) + ' 人 支持'">支持 <span id="review_support_1296426"></span></a>
+<a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=16845&amp;pid=1296426&amp;hash=f0f4fd8f" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_1296426').innerHTML ? $('review_against_1296426').innerHTML : 0) + ' 人 反对'">反对 <span id="review_against_1296426"></span></a>
+</em>
+<p>
+<a class="showmenu" href="javascript:;" id="mgc_post_1296426" onmouseover="showMenu(this.id)">使用道具</a>
+<a href="javascript:;" onclick="showWindow('miscreport1296426', 'misc.php?mod=report&amp;rtype=post&amp;rid=1296426&amp;tid=16845&amp;fid=6', 'get', -1);return false;">举报</a>
+</p>
+<ul class="p_pop mgcmn" id="mgc_post_1296426_menu" style="display: none;">
+<li><a href="http://www.kali.org.cn/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1296426:16845" id="a_namepost_1296426" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif"/>显身卡</a></li><li>
+</li></ul>
+<script reload="1" type="text/javascript">checkmgcmn('post_1296426')</script>
+</div>
+</div>
+</td>
+</tr>
+<tr class="ad">
+<td class="pls">
+</td>
+<td class="plc">
+</td>
+</tr>
+</tbody></table>
+</div><div class="pl" id="postlistreply"><div class="viewthread_table" id="post_new" style="display: none"></div></div>
+<div id="hiddenpoststip"><a href="javascript:display_blocked_post();">还有一些帖子被系统自动隐藏，点此展开</a></div>
+<div id="hiddenposts"></div>
+</div>
+<form autocomplete="off" id="modactions" method="post" name="modactions">
+<input name="formhash" type="hidden" value="f0f4fd8f"/>
+<input name="optgroup" type="hidden"/>
+<input name="operation" type="hidden"/>
+<input name="listextra" type="hidden" value="page%3D1"/>
+<input name="page" type="hidden" value="1"/>
+</form>
+<div class="pgbtn"><a class="bm_h" hidefocus="true" href="http://www.kali.org.cn/thread-16845-2-1.html">下一页 »</a></div>
+<div class="pgs mtm mbm cl">
+<div class="pg"><strong>1</strong><a href="http://www.kali.org.cn/thread-16845-2-1.html">2</a><a href="http://www.kali.org.cn/thread-16845-3-1.html">3</a><a href="http://www.kali.org.cn/thread-16845-4-1.html">4</a><a href="http://www.kali.org.cn/thread-16845-5-1.html">5</a><a href="http://www.kali.org.cn/thread-16845-6-1.html">6</a><a href="http://www.kali.org.cn/thread-16845-7-1.html">7</a><a href="http://www.kali.org.cn/thread-16845-8-1.html">8</a><a href="http://www.kali.org.cn/thread-16845-9-1.html">9</a><a href="http://www.kali.org.cn/thread-16845-10-1.html">10</a><a class="last" href="http://www.kali.org.cn/thread-16845-93-1.html">... 93</a><label><input class="px" name="custompage" onkeydown="if(event.keyCode==13) {window.location='forum.php?mod=viewthread&amp;tid=16845&amp;extra=page%3D1&amp;page='+this.value;; doane(event);}" size="2" title="输入页码，按回车快速跳转" type="text" value="1"/><span title="共 93 页"> / 93 页</span></label><a class="nxt" href="http://www.kali.org.cn/thread-16845-2-1.html">下一页</a></div><span class="pgb y" id="visitedforumstmp" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id,'pos':'21'})"><a href="http://www.kali.org.cn/forum-6-1.html">返回列表</a></span>
+<a href="javascript:;" id="newspecialtmp" onclick="showWindow('newthread', 'forum.php?mod=post&amp;action=newthread&amp;fid=6')" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu({'ctrlid':this.id})" title="发新帖"><img alt="发新帖" src="static/image/upyeah_images/pn_post.png"/></a>
+</div>
+<!--[diy=diyfastposttop]--><div class="area" id="diyfastposttop"></div><!--[/diy]-->
+<script type="text/javascript">
+var postminchars = parseInt('10');
+var postmaxchars = parseInt('150000');
+var disablepostctrl = parseInt('0');
+</script>
+<div class="pl bm bmw" id="f_pst">
+<form action="forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;extra=page%3D1&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost" autocomplete="off" id="fastpostform" method="post" onsubmit="return fastpostvalidate(this)">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="pls">
+</td>
+<td class="plc">
+<span id="fastpostreturn"></span>
+<div class="cl">
+<div id="fastposteditor">
+<div class="tedt mtn">
+<div class="bar">
+<span class="y">
+<a href="http://www.kali.org.cn/forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845" onclick="return switchAdvanceMode(this.href)">高级模式</a>
+</span><script src="data/cache/seditor.js?KfM" type="text/javascript"></script>
+<div class="fpd">
+<a class="fbld" href="javascript:;" title="文字加粗">B</a>
+<a class="fclr" href="javascript:;" id="fastpostforecolor" title="设置文字颜色">Color</a>
+<a class="fmg" href="javascript:;" id="fastpostimg" title="图片">Image</a>
+<a class="flnk" href="javascript:;" id="fastposturl" title="添加链接">Link</a>
+<a class="fqt" href="javascript:;" id="fastpostquote" title="引用">Quote</a>
+<a class="fcd" href="javascript:;" id="fastpostcode" title="代码">Code</a>
+<a class="fsml" href="javascript:;" id="fastpostsml">Smilies</a>
+</div></div>
+<div class="area">
+<div class="pt hm">
+您需要登录后才可以回帖 <a class="xi2" href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)">登录</a> | <a class="xi2" href="member.php?mod=register">立即注册</a>
+<a href="http://www.kali.org.cn/connect.php?mod=login&amp;op=init&amp;referer=forum.php%3Fmod%3Dviewthread%26tid%3D16845%26extra%3Dpage%253D1%26page%3D1%26&amp;statfrom=login" rel="nofollow" target="_top"><img class="vm" src="static/image/upyeah_images/qq_login.gif"/></a>
+<a href="wechat-login.html"><img class="vm" src="source/plugin/wechat/image/wechat_login.png"/></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="seccheck_fastpost">
+</div>
+<input name="formhash" type="hidden" value="f0f4fd8f"/>
+<input name="usesig" type="hidden" value=""/>
+<input name="subject" type="hidden" value="  "/>
+<p class="ptm pnpost">
+<a class="y" href="http://www.kali.org.cn/home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=6" target="_blank">本版积分规则</a>
+<button class="pn pnc vm" id="fastpostsubmit" name="replysubmit" onclick="showWindow('login', 'member.php?mod=logging&amp;action=login&amp;guestmessage=yes')" tabindex="5" type="button" value="replysubmit"><strong>发表回复</strong></button>
+<label for="fastpostrefresh"><input class="pc" id="fastpostrefresh" type="checkbox"/>回帖后跳转到最后一页</label>
+<script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>
+</p>
+</td>
+</tr>
+</tbody></table>
+</form>
+</div>
+<script type="text/javascript">
+var connect_qzone_share_url = 'http://www.kali.org.cn/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=1&thread_id=16845';
+var connect_weibo_share_url = 'http://www.kali.org.cn/home.php?mod=spacecp&ac=plugin&id=qqconnect:spacecp&pluginop=share&sh_type=2&thread_id=16845';
+var connect_thread_info = {
+thread_url: 'http://www.kali.org.cn/thread-16845-1-1.html',
+thread_id: '16845',
+post_id: '728845',
+forum_id: '6',
+author_id: '276604',
+author: 'Good阿波'
+};
+
+connect_autoshare = '0';
+connect_isbind = '';
+if(connect_autoshare == 1 && connect_isbind) {
+_attachEvent(window, 'load', function(){
+connect_share(connect_weibo_share_url, connect_openid);
+});
+}
+</script>
+<div class="p_pop blk cl" id="visitedforums_menu" style="display: none;">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td id="v_forums">
+<h3 class="mbn pbn bbda xg1">浏览过的版块</h3>
+<ul class="xl xl1">
+<li><a href="http://www.kali.org.cn/forum-21-1.html">backtrack5[bt5]</a></li><li><a href="http://www.kali.org.cn/forum-15-1.html">Backtrack实战分享</a></li><li><a href="http://www.kali.org.cn/forum-5-1.html">backtrack3[bt3]</a></li><li><a href="http://www.kali.org.cn/forum-9-1.html">技术分享</a></li><li><a href="http://www.kali.org.cn/forum-8-1.html">无线路由器安全专区</a></li><li><a href="http://www.kali.org.cn/forum-19-1.html">BT新手茶馆</a></li><li><a href="http://www.kali.org.cn/forum-61-1.html">Metasploit</a></li></ul>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="wp mtn">
+<!--[diy=diy3]--><div class="area" id="diy3"></div><!--[/diy]-->
+</div>
+<script type="text/javascript">
+function succeedhandle_followmod(url, msg, values) {
+var fObj = $('followmod_'+values['fuid']);
+if(values['type'] == 'add') {
+fObj.innerHTML = '不收听';
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+} else if(values['type'] == 'del') {
+fObj.innerHTML = '收听TA';
+fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash=f0f4fd8f&fuid='+values['fuid'];
+}
+}
+var blockedPIDs = [1305239,1296643];
+fixed_avatar([728845,1305239,1305216,1303035,1302634,1302633,1301092,1298149,1296643,1296426], 1);
+</script> </div>
+<div class="focus" id="sitefocus">
+<div class="bm">
+<div class="bm_h cl">
+<a class="y" href="javascript:;" onclick="setcookie('nofocus_forum', 1, 1*3600);$('sitefocus').style.display='none'" title="关闭">关闭</a>
+<h2>
+站长推荐<span class="fctrl" id="focus_ctrl" style="display: none;"><img alt="上一条" class="cur1" id="focusprev" onclick="showfocus('prev');" src="static/image/upyeah_images/pic_nv_prev.gif" title="上一条"/> <em><span id="focuscur">1</span>/1</em> <img alt="下一条" class="cur1" id="focusnext" onclick="showfocus('next')" src="static/image/upyeah_images/pic_nv_next.gif" title="下一条"/></span>
+</h2>
+</div>
+<div class="bm_c" id="focus_con">
+<dl class="xld cl bbda">
+<dt><a class="xi2" href="http://www.cnns.net/?p=438" target="_blank">长矛深度安全检测系统</a></dt>
+<dd>市场占有率第一的国产渗透测试系统
+
+</dd>
+</dl>
+<p class="ptn cl"><a class="xi2 y" href="http://www.cnns.net/?p=438" target="_blank">查看 »</a></p>
+</div>
+</div>
+</div><div class="bm_c" id="focus_0" style="display: none">
+<dl class="xld cl bbda">
+<dt><a class="xi2" href="http://www.cnns.net/?p=438" target="_blank">长矛深度安全检测系统</a></dt>
+<dd>市场占有率第一的国产渗透测试系统
+
+</dd>
+</dl>
+<p class="ptn cl"><a class="xi2 y" href="http://www.cnns.net/?p=438" target="_blank">查看 »</a></p>
+</div><script type="text/javascript">
+var focusnum = 1;
+if(focusnum < 2) {
+$('focus_ctrl').style.display = 'none';
+}
+if(!$('focuscur').innerHTML) {
+var randomnum = parseInt(Math.round(Math.random() * focusnum));
+$('focuscur').innerHTML = Math.max(1, randomnum);
+}
+showfocus();
+var focusautoshow = window.setInterval('showfocus(\'next\', 1);', 5000);
+</script>
+<script type="text/javascript">var cookieLogin = Ajax("TEXT");cookieLogin.get("connect.php?mod=check&op=cookie", function() {});</script>
+<script type="text/javascript">
+var rel_tid = "16845";
+var rel_title = "%A1%BE%C7%FD%B6%AF%C6%AA%A1%BFBT4+Linux%CF%C2USB%CD%F8%BF%A8%B0%B2%D7%B0%C7%FD%B6%AF+%B7%A2%CF%D6wlan0";
+var rel_reltid = "0";
+var rel_prepos = "";
+var my_siteid = "26675818";
+var rel_uid = "0";
+var rel_views = "23641";
+var rel_replies = "927";
+var rel_page = "1";
+var rel_show = "0";
+</script>
+<script charset="GBK" src="http://cache.soso.com/30d/js/discuz/relate_subject.js" type="text/javascript"></script>
+<script type="text/javascript">
+_attachEvent(window, 'load', getForbiddenFormula, document);
+function getForbiddenFormula() {
+var toGetForbiddenFormulaFIds = function () {
+ajaxget('plugin.php?id=cloudsearch&formhash=f0f4fd8f');
+};
+var a = document.body.getElementsByTagName('a');
+for(var i = 0;i < a.length;i++){
+if(a[i].getAttribute('sc')) {
+a[i].setAttribute('mid', hash(a[i].href));
+a[i].onmousedown = function() {toGetForbiddenFormulaFIds();};
+}
+}
+var btn = document.body.getElementsByTagName('button');
+for(var i = 0;i < btn.length;i++){
+if(btn[i].getAttribute('sc')) {
+btn[i].setAttribute('mid', hash(btn[i].id));
+btn[i].onmousedown = function() {toGetForbiddenFormulaFIds();};
+}
+}
+}
+</script>
+<script type="text/javascript">
+$('newspecial').onclick=function(){ajaxget('plugin.php?id=vfastpost:stat&subop=stat&ac=cl_v_t&hash=f3b9410a65437103d79e02167a42162d');setTimeout(function(){showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=6');},500);};
+$('newspecialtmp').onclick=function(){ajaxget('plugin.php?id=vfastpost:stat&subop=stat&ac=cl_v_t&hash=f3b9410a65437103d79e02167a42162d');setTimeout(function(){showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=6');},500);};
+$('post_reply').onclick=function(){ajaxget('plugin.php?id=vfastpost:stat&subop=stat&ac=cl_v_r&hash=f3b9410a65437103d79e02167a42162d');setTimeout(function(){showWindow('reply', 'forum.php?mod=post&action=reply&fid=6&tid=16845');},500);};
+$('post_replytmp').onclick=function(){ajaxget('plugin.php?id=vfastpost:stat&subop=stat&ac=cl_v_r&hash=f3b9410a65437103d79e02167a42162d');setTimeout(function(){showWindow('reply', 'forum.php?mod=post&action=reply&fid=6&tid=16845');},500);};
+</script><script type="text/javascript">(function(){var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = "http://znsv.baidu.com/customer_search/api/js?sid=15624046498708756600" + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000) + '&callback=znForDz';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+<script src="source/plugin/baidusubmit/template/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var bdjq = jQuery.noConflict(true);
+function znForDz(siteConfig){
+    bdjq(function(){
+        var zn = 'http://zhannei.baidu.com/cse/search?s=15624046498708756600';
+        if (siteConfig && siteConfig.resultUrl){
+            zn = 'http://' + siteConfig.resultUrl + '/cse/search?s=15624046498708756600'
+        }
+        var btn = bdjq("#scbar_btn");
+        if (btn.length == 0) {
+            btn = bdjq('button[name="searchsubmit"]');
+        }
+        if (btn.length == 0) {
+            btn = bdjq('input[name="searchsubmit"]');
+        }
+        if (btn.length == 0) {
+            btn = bdjq('#scbar_form input[type="submit"]');
+        }
+        if (btn.length == 0) {
+            btn = bdjq('#scbar_form button');
+        }            
+        if (btn.length > 0) {
+            btn.click(function(event){
+                var mod = bdjq('#scbar_mod').val() || bdjq('form input[name="mod"]').val()
+                var st = '';
+                var txt = bdjq('#scbar_txt').val() || bdjq('form input[name="srchtxt"]').val();
+                var user = '1';
+                if (mod === 'user' && user === '1'){
+                    st = 2;
+                    window.open(zn + "&q=" + encodeURIComponent(txt) + "&fst=" + st + "&partner=discuz");
+                    event.preventDefault();
+                } else if (mod === 'forum'){
+                    window.open(zn + "&q=" + encodeURIComponent(txt) + "&partner=discuz");
+                    event.preventDefault();            
+                }
+
+            });
+        }
+        var hot = bdjq('#scbar_hot a')
+            if (hot.length > 0){
+                hot.click(function(event){
+                var txt = bdjq(this).text();
+                window.open(zn + "&q=" + encodeURIComponent(txt) + "&partner=discuz");
+                event.preventDefault();
+            });
+        }
+    });
+}               
+</script> <div class="wp cl" id="ft">
+<div class="y" id="flk">
+<p><a href="http://www.kali.org.cn/forum.php?mobile=yes">手机版</a><span class="pipe">|</span><strong><a href="http://www.kali.org.cn/" target="_blank">Kali linux</a></strong>
+( <a href="http://www.miitbeian.gov.cn/" rel="nofollow" target="_blank">蜀ICP备10027298号-4</a> )<a href="http://discuz.qq.com/service/security" target="_blank" title="防水墙保卫网站远离侵害"><img src="static/image/common/security.png"/></a>
+<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=807807666&amp;site=qq&amp;menu=yes" rel="nofollow" target="_blank"><img border="0" src="http://static.su.baidu.com/static/app/ver-3.6.21/images/QQ.png" style="height: 20px;"/></a>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2ba792dbf616f4e6810c53e2e602df55";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<a href="http://search.discuz.qq.com/s/2f3523033/list.html" target="_blank">Topics</a> | <script language="JavaScript" src="http://s4.cnzz.com/z_stat.php?id=1256836065&amp;web_id=1256836065" type="text/javascript"></script><script charset="utf-8" src="http://c.cnzz.com/core.php?web_id=1256836065&amp;t=z" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1256836065" target="_blank" title="站长统计">站长统计</a>
+</p><p align="left"><br/><font color="#ff0000"><font face="微软雅黑">免责声明：<br/>Kali linux中文网所发布的一切教程文章仅限用于学习和研究目的；不得将上述内容用于商业或者非法用途，否则，一切后果请用户自负。本站信息来自网络，版权争议与本站无关。您必须在下载后的24个小时之内，从您的电脑中彻底删除上述内容。</font></font></p>
+<p></p>
+<p class="xs0">
+GMT+8, 2016-8-5 14:52<span id="debuginfo"> Updated at 14:52:20, Processed in  second(s),  Queries, Gzip enabled</span>
+</p>
+</div>
+<div id="frt">
+<p>Powered by <strong><a href="http://www.discuz.net" rel="nofollow" target="_blank">Discuz!</a></strong></p>
+<p class="xs0">© 2009-2016 <a href="http://www.cnns.net" target="_blank">CNNS</a></p>
+</div></div>
+<script src="home.php?mod=misc&amp;ac=sendmail&amp;rand=1470379940" type="text/javascript"></script>
+<div id="scrolltop">
+<span><a class="replyfast" href="http://www.kali.org.cn/forum.php?mod=post&amp;action=reply&amp;fid=6&amp;tid=16845&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)" title="快速回复"><b>快速回复</b></a></span>
+<span hidefocus="true"><a href="javascript:scroll(0,0)" title="返回顶部"><b>返回顶部</b></a></span>
+<span>
+<a class="returnlist" hidefocus="true" href="http://www.kali.org.cn/forum-6-1.html" title="返回列表"><b>返回列表</b></a>
+</span>
+</div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { showTopLink(); });checkBlind();</script>
+<div id="discuz_tips" style="display:none;"></div>
+<script type="text/javascript">
+				var tipsinfo = '26675818|X3.2|0.6||0||0|7|1470379940|b8376987578b851c9473c47783efbcd8|2';
+			</script>
+<script charset="UTF-8" src="http://discuz.gtimg.cn/cloud/scripts/discuz_tips.js?v=1" type="text/javascript"></script><script type="text/javascript">document.getElementById("debuginfo").innerHTML = " Updated at 14:52:20, Processed in  second(s),  Queries, Gzip enabled";</script></body></html>
+

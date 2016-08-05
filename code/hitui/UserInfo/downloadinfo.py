@@ -41,6 +41,7 @@ def downloadinfo(url, domain, Cookie, coll):
         f = open('baduid.txt','a')
         f.write(url + '  ----无此UID')
         f.write('\n')
+        f.close()
         return
     counts = top.findAll(attrs = {'class':'pbm mbm bbda cl'})
     for count in counts:

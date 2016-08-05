@@ -1,3 +1,6 @@
+vpnÍøÕ¾£º
+https://www.getgreenjsq.org
+
 ´òÂëÆ½Ì¨£ºwww.jsdati.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ³åÁË£±£°¿é
@@ -81,6 +84,8 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 Ã»È¨ÏÞ:ºËÐÄ½»Á÷¡¢Õ¾Îñ´¦Àí-½»Ò×±¸·Ý¡¢Õ¾Îñ´¦Àí-ÁÙÊ±Í¶Æ±¡¢Õ¾Îñ´¦Àí-ID±¸°¸¡¢×ÉÑ¯½»Á÷-Ô­´´Ð¡×é¡¢Ì³±Ò½»Á÷-M±ÒÌáÏÖ¡¢
 ÒÑÅÀÍê
 ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
+ÕýÔÚ¼ì²é£ºÌ³±Ò½»Á÷¡¢
+ÒÑ¼ì²éÍê£º
 
 Ê®Èý¡¢www.6yyw.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
@@ -92,6 +97,8 @@ urllib2.urlopen() ÇëÇó²»µ½ÍøÒ³£¬Ô­ÒòÎ´Öª
 
 Ê®Îå¡¢bbs.ihitui.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+ÕýÔÚÅÀ£º°´idÀ´ÅÀ£¬1-166007ÕýÔÚkongwei-3ÉÏÅÀ
+ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
 
 
 
