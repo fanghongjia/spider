@@ -19,27 +19,19 @@ sys.setdefaultencoding('utf-8')
 # url: 用户信息的url
 # domian: 网站的域名，例：www.tianya88.com
 # Cookie: 登录所获取的Cookie字符串
-# coll： Mongodb数据库的操作手柄
+# coll： Mongodb数据库collection的操作手柄
 #
 def downloadinfo(url, domain, Cookie, coll):
     # 设置http报文的header信息
     opener = urllib2.build_opener()
     opener.addheaders = [
-            ('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'),
-            ('Accept-Encoding', 'gzip, deflate, sdch'),
-            ('Accept-Language', 'zh-CN,zh;q=0.8'),
-            ('Cache-Control', 'max-age=0'),
             ('Connection', 'keep-alive'),
             ('Cookie', Cookie),
-            ('Host', 'www.6yyw.com'),
-            ('Upgrade-Insecure-Requests', '1'),
             ('User-agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36')           
         ]
     urllib2.install_opener(opener)
     response = urllib2.urlopen(url) #打开这个资料页
-    print 'hehe'
     soup = BeautifulSoup(response, 'lxml', from_encoding="utf-8") #解析这个资料页
-    print soup
     user = {} #声明一个空字典
     user['url'] = url
     print 'URL->', url
@@ -49,6 +41,7 @@ def downloadinfo(url, domain, Cookie, coll):
         f = open('baduid.txt','a')
         f.write(url + '  ----无此UID')
         f.write('\n')
+        f.close()
         return
     counts = top.findAll(attrs = {'class':'pbm mbm bbda cl'})
     for count in counts:
@@ -242,6 +235,7 @@ def downloadinfo(url, domain, Cookie, coll):
     cl = top.find(attrs = {'class':'cl', 'id':'psts'})
     pfl_lis = cl.find(attrs = {'class':'pf_l'}).findAll(name = 'li')
     ems = cl.find(attrs = {'class':'pf_l'}).findAll(name = 'em')
+    Money = {} # 各式各样的交易币存成一类
     i = 0
     for pfl_li in pfl_lis:
         key = ems[i].text
@@ -255,25 +249,25 @@ def downloadinfo(url, domain, Cookie, coll):
             key = 'Prestige'
         elif key == u'金钱':
             key = 'Money'
-        elif key == u'贡献':
+            Money['Gold-Money'] = value
+        elif key == u'贡献值':
             key = 'Contribution'
-        elif key == u'云宝':
-            key = 'cloud-Money'
+        elif key == u'银元':
+            key = 'Money'
+            Money['Sliver-Money'] = value
         elif key == u'下载点':
             key = 'DownloadPoint'
         elif key == u'荣誉':
             key = 'Honours'
-        elif key == u'集分宝':
-            key = 'jifen-Money'
         elif key == u'信誉':
             key = 'HonestyLevel'
-        elif key == u'帖评':
-            key = 'PostsComment'
-        elif key == u'任务分':
-            key = 'task-Money'
+        elif key == u'好评度':
+            key = 'PositiveComment'
         print key, '->', value
-        user[key] = value
+        if key != 'Money':
+            user[key] = value
         i = i + 1
+    user['Money'] = Money
     coll.insert(user)
 
 

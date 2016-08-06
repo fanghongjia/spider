@@ -10,6 +10,7 @@ import sys
 import math
 import time
 from doReply import doReply
+from exPage import exPage
 
 reload(sys)
 print sys.getdefaultencoding()
@@ -17,28 +18,26 @@ sys.setdefaultencoding('utf-8')
 '''
 ----------------------相关全局变量---------------------
 '''
-# 需要爬取的板块连接（注意该链接下的帖子是按照发帖时间进行排序的，且去掉最后的数字）
-spiderUrl = "http://www.52fzba.com/forum.php?mod=forumdisplay&fid=330&orderby=dateline&filter=author&orderby=dateline&page="
-# 入库存储的板块名称
-board = "泰拉瑞亚"
-# 该板块内需要爬取的起始页号
-page_start = 2
-# 该板块内需要爬取的终止页号
-page_end = 3
+# 爬取的网站域名
+domain = "www.52fzba.com"
+# 起始tid
+tid_start = 1
+# 6月30最后的tid
+tid_end = 13912083
 # 代理服务器
-proxy_server = 'http://121.9.221.188'
+# proxy_server = 'http://121.9.221.188'
 # 数据库信息
 mongodbHost = "172.29.152.230"
 mongodbPort = 27017
 db_name = "spider"
-coll_name = "52fzba"
+coll_name = "bbs125"
 
 '''
 ---------------------------------------------------------
 '''
 
 # 用于匹配日期的正则表达式
-compiled_time = re.compile(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+')
+compiled_time = re.compile(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+')
 # 数据库的连接信息
 connection = pymongo.MongoClient(host=mongodbHost, port=mongodbPort)
 connection.admin.authenticate("nslab","nslab")
@@ -46,7 +45,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "BDTUJIAID=e584b371feec282e9ae29f8033f6c22f; ftcpvcouplet_fidx=1; PHPSESSID=kgfdu9khtld4pctmar34m8l4p3; tjpctrl=1469098444637; qwJR_2132_saltkey=V4evRnkp; qwJR_2132_lastvisit=1469093172; qwJR_2132_sendmail=1; qwJR_2132_ulastactivity=058cPZAp1orfLycUz8uD8%2FTXeLp0LavPUgCeaEQCKwIZd3JHzpRg; qwJR_2132_auth=f564gO0o7PxpBXjdtDYxE4TQGhQ5OZIjK2MBrTzHeuRwU9F5HtvdjL1zZRQIGppo4OyLnEoGUljak%2FAVESBh7KY70TI; qwJR_2132_lip=221.2.164.39%2C1469096872; qwJR_2132_security_cookiereport=f1b2qBtnxnLPzC5ykuieQyKlql54AWhGRnEamh1e0ZkAf04yYK3E; qwJR_2132_home_diymode=1; qwJR_2132_nofavfid=1; qwJR_2132_onlineusernum=2287; qwJR_2132_st_t=547490%7C1469096988%7Ce571305a23edf014aeca0fa1df7be0df; qwJR_2132_atarget=1; qwJR_2132_forum_lastvisit=D_75_1469096988; qwJR_2132_smile=4D1; qwJR_2132_st_p=547490%7C1469097015%7Ccafa802330b5b5e075c106803fc847ac; qwJR_2132_visitedfid=18D75; qwJR_2132_viewid=tid_14017; qwJR_2132_sid=Ht2aT6; _fmdata=EAE317DCC2BB11F97F2740F9EEEC52EB22954B4B23E99DBCBDE189B267BEB68485029C061FDE19A9745017D37903F8C1C76226F879C573D1; Hm_lvt_6b92a602712df3f78bca96f13da7346c=1468839783,1469008690,1469096516; Hm_lpvt_6b92a602712df3f78bca96f13da7346c=1469097016; pgv_pvi=7957838330; pgv_info=ssi=s5831412770; qwJR_2132_lastact=1469097019%09forum.php%09ajax; qwJR_2132_connect_is_bind=0"
+Cookie = "lDlk_ecc9_saltkey=ZJQz5lj0; lDlk_ecc9_lastvisit=1470395868; lDlk_ecc9_sid=A381e8; lDlk_ecc9_lastact=1470399514%09forum.php%09; lDlk_ecc9_sendmail=1; Hm_lvt_fa32dadde3745af309b587b38d20ea1d=1470399470; Hm_lpvt_fa32dadde3745af309b587b38d20ea1d=1470399516; lDlk_ecc9_ulastactivity=3b5dAWO7kvzHuDcG%2F%2Fd0zcitjHfpCrfanOQFxsz%2FHQxXAHKPO5oc; lDlk_ecc9_auth=ba27pUzFIwwrrTgeRTtK5LrL3Xen7AVwXwswIMThv5frRRAn8mSYJil8%2BnCGogg1OUJxQEKdAVkT6FYJBGrz0Qm9KxA; lDlk_ecc9_lastcheckfeed=363083%7C1470399485; lDlk_ecc9_lip=202.102.144.8%2C1470397927; lDlk_ecc9_connect_is_bind=0; lDlk_ecc9_nofavfid=1; lDlk_ecc9_onlineusernum=5782; lDlk_ecc9_myrepeat_rr=R0; lDlk_ecc9_nofocus_forum=1; tjpctrl=1470401288179; lDlk_ecc9_wx_from=8601ZdCNX8jSB%2BfVpEeMlOKbm0tFllWv27jSI4qT85hZMqN8D3r1"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
@@ -56,108 +55,160 @@ opener.addheaders = [
 # proxy_handler = urllib2.ProxyHandler({'http':proxy_server})
 # opener = urllib2.build_opener(proxy_handler)
 urllib2.install_opener(opener)
-for k in range(page_start, page_end):
-    response = urllib2.urlopen(spiderUrl + str(k))
-    soup = BeautifulSoup(response, 'lxml', from_encoding="utf-8")
-    tagA = soup.findAll(name='a', attrs={'class': 's xst'})
-    # 依次解析每一个帖子标题
-    for title in tagA:
-        # 从标题中提取帖子的链接，访问该链接从中解析出帖子更多信息
-        href = urllib.unquote(title['href'])
-        try: 
-            response2 = urllib2.urlopen(href)
-            soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
+for k in range(tid_start, tid_end):
+    href = "http://" + domain +"/thread-" + str(k) + "-1-1.html"
+    try: 
+        response2 = urllib2.urlopen(href)
+        soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
+    except:
+        print "bad url!"
+        f = open('badurl.txt','a')
+        f.write(href + '    ----href bad')
+        f.write('\n')
+        f.close
+        continue
+    hidden = soup2.find(attrs={'class':'locked'})
+    if hidden != None:
+        if hidden.find(name='a') != None:
+            doReply(href, domain, Cookie)
+    try:
+        p_page_content = soup2.find(attrs={'class':'pgt'}).find(attrs={'class':'pg'})
+    except:
+        print "bad url!"
+        f = open('badurl.txt','a')
+        f.write(href + '    ----None posts')
+        f.write('\n')
+        f.close()
+        continue
+    if(p_page_content != None):
+        try:
+            p_page_url_init = p_page_content.find(name = 'a').get('href')[:-1]
         except:
             print "bad url!"
+            f = open('badurl.txt','a')
+            f.write(href + '    ----p_page_init bad')
+            f.write('\n')
+            f.close()
             continue
-        hidden = soup2.find(attrs={'class':'locked'})
-        if(hidden != None):
-            a_exist = hidden.find(name='a')
-            if a_exist != None:
-                doReply(href,"www.52fzba.com",Cookie)
-        p_page_content = soup2.find(attrs={'class':'pg'})
+        p_page_end = p_page_content.find(name='span').string
+        compiled_page = re.compile(r'[0-9]+')
+        p_page_end = int(compiled_page.search(str(p_page_end)).group())
+        print 'this post has ', p_page_end, 'pages.'
+        if p_page_end > 400:
+            exPage(soup2, opener, coll, domain, href, p_page_end, p_page_url_init)
+            continue
+    else:
+        p_page_end = 1
+    try:
+        board = soup2.find(attrs = {'class':'bm cl'}).findAll(name = 'a')[-2].text
+        title = soup2.find(attrs = {'id':'thread_subject'}).text
+    except:
+        print "bad url!"
+        f = open('badurl.txt','a')
+        f.write(href + '    ----board or title bad')
+        f.write('\n')
+        f.close()
+        continue
+    newItem = {} # 初始化一个新帖子字典
+    flag = True # 识别是不是楼主的flag
+    for l in range(1, p_page_end+1):
         if(p_page_content != None):
-            p_page_url_init = p_page_content.contents[1].get('href')[0:-8]
-            p_page_end = p_page_content.find(name='span').string
-            compiled_page = re.compile(r'[0-9]+')
-            p_page_end = int(compiled_page.search(str(p_page_end)).group())
-            print p_page_end,"!!!!!!"
+            p_page_url = p_page_url_init + str(l)
         else:
-            p_page_end = 1
-            print "-------------------------------------"
-        newItem = {} # 初始化一个新帖子字典
-        flag = True # 识别是不是楼主的flag
-        for l in range(1, p_page_end+1):
-            for m in range(1,10):
-                time.sleep(1)
-                print "休息一会儿",m
-            if(p_page_content != None):
-                p_page_url = p_page_url_init + str(l) + '-1.html'
-            else:
-                p_page_url = href
-            try:
-                response3 = urllib2.urlopen(p_page_url)
-                soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
-                print p_page_url
-            except:
-                print p_page_url
-                print "bad url!"
-                continue
-            author_content = soup3.findAll(attrs={'class':'readName b'})
-            posts = soup3.findAll(attrs={'class': 'pi'})
-            posts_contents = soup3.findAll(attrs={'class': 't_f'})
-            # 以下循环将正文部分处理成一整个字符串形式
-            i = 1
-
-            for post_contents in posts_contents:
-                try:
-                    author = posts[2*(i-1)].contents[1].contents[0].string
-                    _time = compiled_time.search(str(posts[2*(i-1)+1])).group()
-                    floor = '';
-                    floor = floor + str(posts[2*(i-1)+1].contents[1].contents[1].find(name = 'em'))[4:-5]
-                    if(floor == ''):
-                        floor = posts[2*(i-1)+1].contents[1].contents[1].string[2:]
-                except:
-                    print "ERROR:获取作者、时间、楼层信息出错！"
-                    continue
-                lines = post_contents.encode('utf-8')
-                lines = re.sub('[?]', '', lines)
-                lines = re.sub('<span style=["]display:none["]>[^>]+>', '', lines)
-                lines = re.sub('<font class=["]jammer["]>[^>]+>', '', lines)
-                lines = re.sub('<(.*?)>', '', lines)
-                lines = lines.strip()
-                print lines
-                # 整理数据
-                if floor == '沙发':
-                    floor = '2'
-                elif floor == '板凳':
-                    floor = '3'
-                elif floor == '地板':
-                    floor = '4'
-                if(i == 1 and flag == True):
-                    first_floor = {
-                        'author':author,
-                        'title':title.string,
-                        'floor':1,
-                        'content':lines,
-                        'href':href,
-                        'board':board,
-                        'time':_time
-                    }
-                    print "爬到",_time,title,"了"
-                    newItem['1'] = first_floor
-                    flag = False
-                else:
-                    other_floor = {
-                        'content':lines,
-                        'time':_time,
-                        'floor':floor,
-                        'author':author
-                    }
-                    newItem[floor] = other_floor
-                i += 1
+            p_page_url = href
         try:
-            coll.insert(newItem)
+            response3 = urllib2.urlopen(p_page_url)
+            soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
+            print 'located at ' + p_page_url
         except:
-            print "ERROR:数据库存储错误！"
-print "板块 " + board + " 爬取结束！"
+            f = open('badurl.txt','a')
+            f.write(p_page_url + '    ----sub herf bad')
+            f.write('\n')
+            f.close()
+            continue
+        posts = soup3.findAll(attrs={'class': 'pi'})
+        posts_contents = soup3.findAll(attrs={'class': 't_f'})
+        # 以下循环将正文部分处理成一整个字符串形式
+        i = 1
+        rec = 1 #　推荐楼层的标号，防止覆盖
+        for post_contents in posts_contents:
+            try:
+                author = posts[2*(i-1)].contents[1].contents[0].string
+                _time = compiled_time.search(str(posts[2*(i-1)+1])).group()
+                floor = ''
+                floor_flag = posts[2*(i-1)+1].find(name = 'strong').find(name = 'em') # 老版本根据contents有黄牌警告会出错
+                if floor_flag == None:
+                    floor = posts[2*(i-1)+1].find(name = 'strong').find(name = 'a').text # for card
+                else:
+                    floor = floor + floor_flag.text
+            except:
+                print "ERROR:获取作者、时间、楼层信息出错！"
+                f = open('badurl.txt','a')
+                f.write(p_page_url + '    ----author or time or floor bad')
+                f.write('\n')
+                f.close()
+                continue
+            lines = post_contents.encode('utf-8')
+            lines = re.sub('[?]', '', lines)
+            lines = re.sub('<span style=["]display:none["]>[^>]+>', '', lines)
+            lines = re.sub('<font class=["]jammer["]>[^>]+>', '', lines)
+            lines = re.sub('<(.*?)>', '', lines)
+            lines = lines.strip()
+            print lines
+            # 整理数据
+            if floor == u'\r\n沙发':
+                floor = '2'
+            elif floor == u'\r\n板凳':
+                floor = '3'
+            elif floor == u'\r\n地板':
+                floor = '4'
+            elif floor == u'\r\n地下':
+                floor = '5'
+            elif floor == u'\r\n楼主':
+                floor = '0'
+            elif floor == u'\r\n推荐\r\n':
+                floor = u'推荐' + str(rec)
+                rec = rec + 1
+            elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
+                print floor
+                compiled_floor = re.compile(r'[0-9]+')
+                floor = compiled_floor.search(floor).group()
+            if(i == 1 and flag == True):
+                first_floor = {
+                    'author':author,
+                    'title':title,
+                    'floor':1,
+                    'content':lines,
+                    'href':href,
+                    'board':board,
+                    'time':_time
+                }
+                print "爬到",_time,title,"了"
+                newItem['1'] = first_floor
+                flag = False
+            else:
+                other_floor = {
+                    'content':lines,
+                    'time':_time,
+                    'floor':floor,
+                    'author':author
+                }
+                newItem[floor] = other_floor
+            i += 1
+    try:
+        if not newItem:
+            print "bad url!"
+            f = open('badurl.txt','a')
+            f.write(href + '    ----None dict')
+            f.write('\n')
+            f.close()
+        else:
+            coll.insert(newItem)
+    except:
+        print "bad url!"
+        f = open('badurl.txt','a')
+        f.write(href + '    ----insert db wrong')
+        f.write('\n')
+        f.close()
+        print "ERROR:数据库存储错误！"
+print "网站" + domain + " 爬取结束！"

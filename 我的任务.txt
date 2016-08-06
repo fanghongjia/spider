@@ -12,12 +12,10 @@ https://www.getgreenjsq.org
 ÅÀÈ¡Ä¿±ê£º
 Ò»¡¢http://bbs.125.la/
 ÕËºÅÃÜÂë £ºkongtianyi/k1234567890
-ÒÑÅÀÈ¡£ºÍÆ¹ãºÏ×÷ÖÐÐÄ¡¢ÇóÖ°ÕÐÆ¸ÖÐÐÄ¡¢Ò×ÓÑ¾ãÀÖ²¿¡¢Ó°ÒôÍÆ¼ö¡¢Ò×ÓïÑÔÎÊ´ðÇø¡¢¾«Ò×²úÆ·ÖÐÐÄ¡¢Ô­´´Èí¼þ·¢²¼¡¢Ò×ÓïÑÔÔ´Âë¡¢Ò×ÓïÑÔ½Ì³Ì¡¢Ò×ÓïÑÔÄ£¿é¡¢
-APIÑ§Ï°×¨Çø¡¢×Ô»æÑ§Ï°×¨Çø¡¢Êý¾Ý¿â|Ñ§Ï°Çø¡¢¹¤¾ß|Ö§³Ö¿â|ËØ²Ä|ÏÂÔØ×¨Çø¡¢AppÊý¾Ý·ÖÎö¡¢VCÑ§Ï°×ÊÁÏÇø¡¢C#×ÊÔ´¹²Ïí¡¢»ã±à×ÊÁÏÑ§Ï°Çø¡¢
-VBÑ§Ï°×ÊÁÏÇø¡¢Javascript|PHP¡¢¸¨Öú¿ªÔ´½»Á÷¡¢¸¨Öú½Ì³ÌÑ§Ï°¡¢¸¨ÖúÎÊ´ð×¨Çø¡¢¸¨Öú¾ãÀÖ²¿¡¢µçÄÔÖªÊ¶¿â¡¢VIPÄ£¿éÀý³Ì½Ì³ÌÇø¡¢VIPÇóÖú×¨Çø¡¢
-VIPÄ£¿é½»Á÷ÎÊ´ðÇø¡¢½¨Òé|ÒÉÎÊ|Í¶Ëß|¾Ù±¨¡¢Î¥¹æÍ¨±¨¡¢»ý·ÖÉÌ³Ç¡¢¾«Ò×»î¶¯ÖÐÐÄ¡¢»Ú¹ýÖÐÐÄ¡¢¹«¸æÊÂÎñºÏ×÷Ö¸ÄÏ
-Ê§°Ü£ºÈí¼þÔ´Âë½»Ò×¡¢Èí¼þ¶¨ÖÆ¡¢°æÖ÷ÖÐÐÄ¡¢Ðû´«Ð¡×é×¨°æ¡¢Ìû×ÓÕÐÆ¸ÊÒºÍ¹¤×Ê·¢·Å
-ÓÃ»§ÐÅÏ¢ÕýÔÚkongwei-1ÉÏÅÀ
+ÖØÐÂ¸ù¾ÝuidÅÀ£¬×ö»Ø¸´£¬ÔÚkongwei-5ÉÏ
+ÎÞÈ¨ÏÞ£ºÈí¼þÔ´Âë½»Ò×¡¢Èí¼þ¶¨ÖÆ¡¢°æÖ÷ÖÐÐÄ¡¢Ðû´«Ð¡×é×¨°æ¡¢Ìû×ÓÕÐÆ¸ÊÒºÍ¹¤×Ê·¢·Å
+ÓÃ»§ÐÅÏ¢ÒÑ¾­ÅÀÍê
+Õâ¸öÂÛÌ³ÓÐ¸öbug£ºÈç¹ûÂ¥²ã·Ç³£¶à£¬Â¥Ö÷ÄÇÀï»á±ä³É¡®Â¥¡¯¶ø2Â¥Ôò±»±ê×¢³ÉÂ¥Ö÷ÍùÏÂË³ÑÓ£¬ÎÒ½«ÕâÖÖÇé¿öµÄ¡®Â¥¡¯´æÎªÒ»Â¥£¬¡®Â¥Ö÷¡¯´æÎª0Â¥
 
 ¶þ¡¢http://www.tianya88.com/(»Ø¸´ÐèÑéÖ¤Âë)
 ÕËºÅÃÜÂë £ºkongtianyi/k1234567890
@@ -51,7 +49,8 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 
 Áù¡¢http://www.52fzba.com/
 ÕËºÅÃÜÂë£ºnancunshijian/nancunshijian
-ÒÑÅÀÈ¡£ºÊ¹ÃüÕÙ»½¡¢GTA¡¢ÇóÉúÖ®Â·
+²»½ö·âºÅ£¬¶øÇÒ·ÃÎÊ²»ÁË¼¸¸öÍøÒ³¾Í·è¿ñÍù¶Ä³¡ÀïÃæÌø
+ÒÑÅÀÈ¡£º
 ÕýÔÚÅÀ£º
 
 Æß¡¢http://www.9iwuc.com/
@@ -84,8 +83,8 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 Ã»È¨ÏÞ:ºËÐÄ½»Á÷¡¢Õ¾Îñ´¦Àí-½»Ò×±¸·Ý¡¢Õ¾Îñ´¦Àí-ÁÙÊ±Í¶Æ±¡¢Õ¾Îñ´¦Àí-ID±¸°¸¡¢×ÉÑ¯½»Á÷-Ô­´´Ð¡×é¡¢Ì³±Ò½»Á÷-M±ÒÌáÏÖ¡¢
 ÒÑÅÀÍê
 ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
-ÕýÔÚ¼ì²é£ºÌ³±Ò½»Á÷¡¢
-ÒÑ¼ì²éÍê£º
+¼ì²é£ºÌ³±Ò½»Á÷¡¢
+¼ì²é½á¹û£º¿Õ¼ÇÂ¼µÄÔ­ÒòÊÇÌû×Ó±»·â±»É¾»òÔÄ¶ÁÈ¨ÏÞ²»¹»
 
 Ê®Èý¡¢www.6yyw.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
@@ -100,5 +99,8 @@ urllib2.urlopen() ÇëÇó²»µ½ÍøÒ³£¬Ô­ÒòÎ´Öª
 ÕýÔÚÅÀ£º°´idÀ´ÅÀ£¬1-166007ÕýÔÚkongwei-3ÉÏÅÀ
 ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
 
+Ê®Áù¡¢www.yjxsoft.com
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+ÕýÔÚÅÀ£º°´idÅÀ£¬1-6918ÕýÔÚkongwei-1ÉÏÅÀ
 
 

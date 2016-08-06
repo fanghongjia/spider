@@ -5,6 +5,7 @@ import urllib
 import urllib2
 import mimetools, mimetypes
 import os, stat
+import json
 
 class Callable:
     def __init__(self, anycallable):
@@ -89,12 +90,12 @@ def main(api_username,api_password,img_url,api_post_url,yzm_min='',yzm_max='',yz
                    "upload"          : open(temp[1], "rb")
                  }
 
-        print opener.open(validatorURL, params).read()
+        return opener.open(validatorURL, params).read()
 
-    validateFile(img_url)
+    return validateFile(img_url)
 
 if __name__=="__main__":
-    main('kongtianyi',
+    l = main('kongtianyi',
          'k1234567890',
          'http://www.kali.org.cn/plugin.php?id=cloudcaptcha:get&rand=W95f1MBSbj',
          "http://bbb4.hyslt.com/api.php?mod=php&act=upload",
@@ -102,7 +103,9 @@ if __name__=="__main__":
          '',
          '0',
          '')
-
+    print type(l)
+    s = json.loads(l)
+    print s['data']['val']
     '''
     main() 参数介绍
     api_username    （API账号）             --必须提供

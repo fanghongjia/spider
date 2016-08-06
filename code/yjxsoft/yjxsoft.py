@@ -19,18 +19,18 @@ sys.setdefaultencoding('utf-8')
 ----------------------相关全局变量---------------------
 '''
 # 爬取的网站域名
-domain = "bbs.125.la"
+domain = "www.yjxsoft.com"
 # 起始tid
-tid_start = 1177
+tid_start = 1
 # 6月30最后的tid
-tid_end = 13912083
+tid_end = 6918 #6917
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息
 mongodbHost = "172.29.152.230"
 mongodbPort = 27017
 db_name = "spider"
-coll_name = "bbs125"
+coll_name = "yjxsoft"
 
 '''
 ---------------------------------------------------------
@@ -45,7 +45,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "lDlk_ecc9_saltkey=ZJQz5lj0; lDlk_ecc9_lastvisit=1470395868; lDlk_ecc9_sid=A381e8; lDlk_ecc9_lastact=1470399514%09forum.php%09; lDlk_ecc9_sendmail=1; Hm_lvt_fa32dadde3745af309b587b38d20ea1d=1470399470; Hm_lpvt_fa32dadde3745af309b587b38d20ea1d=1470399516; lDlk_ecc9_ulastactivity=3b5dAWO7kvzHuDcG%2F%2Fd0zcitjHfpCrfanOQFxsz%2FHQxXAHKPO5oc; lDlk_ecc9_auth=ba27pUzFIwwrrTgeRTtK5LrL3Xen7AVwXwswIMThv5frRRAn8mSYJil8%2BnCGogg1OUJxQEKdAVkT6FYJBGrz0Qm9KxA; lDlk_ecc9_lastcheckfeed=363083%7C1470399485; lDlk_ecc9_lip=202.102.144.8%2C1470397927; lDlk_ecc9_connect_is_bind=0; lDlk_ecc9_nofavfid=1; lDlk_ecc9_onlineusernum=5782; lDlk_ecc9_myrepeat_rr=R0; lDlk_ecc9_nofocus_forum=1; tjpctrl=1470401288179; lDlk_ecc9_wx_from=8601ZdCNX8jSB%2BfVpEeMlOKbm0tFllWv27jSI4qT85hZMqN8D3r1"
+Cookie = "jAx7_2132_saltkey=V737RR0r; jAx7_2132_lastvisit=1470465448; jAx7_2132_seccode=69.24a87006164cf2776b; jAx7_2132_ulastactivity=d60fEMd7UwN5ZeOJBKu3gTEHuj4bWIzVx7m6ehcIXiwI6DcIWgQn; jAx7_2132_auth=0d63kRLvXdViX0G5W4fLrbvRbDGDrxEpVOHlTPPzLDH%2BTr1L9%2BCt%2FXR6s5LpN1BZyjdU5oy2GBqmwdyBFsmY%2Bo1o4Q; jAx7_2132_security_cookiereport=d704Mq%2B%2BskJVJS5EMrKjfWhlxu%2F7uPXhnE7PFssxEFWnLfHbzsPb; jAx7_2132_nofavfid=1; jAx7_2132_onlineusernum=2427; tjpctrl=1470471144808; jAx7_2132_sendmail=1; jAx7_2132_noticeTitle=1; jAx7_2132_st_t=20333%7C1470469380%7C844f515d7e9fe2282c10cf1a4fb6387f; jAx7_2132_forum_lastvisit=D_44_1470469380; jAx7_2132_visitedfid=44; jAx7_2132_st_p=20333%7C1470469384%7C932ecb7e98f529d56f41076debc118d7; jAx7_2132_viewid=tid_2231; jAx7_2132_sid=Rw5iW5; pgv_pvi=1100759428; pgv_info=ssi=s2543286912; Hm_lvt_617c51f1f00a88e38a46ac3c234fded2=1470469047; Hm_lpvt_617c51f1f00a88e38a46ac3c234fded2=1470469383; jAx7_2132_smile=1D1; jAx7_2132_lastact=1470469473%09forum.php%09ajax; jAx7_2132_connect_is_bind=0"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
@@ -56,7 +56,7 @@ opener.addheaders = [
 # opener = urllib2.build_opener(proxy_handler)
 urllib2.install_opener(opener)
 for k in range(tid_start, tid_end):
-    href = "http://" + domain +"/thread-" + str(k) + "-1-1.html"
+    href = "http://" + domain +"/forum.php?mod=viewthread&tid=" + str(k) + '&extra=page%3D1'
     try: 
         response2 = urllib2.urlopen(href)
         soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
@@ -113,7 +113,7 @@ for k in range(tid_start, tid_end):
     flag = True # 识别是不是楼主的flag
     for l in range(1, p_page_end+1):
         if(p_page_content != None):
-            p_page_url = p_page_url_init + str(l)
+            p_page_url = 'http://' + domain + '/' + p_page_url_init + str(l)
         else:
             p_page_url = href
         try:
