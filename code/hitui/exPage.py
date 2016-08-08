@@ -28,7 +28,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
         f.write(href + '    ----board or title bad')
         f.write('\n')
         f.close()
-        continue
+        return
     print title
     i = 1
     newItem = {} # 初始化一个新帖子字典
@@ -58,9 +58,9 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 author = posts[2*(j-1)].contents[1].contents[0].string
                 _time = compiled_time.search(str(posts[2*(j-1)+1])).group()
                 floor = '';
-                floor_flag = posts[2*(i-1)+1].contents[1].find(name = 'em')
+                floor_flag = posts[2*(j-1)+1].contents[1].find(name = 'em')
                 if floor_flag == None:
-                    floor = posts[2*(i-1)+1].find(name = 'a').text
+                    floor = posts[2*(j-1)+1].find(name = 'a').text
                 else:
                     floor = floor + floor_flag.text
             except:
@@ -86,6 +86,8 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 floor = '4'
             elif floor == u'\r\n硬地板':
                 floor = '5'
+            elif floor == u'\r\n嗨推小楼主':
+                floor = '0'
             elif floor == u'\r\n推荐\r\n':
                 floor = u'推荐' + str(rec)
                 rec = rec + 1
@@ -127,3 +129,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                     print "db update wrong"
             j += 1
         i += 1
+    f = open('needReply.txt','a')
+    f.write(href + '    ----finish')
+    f.write('\n')
+    f.close()

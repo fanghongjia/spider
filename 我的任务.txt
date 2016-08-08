@@ -66,7 +66,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 
 Ê®¡¢https://bingfeng.tw/
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
-ÓÐä¯ÀÀ¸¶¿î»úÖÆ£¬²»ÖªÊÇ·ñÒª³äÖµ
+ÓÐä¯ÀÀ¸¶¿î»úÖÆ£¬¶øÇÒ¹ÜÀíÔ±¹Ø±ÕÁË³äÖµ¹¦ÄÜ
 
 Ê®Ò»¡¢http://bbs.blackbap.org/
 ÄÜ´ò¿ªÁË£¬ÑûÇëÂëÎåÔª
@@ -97,10 +97,19 @@ urllib2.urlopen() ÇëÇó²»µ½ÍøÒ³£¬Ô­ÒòÎ´Öª
 Ê®Îå¡¢bbs.ihitui.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ÕýÔÚÅÀ£º°´idÀ´ÅÀ£¬1-166007ÕýÔÚkongwei-3ÉÏÅÀ
+ÓÐ²¿·ÖÐèÒªÖ§¸¶½ð±Ò²ÅÄÜ·ÃÎÊÍêÈ«µÄÌû×Ó£¬Òò×îµÍ³äÖµ½ð¶îÎª100Ôª£¬Î´³äÖµ
 ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
 
 Ê®Áù¡¢www.yjxsoft.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
-ÕýÔÚÅÀ£º°´idÅÀ£¬1-6918ÕýÔÚkongwei-1ÉÏÅÀ
+ÕýÔÚÅÀ£º°´idÅÀ£¬1-6918,ÒÑÅÀÍê
+ÓÃ»§ÐÅÏ¢1-20332ÒÑÅÀÍê
+badurlÀï³öÏÈ×÷ÕßÊ±¼äÂ¥²ãÐÅÏ¢´íÎó£¬¾­¼ì²é£¬ÊÇÒòÎª³öÏÖÁËÄäÃû·¢ÌûµÄÂ¥²ã£¬ÒÑ¾­Í¨¹ý´úÂë½â¾ö
+
+Ê®Æß¡¢bbs.duoduo123.com
+ÕËºÅÃÜÂë:kongtianyi/k1234567890
+»Ø¸´ÐèÒªÑéÖ¤Âë£¬µ«ÊÇ¾­¹ý³éÑùµ÷²é£¬Ã»ÓÐ·¢ÏÖÐèÒª»Ø¸´µÄÌû×Ó£¬ËùÒÔ¿ªÊ¼ÅÀ£¬ÔÚ³é²éÖÐ·¢ÏÖ¡®³ÌÐò¼°²¹¶¡·¢²¼¡¯°å¿éÖÐÌáÊ¾ÓÃ»§×éÎÞ·¨·ÃÎÊ¸½¼þ£¬µ«ÊÇÎÞÉË´óÑÅ£¬ÒòÎªÎÒÃÇ²»ÅÀ¸½¼þ¡£
+ÕýÔÚ¸ù¾ÝtidÅÀ£¬1-210892ÔÚkongwei-1ÉÏ
+ÓÃ»§ÐÅÏ¢1-236593ÐèÒª¸ø¡®Ö°Î»¡¯Æð¸öÃû
 
 

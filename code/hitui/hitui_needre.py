@@ -19,18 +19,12 @@ sys.setdefaultencoding('utf-8')
 ----------------------相关全局变量---------------------
 '''
 # 爬取的网站域名
-domain = "www.yjxsoft.com"
-# 起始tid
-tid_start = 3985
-# 6月30最后的tid
-tid_end = 3986 #6917
-# 代理服务器
-# proxy_server = 'http://121.9.221.188'
+domain = "bbs.hitui.com"
 # 数据库信息
 mongodbHost = "172.29.152.230"
 mongodbPort = 27017
 db_name = "spider"
-coll_name = "yjxsoft"
+coll_name = "hitui"
 
 '''
 ---------------------------------------------------------
@@ -45,18 +39,16 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "jAx7_2132_saltkey=SH9S3BiD; jAx7_2132_lastvisit=1470466695; jAx7_2132_sid=bsGFfF; jAx7_2132_lastact=1470470311%09misc.php%09patch; jAx7_2132_sendmail=1; pgv_pvi=3567020556; pgv_info=ssi=s7870907270; Hm_lvt_617c51f1f00a88e38a46ac3c234fded2=1470470302; Hm_lpvt_617c51f1f00a88e38a46ac3c234fded2=1470470312; jAx7_2132_ulastactivity=a9e9ayZEGkLSNUD9HPj6IzonCGPF7W9ff13P1Jg8g1HPPL7Vt5dS; jAx7_2132_auth=4beaw%2BDjuCfmv54SysdJQkAWMXZlr%2FB0bBkHfj%2BFop9tysLbkuae6J5dU4YEZZHu35p1LBXpKkiyVkQRnsFZRtAnyQ; jAx7_2132_lastcheckfeed=20333%7C1470470310; jAx7_2132_checkfollow=1; jAx7_2132_lip=221.2.164.39%2C1470469327; jAx7_2132_security_cookiereport=c453G5Opn2kxtPMmycxYd%2B73Sb%2F%2BJiyB8kNEvmQAWABGxPOLHIQ0; jAx7_2132_connect_is_bind=0; jAx7_2132_nofavfid=1; jAx7_2132_onlineusernum=2408; jAx7_2132_checkpm=1"
+Cookie = "EZjx_2702_saltkey=h12fv4zc; EZjx_2702_lastvisit=1470294099; EZjx_2702_lastact=1470390256%09home.php%09spacecp; pgv_pvi=4129653915; CNZZDATA3903802=cnzz_eid%3D2011534033-1470295847-%26ntime%3D1470388602; EZjx_2702_ulastactivity=1470390255%7C0; EZjx_2702_auth=fa75tnQTvzR%2FRahh8T3%2BQCRPJ6au5OiAf3M5AuEtrNDq58rcAuKygaYxm3gUGX2sbjSf5OOh85vUDHabHHALuQt2pRM; EZjx_2702_lastcheckfeed=100675%7C1470297720; EZjx_2702_connect_is_bind=0; EZjx_2702_nofavfid=1; pgv_info=ssi=s2607197906; EZjx_2702_st_t=100675%7C1470390255%7C8cea278cac363d8d7ea0f77c8b5bb304; EZjx_2702_atarget=1; EZjx_2702_forum_lastvisit=D_2_1470390255; EZjx_2702_visitedfid=2; EZjx_2702_sendmail=1; pt_s_6f8e3865=vt=1470390259576&cad=; pt_6f8e3865=uid=kf5yj9gZYt6TIok17clb0A&nid=0&vid=wM3rhQndU/rpmWl2G6RirA&vn=3&pvn=2&sact=1470390259576&to_flag=0&pl=qJHZlZD7hBqK7mVSxe9lCQ*pt*1470390259576; tjpctrl=1470392059743"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
     ('Connection','keep-alive')
     ]
-# 以下两行用于设置代理，一般情况下无需使用
-# proxy_handler = urllib2.ProxyHandler({'http':proxy_server})
-# opener = urllib2.build_opener(proxy_handler)
 urllib2.install_opener(opener)
-for k in range(tid_start, tid_end):
-    href = "http://" + domain +"/forum.php?mod=viewthread&tid=" + str(k) + '&extra=page%3D1'
+file_obj = open('needReply.txt','r')
+for line in file_obj:
+    href = line
     try: 
         response2 = urllib2.urlopen(href)
         soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
@@ -70,7 +62,13 @@ for k in range(tid_start, tid_end):
     hidden = soup2.find(attrs={'class':'locked'})
     if hidden != None:
         if hidden.find(name='a') != None:
-            doReply(href, domain, Cookie)
+            if hidden.find(name = 'a').text == u'回复':
+                doReply(href, domain, Cookie)
+            else:
+                f = open('needPayUrl.txt','a')
+                f.write(href)
+                f.write('\n')
+                f.close
     try:
         p_page_content = soup2.find(attrs={'class':'pgt'}).find(attrs={'class':'pg'})
     except:
@@ -82,7 +80,7 @@ for k in range(tid_start, tid_end):
         continue
     if(p_page_content != None):
         try:
-            p_page_url_init = p_page_content.find(name = 'a').get('href')[:-1]
+            p_page_url_init = p_page_content.find(name = 'a').get('href')[:-8]
         except:
             print "bad url!"
             f = open('badurl.txt','a')
@@ -113,7 +111,7 @@ for k in range(tid_start, tid_end):
     flag = True # 识别是不是楼主的flag
     for l in range(1, p_page_end+1):
         if(p_page_content != None):
-            p_page_url = 'http://' + domain + '/' + p_page_url_init + str(l)
+            p_page_url = "http://" + domain + "/" + p_page_url_init + str(l) + "-1.html"
         else:
             p_page_url = href
         try:
@@ -133,15 +131,12 @@ for k in range(tid_start, tid_end):
         rec = 1 #　推荐楼层的标号，防止覆盖
         for post_contents in posts_contents:
             try:
-                try:
-                    author = posts[2*(i-1)].contents[1].contents[0].string
-                except:
-                    author = (posts[2*(i-1)].text)[2:] #处理匿名的情况
+                author = posts[2*(i-1)].contents[1].contents[0].string
                 _time = compiled_time.search(str(posts[2*(i-1)+1])).group()
                 floor = ''
                 floor_flag = posts[2*(i-1)+1].find(name = 'strong').find(name = 'em') # 老版本根据contents有黄牌警告会出错
                 if floor_flag == None:
-                    floor = posts[2*(i-1)+1].find(name = 'strong').find(name = 'a').text # for card
+                    floor = posts[2*(i-1)+1].find(name = 'strong').find(name = 'a').text
                 else:
                     floor = floor + floor_flag.text
             except:
@@ -159,21 +154,20 @@ for k in range(tid_start, tid_end):
             lines = lines.strip()
             print lines
             # 整理数据
-            if floor == u'\r\n沙发':
+            if floor == u'\r\n楼主软沙发':
                 floor = '2'
-            elif floor == u'\r\n板凳':
+            elif floor == u'\r\n楼主硬板床':
                 floor = '3'
-            elif floor == u'\r\n地板':
+            elif floor == u'\r\n软地毯':
                 floor = '4'
-            elif floor == u'\r\n地下':
+            elif floor == u'\r\n硬地板':
                 floor = '5'
-            elif floor == u'\r\n楼主':
+            elif floor == u'\r\n嗨推小楼主':
                 floor = '0'
             elif floor == u'\r\n推荐\r\n':
                 floor = u'推荐' + str(rec)
                 rec = rec + 1
             elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
-                print floor
                 compiled_floor = re.compile(r'[0-9]+')
                 floor = compiled_floor.search(floor).group()
             if(i == 1 and flag == True):
@@ -214,4 +208,9 @@ for k in range(tid_start, tid_end):
         f.write('\n')
         f.close()
         print "ERROR:数据库存储错误！"
-print "网站" + domain + " 爬取结束！"
+    f = open('needReply.txt','a')
+    f.write(href + '    ----finish')
+    f.write('\n')
+    f.close()
+file_obj.close()
+print domain + "'s url needReply 爬取结束！"

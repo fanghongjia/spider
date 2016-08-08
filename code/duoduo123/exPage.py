@@ -15,7 +15,7 @@ reload(sys)
 print sys.getdefaultencoding()
 sys.setdefaultencoding('utf-8')
 
-def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
+def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init, tid):
     urllib2.install_opener(opener)
     # 用于匹配日期的正则表达式
     compiled_time = re.compile(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+')
@@ -36,7 +36,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
     for l in range(1, p_page_end):
         if l == 0:
             continue
-        p_page_url = 'http://' + domain + '/' + p_page_url_init + str(l)
+        p_page_url = p_page_url_init + str(l) + "-1-" + str(tid) + ".html"
         try:
             response3 = urllib2.urlopen(p_page_url)
             soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
@@ -87,8 +87,6 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 floor = '3'
             elif floor == u'\r\n地板':
                 floor = '4'
-            elif floor == u'\r\n地下':
-                floor = '5'
             elif floor == u'\r\n推荐\r\n':
                 floor = u'推荐' + str(rec)
                 rec = rec + 1
@@ -99,7 +97,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 first_floor = {
                     'author':author,
                     'title':title,
-                    'floor':1,
+                    'floor':'1',
                     'content':lines,
                     'href':href,
                     'board':board,
