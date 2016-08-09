@@ -100,7 +100,9 @@ def downloadinfo(url, domain, Cookie, coll):
                         value = _as[i].string
                     elif key == u'扩展用户组':
                         key = 'ExLevelUserGroup'
-                        value = li.find(name = 'font').text
+                        value = li.text
+                        tmp = em.text
+                        value = value.replace(tmp, '')
                     print key, '->', value
                     user[key] = value
                     i = i + 1

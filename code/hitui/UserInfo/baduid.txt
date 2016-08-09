@@ -93,7 +93,6 @@ http://bbs.hitui.com/home.php?mod=space&uid=20061&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=20062&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=20063&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=20564&do=profile  ----无此UID
-http://bbs.hitui.com/home.php?mod=space&uid=20691&do=profile  ----need cheek
 http://bbs.hitui.com/home.php?mod=space&uid=21171&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=21272&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=21439&do=profile  ----无此UID
@@ -103,7 +102,6 @@ http://bbs.hitui.com/home.php?mod=space&uid=21972&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=21999&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=22149&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=22550&do=profile  ----无此UID
-http://bbs.hitui.com/home.php?mod=space&uid=22984&do=profile  ----need cheek
 http://bbs.hitui.com/home.php?mod=space&uid=23525&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=23865&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=23882&do=profile  ----无此UID
@@ -149,9 +147,7 @@ http://bbs.hitui.com/home.php?mod=space&uid=51816&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=51817&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=51818&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=55907&do=profile  ----无此UID
-http://bbs.hitui.com/home.php?mod=space&uid=58872&do=profile  ----need cheek
 http://bbs.hitui.com/home.php?mod=space&uid=66338&do=profile  ----无此UID
-http://bbs.hitui.com/home.php?mod=space&uid=68954&do=profile  ----need cheek
 http://bbs.hitui.com/home.php?mod=space&uid=71177&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=71264&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=71336&do=profile  ----无此UID
@@ -223,7 +219,6 @@ http://bbs.hitui.com/home.php?mod=space&uid=75678&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=75719&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=75722&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=75724&do=profile  ----无此UID
-http://bbs.hitui.com/home.php?mod=space&uid=75776&do=profile  ----need cheek
 http://bbs.hitui.com/home.php?mod=space&uid=75955&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=75958&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=75969&do=profile  ----无此UID
@@ -263,6 +258,3 @@ http://bbs.hitui.com/home.php?mod=space&uid=90502&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=90597&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=90690&do=profile  ----无此UID
 http://bbs.hitui.com/home.php?mod=space&uid=90698&do=profile  ----无此UID
-http://bbs.hitui.com/home.php?mod=space&uid=94179&do=profile  ----need cheek
-http://bbs.hitui.com/home.php?mod=space&uid=94180&do=profile  ----need cheek
-http://bbs.hitui.com/home.php?mod=space&uid=94181&do=profile  ----need cheek

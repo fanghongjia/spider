@@ -35,7 +35,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 ÕËºÅÃÜÂë£ºkongtianyi2/
 ÒÑÅÀÈ¡£ºÐÂÈË½»Á÷Çø¡¢ÐüÉÍÎÊ´ð¡¢Òµ½ç×ÊÑ¶¡¢ÆÀÂÛ¡¢¶ÁÊéÆµµÀÆÀÂÛ¡¢É±¶¾Èí¼þ×¨Çø¡¢µçÄÔ°²È«¡¢ÍøÕ¾°²È«¡¢ÍøÕ¾½¨Éè¡¢¼ÓÃÜ½âÃÜ¼¼Êõ¡¢Èí¼þ±à³Ì¿ª·¢¡¢Ò×ÓïÑÔ½»Á÷¡¢Web¿ª·¢¡¢Êý¾Ý¿â¡¢Î¢ÐÅ¹«ÖÚÆ½Ì¨¿ª·¢¡¢Î¢ÐÅÓªÏú¡¢ÏµÍ³¼¼Êõ¡¢ÍøÂç¼¼Êõ¡¢QQ²¿Âä¡¢QQ×ÊÑ¶¡¢QQ±íÇéÍ·Ïñ¡¢QQ¿Õ¼ä×¨°æ¡¢Ó²¼þÏà¹Ø¡¢Ñ§Ï°×ÊÁÏÏÂÔØ¡¢ÍøÕ¾Ô´Âë¡¢ÍøÂç×¬Ç®°æ¡¢ÂÛÌ³¹ÜÀíÇø¡¢»î¶¯&¶Ò½±Çø¡¢ÒÑ½â¾öÎÊÌâ£¨±¸²éÇø£©¡¢ºìºÚ²èÉç
 Ê§°Ü£ºÔ­´´×÷Æ··¢²¼£¨ÐèÈÏÖ¤£©¡¢VIP°å¿é£¨ÐèÈÏÖ¤£©¡¢¹ÜÀíÍÅ¶Ó°æ£¨ÐèÈÏÖ¤£©
-ÓÃ»§×ÊÁÏÕýÔÚkongwei-4ÉÏÅÀ
+ÓÃ»§×ÊÁÏÒÑÅÀÍê£¬¼ì²éÍê±Ï
 
 ËÄ¡¢http://bbs.77169.com/
 ÕËºÅÃÜÂë(Ã»ÑûÇëÂë)£ºKk1234567890+
@@ -45,7 +45,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 Îå¡¢http://www.kali.org.cn/
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 »Ø¸´ÐèÑéÖ¤Âë
-ÓÃ»§ÐÅÏ¢ÕýÔÚkongwei-2ÉÏÅÀ
+ÓÃ»§ÐÅÏ¢ÅÀÍêÁË
 
 Áù¡¢http://www.52fzba.com/
 ÕËºÅÃÜÂë£ºnancunshijian/nancunshijian
@@ -82,7 +82,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 ÒÑÅÀÍê£º°¬Ã×¹«¸æ¡¢¹«¸æ±¸·Ý¡¢ÀúÊ·¹«¸æ¡¢´¦·£Í¨¸æ¡¢Î¬È¨Í¶Ëß¡¢ÉêÇë×¨À¸¡¢ÐÂÊÖÎÊ´ð¡¢Õ¾Îñ´¦Àí¡¢¹ã¸æ×¨ÓÃ¡¢³¬¼¶½»Ò×1-501¡¢³¬¼¶½»Ò×801-1000¡¢³õ¼¶½»Ò×¡¢É¹ºÅÆÀ¹À¡¢³É½»È·ÈÏ¡¢ºÏ×÷·µÓ¶¡¢½»Ò×ÖÐ½é¡¢ÊµÎïÉÌÆ·¡¢Ì³±Ò½»Á÷¡¢×ÊÑ¶½»Á÷¡¢×ÊÑ¶½»Á÷-QQhelperÏµÁÐ¡¢ÊÖ»ú×ÊÔ´¡¢cnangel×¨Çø¡¢¾«²Ê×ªÌû¡¢ÉÌÒµÈí¼þ¡¢ÍøÂç»î¶¯¡¢»áÔ±Ô­´´¡¢½¨Õ¾×ÊÔ´¡¢°¬Ã×ÔÓÌ¸¡¢Çé¸ÐÐ¡Öþ¡¢ÌåÓý¾º²Â¡¢Ì¸¹ÉÂÛ½ð¡¢»áÔ±·ç²É¡¢°¬Ã×ËêÔÂ¡¢·ÀÆ­½»Á÷¡¢ÓÎÏ·´óÌü
 Ã»È¨ÏÞ:ºËÐÄ½»Á÷¡¢Õ¾Îñ´¦Àí-½»Ò×±¸·Ý¡¢Õ¾Îñ´¦Àí-ÁÙÊ±Í¶Æ±¡¢Õ¾Îñ´¦Àí-ID±¸°¸¡¢×ÉÑ¯½»Á÷-Ô­´´Ð¡×é¡¢Ì³±Ò½»Á÷-M±ÒÌáÏÖ¡¢
 ÒÑÅÀÍê
-ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
+ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê£¬ÒÑ¼ì²é
 ¼ì²é£ºÌ³±Ò½»Á÷¡¢
 ¼ì²é½á¹û£º¿Õ¼ÇÂ¼µÄÔ­ÒòÊÇÌû×Ó±»·â±»É¾»òÔÄ¶ÁÈ¨ÏÞ²»¹»
 
@@ -98,12 +98,12 @@ urllib2.urlopen() ÇëÇó²»µ½ÍøÒ³£¬Ô­ÒòÎ´Öª
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ÕýÔÚÅÀ£º°´idÀ´ÅÀ£¬1-166007ÕýÔÚkongwei-3ÉÏÅÀ
 ÓÐ²¿·ÖÐèÒªÖ§¸¶½ð±Ò²ÅÄÜ·ÃÎÊÍêÈ«µÄÌû×Ó£¬Òò×îµÍ³äÖµ½ð¶îÎª100Ôª£¬Î´³äÖµ
-ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
+ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê,baduidÒ²´¦ÀíÍêÁË
 
 Ê®Áù¡¢www.yjxsoft.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ÕýÔÚÅÀ£º°´idÅÀ£¬1-6918,ÒÑÅÀÍê
-ÓÃ»§ÐÅÏ¢1-20332ÒÑÅÀÍê
+ÓÃ»§ÐÅÏ¢1-20332ÒÑÅÀÍê£¬ÒÑ¼ì²éÍê
 badurlÀï³öÏÈ×÷ÕßÊ±¼äÂ¥²ãÐÅÏ¢´íÎó£¬¾­¼ì²é£¬ÊÇÒòÎª³öÏÖÁËÄäÃû·¢ÌûµÄÂ¥²ã£¬ÒÑ¾­Í¨¹ý´úÂë½â¾ö
 
 Ê®Æß¡¢bbs.duoduo123.com
@@ -111,5 +111,17 @@ badurlÀï³öÏÈ×÷ÕßÊ±¼äÂ¥²ãÐÅÏ¢´íÎó£¬¾­¼ì²é£¬ÊÇÒòÎª³öÏÖÁËÄäÃû·¢ÌûµÄÂ¥²ã£¬ÒÑ¾­Í¨¹ý´ú
 »Ø¸´ÐèÒªÑéÖ¤Âë£¬µ«ÊÇ¾­¹ý³éÑùµ÷²é£¬Ã»ÓÐ·¢ÏÖÐèÒª»Ø¸´µÄÌû×Ó£¬ËùÒÔ¿ªÊ¼ÅÀ£¬ÔÚ³é²éÖÐ·¢ÏÖ¡®³ÌÐò¼°²¹¶¡·¢²¼¡¯°å¿éÖÐÌáÊ¾ÓÃ»§×éÎÞ·¨·ÃÎÊ¸½¼þ£¬µ«ÊÇÎÞÉË´óÑÅ£¬ÒòÎªÎÒÃÇ²»ÅÀ¸½¼þ¡£
 ÕýÔÚ¸ù¾ÝtidÅÀ£¬1-210892ÔÚkongwei-1ÉÏ
 ÓÃ»§ÐÅÏ¢1-236593ÐèÒª¸ø¡®Ö°Î»¡¯Æð¸öÃû
+
+Ê®°Ë¡¢www.52dfg.com
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+»Ø¸´ÐèÒªµã»÷Í¼Æ¬ÑéÖ¤Âë
+
+Ê®¾Å¡¢bbs.eyuyan.com
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+ÂÛÌ³¿ªÆôÁË·ÀCC¹¥»÷£¬ÄÜÊ¶±ð»úÆ÷·ÃÎÊ£¬½ø¶ø·µ»ØForbidden, Please turn off CCÒ³
+
+¶þÊ®¡¢bbs.qqsky.net
+¹ºÂòÑéÖ¤ÂëÖÐ
+
 
 
