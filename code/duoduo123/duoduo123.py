@@ -21,9 +21,9 @@ sys.setdefaultencoding('utf-8')
 # 爬取的网站域名
 domain = "bbs.duoduo123.com"
 # 起始tid
-tid_start = 1
+tid_start = 86881
 # 6月30最后的tid
-tid_end = 210892 #6.30 -> 210892
+tid_end = 86882 #6.30 -> 210892
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息
@@ -45,7 +45,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "EZjx_2702_saltkey=h12fv4zc; EZjx_2702_lastvisit=1470294099; EZjx_2702_lastact=1470390256%09home.php%09spacecp; pgv_pvi=4129653915; CNZZDATA3903802=cnzz_eid%3D2011534033-1470295847-%26ntime%3D1470388602; EZjx_2702_ulastactivity=1470390255%7C0; EZjx_2702_auth=fa75tnQTvzR%2FRahh8T3%2BQCRPJ6au5OiAf3M5AuEtrNDq58rcAuKygaYxm3gUGX2sbjSf5OOh85vUDHabHHALuQt2pRM; EZjx_2702_lastcheckfeed=100675%7C1470297720; EZjx_2702_connect_is_bind=0; EZjx_2702_nofavfid=1; pgv_info=ssi=s2607197906; EZjx_2702_st_t=100675%7C1470390255%7C8cea278cac363d8d7ea0f77c8b5bb304; EZjx_2702_atarget=1; EZjx_2702_forum_lastvisit=D_2_1470390255; EZjx_2702_visitedfid=2; EZjx_2702_sendmail=1; pt_s_6f8e3865=vt=1470390259576&cad=; pt_6f8e3865=uid=kf5yj9gZYt6TIok17clb0A&nid=0&vid=wM3rhQndU/rpmWl2G6RirA&vn=3&pvn=2&sact=1470390259576&to_flag=0&pl=qJHZlZD7hBqK7mVSxe9lCQ*pt*1470390259576; tjpctrl=1470392059743"
+Cookie = "7nwq_2132_saltkey=R77Y4CAf; 7nwq_2132_lastvisit=1470627160; 7nwq_2132_nofavfid=1; 7nwq_2132_atarget=1; 7nwq_2132_forum_lastvisit=D_109_1470630908D_96_1470630913D_85_1470631170D_80_1470631245D_66_1470631249D_107_1470631269D_93_1470631304D_102_1470631366D_37_1470631393D_69_1470636908D_64_1470637436D_78_1470637460D_20_1470638910D_24_1470642926; 7nwq_2132_visitedfid=20D96D24D64D85D78D109D69D37D102; 7nwq_2132_sendmail=1; 7nwq_2132_ulastactivity=ec61onsTKZ%2BWZjcpvnNCc%2BqTaxlPxHMFOd%2FgLk%2FVWNT7mgQTwdHZ; 7nwq_2132_auth=3454ypSoe8vsqJTxbESHOTRrR7RSJL1SMvTfZ2dpDhuC5sp0HCN94E%2FrN3z3mjJNjf20%2Br6TGjUw1Dyl3UN%2BTWl3V%2F0; 7nwq_2132_lastcheckfeed=236593%7C1470812944; 7nwq_2132_lip=221.2.164.39%2C1470812944; 7nwq_2132_st_p=236593%7C1470812947%7Cd565fb0c34514ced6c873a996c807ca3; 7nwq_2132_viewid=tid_195545; 7nwq_2132_sid=X1TERG; pgv_pvi=2071432625; pgv_info=ssi=s8113139118; 7nwq_2132_smile=1D1; 7nwq_2132_seccode=773.da950a2c25dde94a5e; 7nwq_2132_lastact=1470812949%09misc.php%09patch; 7nwq_2132_connect_is_bind=0"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
@@ -122,6 +122,7 @@ for k in range(tid_start, tid_end):
             p_page_url = href
         try:
             response3 = urllib2.urlopen(p_page_url)
+            time.sleep(3)
             soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
             print 'located at ' + p_page_url
         except:
@@ -131,6 +132,7 @@ for k in range(tid_start, tid_end):
             f.close()
             continue
         posts = soup3.findAll(attrs={'class': 'pi'})
+        print soup3
         posts_contents = soup3.findAll(attrs={'class': 't_f'})
         # 以下循环将正文部分处理成一整个字符串形式
         i = 1

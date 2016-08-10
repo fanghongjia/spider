@@ -21,7 +21,7 @@ sys.setdefaultencoding('utf-8')
 # 爬取的网站域名
 domain = "bbs.hitui.com"
 # 起始tid
-tid_start = 47332
+tid_start = 147371
 # 6月30最后的tid
 tid_end = 166008
 # 代理服务器
@@ -176,6 +176,13 @@ for k in range(tid_start, tid_end):
             elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
                 compiled_floor = re.compile(r'[0-9]+')
                 floor = compiled_floor.search(floor).group()
+            else:
+                print "ERROR:specific floor！"
+                f = open('badurl.txt','a')
+                f.write(p_page_url + '    ----specific floor')
+                f.write('\n')
+                f.close()
+                continue
             if(i == 1 and flag == True):
                 first_floor = {
                     'author':author,

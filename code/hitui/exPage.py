@@ -94,6 +94,13 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
             elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
                 compiled_floor = re.compile(r'[0-9]+')
                 floor = compiled_floor.search(floor).group()
+            else:
+                print "ERROR:specific floor！"
+                f = open('badurl.txt','a')
+                f.write(p_page_url + '    ----specific floor')
+                f.write('\n')
+                f.close()
+                continue
             if(i == 1 and flag == True):
                 first_floor = {
                     'author':author,
@@ -129,7 +136,3 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                     print "db update wrong"
             j += 1
         i += 1
-    f = open('needReply.txt','a')
-    f.write(href + '    ----finish')
-    f.write('\n')
-    f.close()
