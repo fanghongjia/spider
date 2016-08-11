@@ -15,13 +15,19 @@ reload(sys)
 print sys.getdefaultencoding()
 sys.setdefaultencoding('utf-8')
 
-def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
+def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init, tid):
     urllib2.install_opener(opener)
     # 用于匹配日期的正则表达式
     compiled_time = re.compile(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+')
+    ISOTIMEFORMAT = '%Y-%m-%d %X'
+    spider_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
+    hm = soup.find(attrs = {'class':'hm'})
+    p_num = re.findall(r'[0-9]+', hm.text, re.I)
+    p_look_num = p_num[0]
+    p_rep_num = p_num[1]
     try:
-        board = soup.find(attrs = {'class':'bm cl'}).findAll(name = 'a')[-2].text
-        title = soup.find(attrs = {'id':'thread_subject'}).text
+        board = soup.find(attrs = {'id':'nav'}).findAll(name = 'a')[1].text
+        title = soup.find(attrs = {'id':'nav'}).findAll(name = 'a')[2].text
     except:
         print "bad url!"
         f = open('badurl.txt','a')
@@ -36,7 +42,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
     for l in range(1, p_page_end):
         if l == 0:
             continue
-        p_page_url = 'http://' + domain + '/' + p_page_url_init + str(l)
+        p_page_url = p_page_url_init + str(tid) + "-" + str(l) + ".aspx?forumpage=1&typeid=-1"
         try:
             response3 = urllib2.urlopen(p_page_url)
             soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
@@ -48,26 +54,19 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
             f.write('\n')
             f.close()
             continue
-        posts = soup3.findAll(attrs={'class': 'pi'})
-        posts_contents = soup3.findAll(attrs={'class': 't_f'})
+        authors = soup3.findAll(attrs = {'class':'poster'})
+        _times = soup3.findAll(attrs = {'class':'postinfo'})
+        posts_contents = soup3.findAll(attrs={'class': 't_msgfont'})
         # 以下循环将正文部分处理成一整个字符串形式
         j = 1
-        rec = 1 # 推荐楼层的标号，防止覆盖
         for post_contents in posts_contents:
             try:
-                try:
-                    author = posts[2*(i-1)].contents[1].contents[0].string
-                except:
-                    author = (posts[2*(i-1)].text)[2:]
-                _time = compiled_time.search(str(posts[2*(j-1)+1])).group()
-                floor = '';
-                floor_flag = posts[2*(j-1)+1].contents[1].find(name = 'em')
-                if floor_flag == None:
-                    floor = posts[2*(j-1)+1].find(name = 'strong').find(name = 'a').text
-                else:
-                    floor = floor + floor_flag.text
+                author = authors[j-1].text
+                author = author.replace('\n', '')
+                _time = _times[j-1].text
+                _time = compiled_time.search(_time).group()
             except:
-                print "ERROR:获取作者、时间、楼层出错！"
+                print "ERROR:获取作者、时间出错！"
                 f = open('badurl.txt', 'a')
                 f.write(p_page_url + '    ----author or time or floor bad')
                 f.write('\n')
@@ -81,20 +80,6 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
             lines = lines.strip()
             print lines
             # 整理数据
-            if floor == u'\r\n沙发':
-                floor = '2'
-            elif floor == u'\r\n板凳':
-                floor = '3'
-            elif floor == u'\r\n地板':
-                floor = '4'
-            elif floor == u'\r\n地下':
-                floor = '5'
-            elif floor == u'\r\n推荐\r\n':
-                floor = u'推荐' + str(rec)
-                rec = rec + 1
-            elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
-                compiled_floor = re.compile(r'[0-9]+')
-                floor = compiled_floor.search(floor).group()
             if(i == 1 and flag == True):
                 first_floor = {
                     'author':author,
@@ -113,10 +98,10 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 other_floor = {
                     'content':lines,
                     'time':_time,
-                    'floor':floor,
+                    'floor':i,
                     'author':author
                 }
-                newItem[floor] = other_floor
+                newItem[str(i)] = other_floor
             if i == 1:
                 try:
                     coll.insert(newItem)
@@ -129,4 +114,4 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 except:
                     print "db update wrong"
             j += 1
-        i += 1
+            i += 1
