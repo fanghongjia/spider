@@ -20,8 +20,8 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
     # 用于匹配日期的正则表达式
     compiled_time = re.compile(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+')
     try:
-        board = soup2.find(attrs = {'class':'bm cl'}).findAll(name = 'a')[-2].text
-        title = soup2.find(attrs = {'id':'thread_subject'}).text
+        board = soup.find(attrs = {'class':'bm cl'}).findAll(name = 'a')[-2].text
+        title = soup.find(attrs = {'id':'thread_subject'}).text
     except:
         print "bad url!"
         f = open('badurl.txt','a')
@@ -33,10 +33,11 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
     i = 1
     newItem = {} # 初始化一个新帖子字典
     flag = True # 识别是不是楼主的flag
+    floor = 0
     for l in range(1, p_page_end):
         if l == 0:
             continue
-        p_page_url = "http://" + domain + "/" + p_page_url_init + str(l) + "-1.html"
+        p_page_url = p_page_url_init + str(l)
         try:
             response3 = urllib2.urlopen(p_page_url)
             soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
@@ -57,12 +58,6 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
             try:
                 author = posts[2*(j-1)].contents[1].contents[0].string
                 _time = compiled_time.search(str(posts[2*(j-1)+1])).group()
-                floor = '';
-                floor_flag = posts[2*(j-1)+1].contents[1].find(name = 'em')
-                if floor_flag == None:
-                    floor = posts[2*(j-1)+1].find(name = 'a').text
-                else:
-                    floor = floor + floor_flag.text
             except:
                 print "ERROR:获取作者、时间、楼层出错！"
                 f = open('badurl.txt', 'a')
@@ -77,34 +72,17 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
             lines = re.sub('<(.*?)>', '', lines)
             lines = lines.strip()
             print lines
-            # 整理数据
-            if floor == u'\r\n楼主软沙发':
-                    floor = '2'
-            elif floor == u'\r\n楼主硬板床':
-                floor = '3'
-            elif floor == u'\r\n软地毯':
-                floor = '4'
-            elif floor == u'\r\n硬地板':
-                floor = '5'
-            elif floor == u'\r\n嗨推小楼主':
-                floor = '0'
-            elif floor == u'\r\n推荐\r\n':
-                floor = u'推荐' + str(rec)
-                rec = rec + 1
-            elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
-                compiled_floor = re.compile(r'[0-9]+')
-                floor = compiled_floor.search(floor).group()
             if(i == 1 and flag == True):
                 first_floor = {
                     'author':author,
                     'title':title,
-                    'floor':1,
+                    'floor':floor,
                     'content':lines,
                     'href':href,
                     'board':board,
                     'time':_time
                 }
-                _title = title.string
+                _title = title
                 print "爬到",_time,title,"了"
                 newItem['1'] = first_floor
                 flag = False
@@ -128,8 +106,5 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 except:
                     print "db update wrong"
             j += 1
+            floor += 1
         i += 1
-    f = open('needReply.txt','a')
-    f.write(href + '    ----finish')
-    f.write('\n')
-    f.close()

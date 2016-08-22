@@ -21,16 +21,16 @@ sys.setdefaultencoding('utf-8')
 # 爬取的网站域名
 domain = "bbs.125.la"
 # 起始tid
-tid_start = 1177
+tid_start = 1
 # 6月30最后的tid
-tid_end = 13912083
+tid_end = 50
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息
 mongodbHost = "172.29.152.230"
 mongodbPort = 27017
-db_name = "spider"
-coll_name = "bbs125"
+db_name = "test"
+coll_name = "bbs125_test_simple"
 
 '''
 ---------------------------------------------------------
@@ -55,6 +55,7 @@ opener.addheaders = [
 # proxy_handler = urllib2.ProxyHandler({'http':proxy_server})
 # opener = urllib2.build_opener(proxy_handler)
 urllib2.install_opener(opener)
+time1 = time.time()
 for k in range(tid_start, tid_end):
     href = "http://" + domain +"/thread-" + str(k) + "-1-1.html"
     try: 
@@ -111,6 +112,7 @@ for k in range(tid_start, tid_end):
         continue
     newItem = {} # 初始化一个新帖子字典
     flag = True # 识别是不是楼主的flag
+    floor = 1
     for l in range(1, p_page_end+1):
         if(p_page_content != None):
             p_page_url = p_page_url_init + str(l)
@@ -130,17 +132,10 @@ for k in range(tid_start, tid_end):
         posts_contents = soup3.findAll(attrs={'class': 't_f'})
         # 以下循环将正文部分处理成一整个字符串形式
         i = 1
-        rec = 1 #　推荐楼层的标号，防止覆盖
         for post_contents in posts_contents:
             try:
                 author = posts[2*(i-1)].contents[1].contents[0].string
                 _time = compiled_time.search(str(posts[2*(i-1)+1])).group()
-                floor = ''
-                floor_flag = posts[2*(i-1)+1].find(name = 'strong').find(name = 'em') # 老版本根据contents有黄牌警告会出错
-                if floor_flag == None:
-                    floor = posts[2*(i-1)+1].find(name = 'strong').find(name = 'a').text # for card
-                else:
-                    floor = floor + floor_flag.text
             except:
                 print "ERROR:获取作者、时间、楼层信息出错！"
                 f = open('badurl.txt','a')
@@ -155,29 +150,11 @@ for k in range(tid_start, tid_end):
             lines = re.sub('<(.*?)>', '', lines)
             lines = lines.strip()
             print lines
-            # 整理数据
-            if floor == u'\r\n沙发':
-                floor = '2'
-            elif floor == u'\r\n板凳':
-                floor = '3'
-            elif floor == u'\r\n地板':
-                floor = '4'
-            elif floor == u'\r\n地下':
-                floor = '5'
-            elif floor == u'\r\n楼主':
-                floor = '0'
-            elif floor == u'\r\n推荐\r\n':
-                floor = u'推荐' + str(rec)
-                rec = rec + 1
-            elif floor_flag == None and i != 1: # 对于置顶贴这种情况的处理，例:http://bbs.hitui.com/forum.php?mod=viewthread&tid=111434&extra=page%3D2%26filter%3Dauthor%26orderby%3Ddateline
-                print floor
-                compiled_floor = re.compile(r'[0-9]+')
-                floor = compiled_floor.search(floor).group()
             if(i == 1 and flag == True):
                 first_floor = {
                     'author':author,
                     'title':title,
-                    'floor':1,
+                    'floor':'1',
                     'content':lines,
                     'href':href,
                     'board':board,
@@ -190,11 +167,12 @@ for k in range(tid_start, tid_end):
                 other_floor = {
                     'content':lines,
                     'time':_time,
-                    'floor':floor,
+                    'floor':str(floor),
                     'author':author
                 }
-                newItem[floor] = other_floor
+                newItem[str(floor)] = other_floor
             i += 1
+            floor += 1
     try:
         if not newItem:
             print "bad url!"
@@ -212,3 +190,5 @@ for k in range(tid_start, tid_end):
         f.close()
         print "ERROR:数据库存储错误！"
 print "网站" + domain + " 爬取结束！"
+time2 = time.time()
+print 'simple-> ', str(time2 - time1)
