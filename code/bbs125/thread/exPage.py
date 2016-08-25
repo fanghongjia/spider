@@ -24,7 +24,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
         title = soup.find(attrs = {'id':'thread_subject'}).text
     except:
         print "bad url!"
-        f = open('badurl.txt','a')
+        f = open('badurl3.txt','a')
         f.write(href + '    ----board or title bad')
         f.write('\n')
         f.close()
@@ -44,7 +44,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
         except:
             print p_page_url
             print "bad url!"
-            f = open('badurl.txt','a')
+            f = open('badurl3.txt','a')
             f.write(p_page_url)
             f.write('\n')
             f.close()
@@ -60,7 +60,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 _time = compiled_time.search(str(posts[2*(j-1)+1])).group()
             except:
                 print "ERROR:获取作者、时间、楼层出错！"
-                f = open('badurl.txt', 'a')
+                f = open('badurl3.txt', 'a')
                 f.write(p_page_url + '    ----author or time or floor bad')
                 f.write('\n')
                 f.close()

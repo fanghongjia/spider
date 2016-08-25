@@ -21,9 +21,9 @@ sys.setdefaultencoding('utf-8')
 # 爬取的网站域名
 domain = "bbs.125.la"
 # 起始tid
-tid_start = 1
+tid_start = 13930080
 # 6月30最后的tid
-tid_end = 50
+tid_end = 13930130
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息
@@ -45,7 +45,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "lDlk_ecc9_saltkey=ZJQz5lj0; lDlk_ecc9_lastvisit=1470395868; lDlk_ecc9_sid=A381e8; lDlk_ecc9_lastact=1470399514%09forum.php%09; lDlk_ecc9_sendmail=1; Hm_lvt_fa32dadde3745af309b587b38d20ea1d=1470399470; Hm_lpvt_fa32dadde3745af309b587b38d20ea1d=1470399516; lDlk_ecc9_ulastactivity=3b5dAWO7kvzHuDcG%2F%2Fd0zcitjHfpCrfanOQFxsz%2FHQxXAHKPO5oc; lDlk_ecc9_auth=ba27pUzFIwwrrTgeRTtK5LrL3Xen7AVwXwswIMThv5frRRAn8mSYJil8%2BnCGogg1OUJxQEKdAVkT6FYJBGrz0Qm9KxA; lDlk_ecc9_lastcheckfeed=363083%7C1470399485; lDlk_ecc9_lip=202.102.144.8%2C1470397927; lDlk_ecc9_connect_is_bind=0; lDlk_ecc9_nofavfid=1; lDlk_ecc9_onlineusernum=5782; lDlk_ecc9_myrepeat_rr=R0; lDlk_ecc9_nofocus_forum=1; tjpctrl=1470401288179; lDlk_ecc9_wx_from=8601ZdCNX8jSB%2BfVpEeMlOKbm0tFllWv27jSI4qT85hZMqN8D3r1"
+Cookie = "PHPSESSID=9ic9a8728ru38es5efhqikulg4; lDlk_ecc9_saltkey=f595E2LZ; lDlk_ecc9_lastvisit=1472086343; lDlk_ecc9_ulastactivity=00a3uboPa%2Fb3i83xebmoYKwWSXsAUbpOvlP8MB5fLIqdZQm%2BzDhQ; lDlk_ecc9_auth=fe31nyauvpMNAoqsxlSujJV1aQ28mogeyJzVGzioc%2F%2BFw5e276KGJU%2F9EIzhB1efMGxLS610yO0zRRfDAb6vyK2h5lw; lDlk_ecc9_nofavfid=1; lDlk_ecc9_myrepeat_rr=R0; lDlk_ecc9_connect_not_sync_t=1; lDlk_ecc9_ip=; lDlk_ecc9_lip=221.2.164.42%2C1472099050; lDlk_ecc9_st_p=363083%7C1472099199%7C0085f75d466f837ca537b823421ddd36; lDlk_ecc9_viewid=tid_13930130; lDlk_ecc9_sid=jirxXI; lDlk_ecc9_sendmail=1; lDlk_ecc9_lastcheckfeed=363083%7C1472099200; lDlk_ecc9_lastact=1472099200%09home.php%09spacecp; lDlk_ecc9_connect_is_bind=0; lDlk_ecc9_smile=4D1; Hm_lvt_fa32dadde3745af309b587b38d20ea1d=1471931855,1471933872,1471999704,1472087053; Hm_lpvt_fa32dadde3745af309b587b38d20ea1d=1472099200; tjpctrl=1472101000641"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
@@ -56,7 +56,7 @@ opener.addheaders = [
 # opener = urllib2.build_opener(proxy_handler)
 urllib2.install_opener(opener)
 time1 = time.time()
-for k in range(tid_start, tid_end):
+for k in range(tid_end, tid_start, -1):
     href = "http://" + domain +"/thread-" + str(k) + "-1-1.html"
     try: 
         response2 = urllib2.urlopen(href)
@@ -73,7 +73,9 @@ for k in range(tid_start, tid_end):
         if hidden.find(name='a') != None:
             doReply(href, domain, Cookie)
     try:
-        p_page_content = soup2.find(attrs={'class':'pgt'}).find(attrs={'class':'pg'})
+        p_page_content = soup2.find(attrs={'class':'pgt'})
+        if p_page_content != None:
+            p_page_content = p_page_content.find(attrs = {'class':'pg'})
     except:
         print "bad url!"
         f = open('badurl.txt','a')
