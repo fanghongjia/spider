@@ -22,7 +22,7 @@ sys.setdefaultencoding('utf-8')
 # 爬取的网站域名
 domain = "bbs.qqsky.net"
 # 起始tid
-tid_start = 1
+tid_start = 238189
 # 6月30最后的tid
 tid_end = 306784 #306784
 # 代理服务器
@@ -46,7 +46,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = "jAx7_2132_saltkey=SH9S3BiD; jAx7_2132_lastvisit=1470466695; jAx7_2132_sid=bsGFfF; jAx7_2132_lastact=1470470311%09misc.php%09patch; jAx7_2132_sendmail=1; pgv_pvi=3567020556; pgv_info=ssi=s7870907270; Hm_lvt_617c51f1f00a88e38a46ac3c234fded2=1470470302; Hm_lpvt_617c51f1f00a88e38a46ac3c234fded2=1470470312; jAx7_2132_ulastactivity=a9e9ayZEGkLSNUD9HPj6IzonCGPF7W9ff13P1Jg8g1HPPL7Vt5dS; jAx7_2132_auth=4beaw%2BDjuCfmv54SysdJQkAWMXZlr%2FB0bBkHfj%2BFop9tysLbkuae6J5dU4YEZZHu35p1LBXpKkiyVkQRnsFZRtAnyQ; jAx7_2132_lastcheckfeed=20333%7C1470470310; jAx7_2132_checkfollow=1; jAx7_2132_lip=221.2.164.39%2C1470469327; jAx7_2132_security_cookiereport=c453G5Opn2kxtPMmycxYd%2B73Sb%2F%2BJiyB8kNEvmQAWABGxPOLHIQ0; jAx7_2132_connect_is_bind=0; jAx7_2132_nofavfid=1; jAx7_2132_onlineusernum=2408; jAx7_2132_checkpm=1"
+Cookie = "5j0w_2132_saltkey=kShvHd9g; 5j0w_2132_lastvisit=1470816167; 5j0w_2132_sid=HHh390; 5j0w_2132_lastact=1470819820%09misc.php%09patch; 5j0w_2132_onlineusernum=4218; 5j0w_2132_sendmail=1; 5j0w_2132_ulastactivity=52a1v2DiHEYG9vQpBTnkh60uWmKrehLHAHM%2F3xeOXgHeYbbZrI0k; 5j0w_2132_auth=7727FFmg4g%2BH%2FvkplIiD08rZ4rn9Yk2oEnTzdWxI40N4KqCbtDNebtcU8FgHahgVciIjwC6mQbv2SfkCYS0tZwkpk%2BY; 5j0w_2132_lastcheckfeed=796396%7C1470819805; 5j0w_2132_checkfollow=1; 5j0w_2132_lip=221.2.164.37%2C1470819817; 5j0w_2132_security_cookiereport=2058x3vp1a9mEO8nAVXeSZPpemvAbLNTta1cEpyn7oWVaqw6xrbg; 5j0w_2132_connect_is_bind=0; 5j0w_2132_nofavfid=1; 5j0w_2132_myrepeat_rr=R0; 5j0w_2132_checkpm=1; tjpctrl=1470821617226"
 opener.addheaders = [
     ('User-agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'),
     ('Cookie',Cookie),
@@ -71,7 +71,10 @@ for k in range(tid_start, tid_end):
     hidden = soup2.find(attrs={'class':'locked'})
     if hidden != None:
         if hidden.find(name='a') != None:
-            doReply(href, domain, Cookie)
+            f = open('needReply.txt','a')
+            f.write(href)
+            f.write('\n')
+            f.close
     try:
         p_page_content = soup2.find(attrs={'class':'pgt'}).find(attrs={'class':'pg'})
     except:
@@ -199,7 +202,7 @@ for k in range(tid_start, tid_end):
                 }
                 newItem[floor] = other_floor
             i += 1
-        for t in range(1, int(random.uniform(3,10))):
+        for t in range(1, int(random.randint(0,2))):
             time.sleep(1)
             print 'sleep', t, 's'
     try:

@@ -9,6 +9,7 @@ import codecs
 import sys
 import math
 import time
+import random
 from doReply import doReply
 
 reload(sys)
@@ -42,6 +43,9 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init, tid):
     for l in range(1, p_page_end):
         if l == 0:
             continue
+        for t in range(1, random.randint(0, 1)): 
+            print 'sleep', t, 's'
+            time.sleep(1)
         p_page_url = p_page_url_init + str(tid) + "-" + str(l) + ".aspx?forumpage=1&typeid=-1"
         try:
             response3 = urllib2.urlopen(p_page_url)

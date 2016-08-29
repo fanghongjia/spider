@@ -59,7 +59,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
 
 °Ë¡¢http://hackxd.com/
-1ÔªÂòµ½ÁËÑûÇëÂë£¬µ«ÊÇ»Ø¸´ÐèÒªÑéÖ¤Âë
+1ÔªÂòµ½ÁËÑûÇëÂë£¬µ«ÊÇ»Ø¸´ÐèÒªÑéÖ¤Âë£¬ÒÑ±¨Ïú
 
 ¾Å¡¢http://www.mfexe.com/
 ´ò²»¿ª
@@ -69,7 +69,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 ÓÐä¯ÀÀ¸¶¿î»úÖÆ£¬¶øÇÒ¹ÜÀíÔ±¹Ø±ÕÁË³äÖµ¹¦ÄÜ
 
 Ê®Ò»¡¢http://bbs.blackbap.org/
-ÄÜ´ò¿ªÁË£¬ÑûÇëÂëÎåÔª
+ÄÜ´ò¿ªÁË£¬ÑûÇëÂëÎåÔª£¬ÒÑ±¨Ïú
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890.
 ÒÑÅÀÍê£ºÍøÂç×ÛºÏ°²È« - Security Online¡¢½Å±¾ÓëÊý¾Ý¿â°²È« - Script & SQL Security ¡¢ºÚ¿Í×÷Õ½Óª¹¥·À²ßÂÔ ¡¢Ô­´´ÎÄÕÂ·¢²¼ - Original Article¡¢·­ÒëÎÄµµ·¢²¼ - Translation Article¡¢Â©¶´·¢²¼ - Exploit Released ¡¢¼ÓÃÜ½âÃÜ¹¤³ÌÑ§ Encryption & Decryption¡¢ÂëÅ©×¨Êô - Coder Areas¡¢°²È«¼¼ÊõÌÖÂÛ - Security Discussion¡¢Æ½Ì¨ - ÊÓ´°Î¢Èí Windows¡¢Æ½Ì¨ - ¿ªÔ´µÛ¹ú Unix & Linux ¡¢ÁÄÌì´µË® ¹àË®ÎÞ×ï ¡¢ÀÏÉú±Ê¼Ç×ªÔØ - Excellent Articles¡¢·ÖÏíºÍÏÂÔØ - Sharing & Downloads ¡¢Éç»á¹¤³ÌÑ§ - Social Engineering Analysis ¡¢ÉçÇøÐ¡ºÚ°æ¡¢ÂÛÌ³ÊÂÎñËù¡¢
 Ã»È¨ÏÞ£ºÌØÊâÓÃ»§×é
@@ -77,7 +77,7 @@ RouterOS×¨Ìâ°æ¿é¡¢ÆäËûÂ·ÓÉ¼°linuxÀà×¨Çø¡¢Íø°ÉÏµÍ³×ÀÃæÃÀ»¯×¨Çø¡¢ÐÂÊÖÖ¸ÄÏ|°æ¹æ|ÊÂÎ
 ÓÃ»§ÐÅÏ¢ÒÑ¾­ÅÀÍê
 
 Ê®¶þ¡¢http://bbs.im520.com/
-Âòµ½ÁËÑûÇëÂë£¬»¨·Ñ10Ôª¡£
+Âòµ½ÁËÑûÇëÂë£¬»¨·Ñ10Ôª,ÒÑ±¨Ïú
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ÒÑÅÀÍê£º°¬Ã×¹«¸æ¡¢¹«¸æ±¸·Ý¡¢ÀúÊ·¹«¸æ¡¢´¦·£Í¨¸æ¡¢Î¬È¨Í¶Ëß¡¢ÉêÇë×¨À¸¡¢ÐÂÊÖÎÊ´ð¡¢Õ¾Îñ´¦Àí¡¢¹ã¸æ×¨ÓÃ¡¢³¬¼¶½»Ò×1-501¡¢³¬¼¶½»Ò×801-1000¡¢³õ¼¶½»Ò×¡¢É¹ºÅÆÀ¹À¡¢³É½»È·ÈÏ¡¢ºÏ×÷·µÓ¶¡¢½»Ò×ÖÐ½é¡¢ÊµÎïÉÌÆ·¡¢Ì³±Ò½»Á÷¡¢×ÊÑ¶½»Á÷¡¢×ÊÑ¶½»Á÷-QQhelperÏµÁÐ¡¢ÊÖ»ú×ÊÔ´¡¢cnangel×¨Çø¡¢¾«²Ê×ªÌû¡¢ÉÌÒµÈí¼þ¡¢ÍøÂç»î¶¯¡¢»áÔ±Ô­´´¡¢½¨Õ¾×ÊÔ´¡¢°¬Ã×ÔÓÌ¸¡¢Çé¸ÐÐ¡Öþ¡¢ÌåÓý¾º²Â¡¢Ì¸¹ÉÂÛ½ð¡¢»áÔ±·ç²É¡¢°¬Ã×ËêÔÂ¡¢·ÀÆ­½»Á÷¡¢ÓÎÏ·´óÌü
 Ã»È¨ÏÞ:ºËÐÄ½»Á÷¡¢Õ¾Îñ´¦Àí-½»Ò×±¸·Ý¡¢Õ¾Îñ´¦Àí-ÁÙÊ±Í¶Æ±¡¢Õ¾Îñ´¦Àí-ID±¸°¸¡¢×ÉÑ¯½»Á÷-Ô­´´Ð¡×é¡¢Ì³±Ò½»Á÷-M±ÒÌáÏÖ¡¢
@@ -123,14 +123,17 @@ urllib2.urlopen() ÇëÇó²»µ½ÍøÒ³£¬Ô­ÒòÎ´Öª
 ¶þÊ®¡¢bbs.qqsky.net
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 ÓÃ»§ÐÅÏ¢ÕýÔÚkongwei-1ÉÏÅÀ
-Ìû×ÓÕýÔÚÅÀ
+Ìû×ÓÒÑÅÀÍê
 Ò»Ö±ÅÀ·âIP£¬¹ÜÀí»îÔ¾£¬ÐèÒªÑÓÊ±½Ï³¤,Ò»¶ÎÊ±¼äºóÒòÎªÍÚ·Ø±»·âÁËÓÀ¾Ã½ûÑÔ
 
 ¶þÊ®Ò»¡¢bbs.anjian.com
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
 15ÔªÂòÒ»¸öÔÂ»áÔ±£¬µÃµ½·ÃÎÊÓÃ»§ÐÅÏ¢ºÍ¸ßÈ¨ÏÞÌû×ÓµÄÈ¨ÏÞ
 tid = 1-629724
-uid = 1-4060473 ÕýÔÚkongwei-4ÉÏÅÀ
+uid = 1-2000000 ÕýÔÚkongwei-4ÉÏÅÀ
+uid = 2000000-2500000ÕýÔÚkongwei-3ÉÏÅÀ
+uid = 2500000-3000000ÕýÔÚkongwei-1ÉÏÅÀ
+uid = 3000000-4060473ÕýÔÚËÞÉáÅÀ
 ÐèÒªÑÓÊ±·ÃÎÊ£¬²»È»»á±»Í£µô
 
 ¶þÊ®¶þ¡¢www.mfhk8.com
@@ -138,4 +141,24 @@ uid = 1-4060473 ÕýÔÚkongwei-4ÉÏÅÀ
 
 ¶þÊ®Èý¡¢www.21xt.net
 ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+¿ªÆôÁË°²È«¹·£¬·âIP£¬½ø¶È½ÏÂý
+Ìû×ÓÒÑÅÀÍê
+ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
 
+¶þÊ®ËÄ¡¢www.mai18.net
+»Ø¸´ÐèÒªÑéÖ¤ÂëºÍÊÖÍÏÍ¼Æ¬£¬VIP¿ÉÒÔÈÆ¹ýÕâÐ©£¬µ«ÊÇVIP98¿é£¬Ì«¹ó
+
+¶þÊ®Îå¡¢www.zhuangxiuzhai.com
+ÐÂÎÅÕ¾£¬·ÇÂÛÌ³,ÒÑÍê³É
+
+¶þÊ®Áù¡¢www.90houqq.com
+ÕËºÅÃÜÂë£ºÍõÓïæÌ/k1234567890
+ÓÃ»§ÐÅÏ¢ÒÑÅÀÍê
+
+¶þÊ®Æß¡¢bbs.tyuyan.net
+ÕËºÅÃÜÂë£ºkongtianyi/k1234567890
+Ò»ÔÂ»áÔ±Ê®Ôª
+»Ø¸´ÐèÒªµã»÷ÑéÖ¤Âë
+
+¶þÊ®°Ë¡¢bbs.d3botdb.com
+Ìû×ÓÔÚkongwei-2ÉÏÅÀ

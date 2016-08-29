@@ -9,6 +9,7 @@ import codecs
 import sys
 import math
 import time
+import random
 from doReply import doReply
 from exPage import exPage
 
@@ -21,9 +22,9 @@ sys.setdefaultencoding('utf-8')
 # 爬取的网站域名
 domain = "bbs.anjian.com"
 # 起始tid
-tid_start = 332
+tid_start = 600420
 # 6月30最后的tid
-tid_end = 333
+tid_end = 629724 #629724
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息
@@ -45,7 +46,7 @@ db = connection[db_name]
 coll = db[coll_name]
 # 设置http报文的header信息
 opener = urllib2.build_opener()
-Cookie = " ASP.NET_SessionId=mnnjakiduwc5oo4rt0ht5wue; __qc_wId=167; pgv_pvid=2184346106; reurl=http://bbs.anjian.com/login.aspx?referer=forumindex.aspx; lastactivity=onlinetime=969058088&oltime=969058103; lastposttitle=d41d8cd98f00b204e9800998ecf8427e; lastpostmessage=970f83bcb323367d8210eafdfd5ae346; lastolupdate=969103110; lastposttime=2016-08-12 09:10:38; forumpageid=1; AJSTAT_ok_pages=11; AJSTAT_ok_times=1; Hm_lvt_5d96b144d9b7632ed0ce359527dcc65d=1470963787; Hm_lpvt_5d96b144d9b7632ed0ce359527dcc65d=1470964666; allowchangewidth=; visitedforums=31; dnt=userid=4060473&password=5dIPmdcddfIGzNTTBinEwTZdBnDxp2V5Qo07Z8MeQ3qiAllJwJPaAA%3d%3d&tpp=0&ppp=0&pmsound=0&invisible=0&referer=showtopic.aspx%3ftopicid%3d478011%26page%3d1%26auctionpage%3d1%26forumpage%3d1&sigstatus=1&expires=43200&userinfotips=&visitedforums=31&oldtopic=D478011D218289"
+Cookie = "onlineusercount=1430; allowchangewidth=; lastolupdate=990902268; ASP.NET_SessionId=d41qyz5zasqvi5ljnpbemxq3; __qc_wId=719; pgv_pvid=9052956240; AJSTAT_ok_pages=2; AJSTAT_ok_times=1; Hm_lvt_5d96b144d9b7632ed0ce359527dcc65d=1470986050; Hm_lpvt_5d96b144d9b7632ed0ce359527dcc65d=1470986062; reurl=http://bbs.anjian.com/login.aspx?referer=forumindex.aspx; dnt=userid=4060473&password=5dIPmdcddfIGzNTTBinEwTZdBnDxp2V5Qo07Z8MeQ3qiAllJwJPaAA%3d%3d&tpp=0&ppp=0&pmsound=0&invisible=0&referer=index.aspx&sigstatus=1&expires=43200&userinfotips=; JustLogin=firstL; dntusertips=userinfotips=%e7%a7%af%e5%88%86%3a16%2c%e7%94%a8%e6%88%b7%e7%bb%84%3a%3cfont+color%3d%22FF6500%22%3e%e6%8c%89%e9%94%ae%e7%b2%be%e7%81%b5%e4%bc%9a%e5%91%98%3c%2ffont%3e%2c%e9%b2%9c%e8%8a%b1%3a+0%e6%9c%b5%2c%e9%93%9c%e5%b8%81%3a+53%e4%b8%aa%2c%e9%93%b6%e5%b8%81%3a+0%e4%b8%aa%2c%e9%87%91%e5%b8%81%3a+0%e4%b8%aa"
 opener.addheaders = [
     ('User-agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36'),
     ('Cookie', Cookie),
@@ -73,7 +74,7 @@ for k in range(tid_start, tid_end):
             doReply(href, domain, k, Cookie)
         else:
             f = open('hidden.txt','a')
-            f.write(href + '    ----href bad')
+            f.write(href)
             f.write('\n')
             f.close
     p_page_url_init = "http://" + domain + "/showtopic-"
@@ -109,6 +110,9 @@ for k in range(tid_start, tid_end):
     flag = True # 识别是不是楼主的flag
     j = 1 # floor flag
     for l in range(1, p_page_end+1):
+        for t in range(1, random.randint(1, 3)): 
+            print 'sleep', t, 's'
+            time.sleep(1)
         p_page_url = p_page_url_init + str(k) + "-" + str(l) + ".aspx?forumpage=1&typeid=-1"
         try:
             response3 = urllib2.urlopen(p_page_url)

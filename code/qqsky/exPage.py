@@ -131,6 +131,6 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                     print "db update wrong"
             j += 1
         i += 1
-        for t in range(1,int(random.uniform(3,10))):
+        for t in range(1,int(random.randint(0,2))):
             time.sleep(1)
             print 'sleep', t, 's'
