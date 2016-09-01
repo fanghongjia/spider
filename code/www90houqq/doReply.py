@@ -60,7 +60,7 @@ def doReply(url, domain, Cookie):
     response2 = urllib2.urlopen(request2)
     soup2 = BeautifulSoup(response2, 'lxml', from_encoding="utf-8")
     print soup2
-    for i in range(1,10):
+    for i in range(1,16):
         time.sleep(1)
         print "因回复而延时",i,"秒"
     return

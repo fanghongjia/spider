@@ -22,9 +22,9 @@ sys.setdefaultencoding('utf-8')
 # 爬取的网站域名
 domain = "bbs.anjian.com"
 # 起始tid
-tid_start = 600420
+tid_start = 592067
 # 6月30最后的tid
-tid_end = 629724 #629724
+tid_end = 600000 #629724
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息

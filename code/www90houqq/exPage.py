@@ -41,7 +41,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
         #     print 'sleep'
         if l == 0:
             continue
-        p_page_url = 'http://' + domain + '/' + p_page_url_init + str(l)
+        p_page_url = p_page_url_init + "-" + str(l) + "-1.html"
         try:
             response3 = urllib2.urlopen(p_page_url)
             soup3 = BeautifulSoup(response3, 'lxml', from_encoding="utf-8")
@@ -54,16 +54,14 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
             f.close()
             continue
         posts = soup3.findAll(attrs={'class': 'pi'})
+        authors = soup3.findAll(attrs={'class':'info_r_t'})
         posts_contents = soup3.findAll(attrs={'class': 't_f'})
         # 以下循环将正文部分处理成一整个字符串形式
         j = 1
         for post_contents in posts_contents:
             try:
-                try:
-                    author = posts[2*(i-1)].contents[1].contents[0].text
-                except:
-                    author = (posts[2*(i-1)].text)[2:]
-                _time = compiled_time.search(str(posts[2*(j-1)+1])).group()
+                author = authors[2*(j-1)].findAll(name='div')[1].find(name='strong').find(name='a').string
+                _time = compiled_time.search(str(posts[j-1])).group()
             except:
                 print "ERROR:获取作者、时间、楼层出错！"
                 f = open('badurl.txt', 'a')
@@ -82,7 +80,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
             if(i == 1 and flag == True):
                 ISOTIMEFORMAT = '%Y-%m-%d %X'
                 spider_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
-                hm = soup2.find(attrs = {'class':'hm ptn'})
+                hm = soup3.find(attrs = {'class':'hm ptn'})
                 p_num = re.findall(r'[0-9]+', hm.text, re.I)
                 p_look_num = p_num[0]
                 p_rep_num = p_num[1]
@@ -112,6 +110,7 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                 newItem[str(floor)] = other_floor
             if i == 1:
                 try:
+                    print newItem
                     coll.insert(newItem)
                 except:
                     print 'db insert wrong'
@@ -123,4 +122,4 @@ def exPage(soup, opener, coll, domain, href, p_page_end, p_page_url_init):
                     print "db update wrong"
             j += 1
             floor += 1
-        i += 1
+            i += 1

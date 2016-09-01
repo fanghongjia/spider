@@ -24,7 +24,7 @@ domain = "www.90houqq.com"
 # 起始tid
 tid_start = 1
 # 6月30最后的tid
-tid_end = 21523 #21523
+tid_end = 1205 #21523
 # 代理服务器
 # proxy_server = 'http://121.9.221.188'
 # 数据库信息
@@ -72,12 +72,6 @@ for k in xrange(tid_end, tid_start, -1):
         f.write('\n')
         f.close
         continue
-    ISOTIMEFORMAT = '%Y-%m-%d %X'
-    spider_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
-    hm = soup2.find(attrs = {'class':'hm ptn'})
-    p_num = re.findall(r'[0-9]+', hm.text, re.I)
-    p_look_num = p_num[0]
-    p_rep_num = p_num[1]
     hidden = soup2.find(attrs={'class':'locked'})
     if hidden != None:
         if hidden.find(name='a') != None:
@@ -166,6 +160,12 @@ for k in xrange(tid_end, tid_start, -1):
             print lines
             # 整理数据
             if(i == 1 and flag == True):
+                ISOTIMEFORMAT = '%Y-%m-%d %X'
+                spider_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
+                hm = soup2.find(attrs = {'class':'hm ptn'})
+                p_num = re.findall(r'[0-9]+', hm.text, re.I)
+                p_look_num = p_num[0]
+                p_rep_num = p_num[1]
                 first_floor = {
                     'author':author,
                     'title':title,
